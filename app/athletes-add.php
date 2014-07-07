@@ -91,7 +91,7 @@
             </thead>
             </table>
             
-            <form method="POST">
+            <form name="formatus" action="http://192.168.1.11/Web-sport.gymtri.cz/app/athletes-add-script.php" method="POST">
             <div id="dynamicInput">
             <input type='text' class='form-control' id='trida' placeholder='Třída'><input type='text' class='form-control' id='jmeno1' placeholder='Jméno'><input type='text' class='form-control' id='prijmeni1' placeholder='Příjmení'><div class='btn-group'><input type='button' class='btn btn-default' name='sex1' value='Hoch'><input type='button' class='btn btn-default' name='sex1' value='Dívka'></div><input type='date' name='date1' data-date-format='mm/dd/yy' >
      
@@ -141,7 +141,8 @@
           document.getElementById(divName).appendChild(newdiv);
           counter++;
      }
-}
+     document.formatus.action = "http://192.168.1.11/Web-sport.gymtri.cz/app/athletes-add-script.php?&count=" + (counter);
+    }
     </script>
   </body>
 </html>
