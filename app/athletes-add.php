@@ -87,13 +87,14 @@
                 <th>Příjmení</th>
                 <th>Pohlaví</th>
                 <th>Datum narození</th>
+                <th>Začátek studia</th>
               </tr>
             </thead>
             </table>
             
             <form name="formatus" action="http://192.168.1.11/Web-sport.gymtri.cz/app/athletes-add-script.php" method="POST">
             <div id="dynamicInput">
-            <input type='text' class='form-control' id='trida1' placeholder='Třída' value=''><input type='text' class='form-control' id='jmeno1' placeholder='Jméno'><input type='text' class='form-control' id='prijmeni1' placeholder='Příjmení'><div class='btn-group'><input type='button' class='btn btn-default' name='sex1' value='Hoch'><input type='button' class='btn btn-default' name='sex1' value='Dívka'></div><input type='date' name='date1' data-date-format='mm/dd/yy' >
+            <input type='text' class='form-control' name='trida1' placeholder='Třída' value=''><input type='text' class='form-control' name='jmeno1' placeholder='Jméno'><input type='text' class='form-control' name='prijmeni1' placeholder='Příjmení'><div class='btn-group'><input type='radio' class='btn btn-default' name='sex1' value='M'><input type='radio' class='btn btn-default' name='sex1' value='F'></div><input type='date' name='narozeni1' data-date-format='mm/dd/yy' ><input type='number' min='1900' max='2100' name='zacatek1' >
      
      </div>
      <input type="button" value="Přidat dalšího" onClick="addInput('dynamicInput');">
@@ -137,9 +138,9 @@
      else {
            
           var newdiv = document.createElement('div');
-          newdiv.innerHTML = "<input type='text' class='form-control' id='trida" + (counter + 1) + "' value=''><input type='text' class='form-control' id='jmeno" + (counter + 1) + "' placeholder='Jméno'><input type='text' class='form-control' id='prijmeni" + (counter + 1) + "' placeholder='Příjmení'><div class='btn-group'><input type='button' class='btn btn-default' name='sex" + (counter + 1) + "' value='Hoch'><input type='button' class='btn btn-default' name='sex" + (counter + 1) + "' value='Dívka'></div><input type='date'  name='date" + (counter + 1) + "' data-date-format='mm/dd/yy' >";
+          newdiv.innerHTML = "<input type='text' class='form-control' name='trida" + (counter + 1) + "' placeholder='Třída' value=''><input type='text' class='form-control' name='jmeno" + (counter + 1) + "' placeholder='Jméno'><input type='text' class='form-control' name='prijmeni" + (counter + 1) + "' placeholder='Příjmení'><div class='btn-group'><input type='radio' class='btn btn-default' name='sex" + (counter + 1) + "' value='M'><input type='radio' class='btn btn-default' name='sex" + (counter + 1) + "' value='F'></div><input type='date'  name='narozeni" + (counter + 1) + "' data-date-format='mm/dd/yy' ><input type='number' min='1900' max='2100'name='zacatek" + (counter + 1) + "' >";
           document.getElementById(divName).appendChild(newdiv);
-           document.getElementById("trida"+(counter + 1)).value=document.getElementById("trida"+(counter)).value;
+           document.getElementsByName("trida"+(counter + 1)).item(0).value=document.getElementsByName("trida"+(counter)).item(0).value;
           counter++;
      }
      document.formatus.action = "http://192.168.1.11/Web-sport.gymtri.cz/app/athletes-add-script.php?&count=" + (counter);
