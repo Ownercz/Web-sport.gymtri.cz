@@ -93,11 +93,13 @@
             
             <form method="POST">
             <div id="dynamicInput">
-            <input type='text' class='form-control' id='trida' placeholder='Třída'><input type='text' class='form-control' id='jmeno' placeholder='Jméno'><input type='text' class='form-control' id='prijmeni' placeholder='Příjmení'><div class='btn-group'><input type='button' class='btn btn-default' name='sex' value='Hoch'><input type='button' class='btn btn-default' name='sex' value='Dívka'></div><input type='date'  data-date-format='mm/dd/yy' >
+            <input type='text' class='form-control' id='trida' placeholder='Třída'><input type='text' class='form-control' id='jmeno1' placeholder='Jméno'><input type='text' class='form-control' id='prijmeni1' placeholder='Příjmení'><div class='btn-group'><input type='button' class='btn btn-default' name='sex1' value='Hoch'><input type='button' class='btn btn-default' name='sex1' value='Dívka'></div><input type='date' name='date1' data-date-format='mm/dd/yy' >
      
      </div>
      <input type="button" value="Přidat dalšího" onClick="addInput('dynamicInput');">
-
+<button type="submit" class="btn btn-primary" style="float:right">
+  <i class="icon-user icon-white"></i> Přidat třídu
+</button>
     </form>
         </div>
 
@@ -130,12 +132,12 @@
     var limit = 16;
     function addInput(divName){
      if (counter == limit)  {
-          alert("You have reached the limit of adding " + counter + " inputs");
+          alert("Stanoveny limit sportovcu je: " + counter + " vice jich pridat nelze!");
      }
      else {
      
           var newdiv = document.createElement('div');
-          newdiv.innerHTML = "<input type='text' class='form-control' id='trida' placeholder='Třída'><input type='text' class='form-control' id='jmeno' placeholder='Jméno'><input type='text' class='form-control' id='prijmeni' placeholder='Příjmení'><div class='btn-group'><input type='button' class='btn btn-default' name='sex' value='Hoch'><input type='button' class='btn btn-default' name='sex' value='Dívka'></div><input type='date'  data-date-format='mm/dd/yy' >";
+          newdiv.innerHTML = "<input type='text' class='form-control' id='trida' placeholder='Třída'><input type='text' class='form-control' id='jmeno" + (counter + 1) + "' placeholder='Jméno'><input type='text' class='form-control' id='prijmeni" + (counter + 1) + "' placeholder='Příjmení'><div class='btn-group'><input type='button' class='btn btn-default' name='sex" + (counter + 1) + "' value='Hoch'><input type='button' class='btn btn-default' name='sex" + (counter + 1) + "' value='Dívka'></div><input type='date'  name='date" + (counter + 1) + "' data-date-format='mm/dd/yy' >";
           document.getElementById(divName).appendChild(newdiv);
           counter++;
      }
