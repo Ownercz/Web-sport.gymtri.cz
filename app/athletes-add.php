@@ -93,7 +93,7 @@
             
             <form name="formatus" action="http://192.168.1.11/Web-sport.gymtri.cz/app/athletes-add-script.php" method="POST">
             <div id="dynamicInput">
-            <input type='text' class='form-control' id='trida' placeholder='Třída'><input type='text' class='form-control' id='jmeno1' placeholder='Jméno'><input type='text' class='form-control' id='prijmeni1' placeholder='Příjmení'><div class='btn-group'><input type='button' class='btn btn-default' name='sex1' value='Hoch'><input type='button' class='btn btn-default' name='sex1' value='Dívka'></div><input type='date' name='date1' data-date-format='mm/dd/yy' >
+            <input type='text' class='form-control' id='trida1' placeholder='Třída' value=''><input type='text' class='form-control' id='jmeno1' placeholder='Jméno'><input type='text' class='form-control' id='prijmeni1' placeholder='Příjmení'><div class='btn-group'><input type='button' class='btn btn-default' name='sex1' value='Hoch'><input type='button' class='btn btn-default' name='sex1' value='Dívka'></div><input type='date' name='date1' data-date-format='mm/dd/yy' >
      
      </div>
      <input type="button" value="Přidat dalšího" onClick="addInput('dynamicInput');">
@@ -135,10 +135,11 @@
           alert("Stanoveny limit sportovcu je: " + counter + " vice jich pridat nelze!");
      }
      else {
-     
+           
           var newdiv = document.createElement('div');
-          newdiv.innerHTML = "<input type='text' class='form-control' id='trida' placeholder='Třída'><input type='text' class='form-control' id='jmeno" + (counter + 1) + "' placeholder='Jméno'><input type='text' class='form-control' id='prijmeni" + (counter + 1) + "' placeholder='Příjmení'><div class='btn-group'><input type='button' class='btn btn-default' name='sex" + (counter + 1) + "' value='Hoch'><input type='button' class='btn btn-default' name='sex" + (counter + 1) + "' value='Dívka'></div><input type='date'  name='date" + (counter + 1) + "' data-date-format='mm/dd/yy' >";
+          newdiv.innerHTML = "<input type='text' class='form-control' id='trida" + (counter + 1) + "' value=''><input type='text' class='form-control' id='jmeno" + (counter + 1) + "' placeholder='Jméno'><input type='text' class='form-control' id='prijmeni" + (counter + 1) + "' placeholder='Příjmení'><div class='btn-group'><input type='button' class='btn btn-default' name='sex" + (counter + 1) + "' value='Hoch'><input type='button' class='btn btn-default' name='sex" + (counter + 1) + "' value='Dívka'></div><input type='date'  name='date" + (counter + 1) + "' data-date-format='mm/dd/yy' >";
           document.getElementById(divName).appendChild(newdiv);
+           document.getElementById("trida"+(counter + 1)).value=document.getElementById("trida"+(counter)).value;
           counter++;
      }
      document.formatus.action = "http://192.168.1.11/Web-sport.gymtri.cz/app/athletes-add-script.php?&count=" + (counter);
