@@ -1,4 +1,4 @@
-﻿
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -35,7 +35,7 @@
 
     <div class="container">
 
-        <form class="form-signin" role="form">
+        <form class="form-signin" role="form" method="get" action="login_script.php">
             <h2 class="form-signin-heading">Přihlášení do systému</h2>
             <input type="login" class="form-control" placeholder="Login" required autofocus>
             <input type="password" class="form-control" placeholder="Heslo" required>
@@ -43,6 +43,9 @@
                 <label>
                     <input type="checkbox" value="remember-me"> Zapamatovat
                 </label>
+                <?PHP  if(isset($_GET["w"])){
+                echo "<label>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<b>Špatný login</b> </label>";
+                }?>
             </div>
             <button class="btn btn-lg btn-primary btn-block" type="submit">Přihlásit se</button>
         </form>
