@@ -33,5 +33,5 @@ $zacateki = $zacatek[$a];
   $i++; 
  $a++;
     }
-
+echo "<script>window.close();</script>";
     ?>
