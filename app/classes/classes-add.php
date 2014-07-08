@@ -24,7 +24,7 @@
       echo"<div class='alert alert-info' role='alert'>
         <strong>Vybráno!</strong> Závod byl úspěšně vybrán a nyní je potřeba do něj zaregistrovat třídy. (pokud byl vybrán špatný závod, klepněte <a href='?'>zde</a>)
       </div>";
-      $request= "SELECT DISTINCT class,yearbegin FROM athletes ORDER by athletes.yearbegin DESC"  ; 
+      $request= "SELECT DISTINCT class,yearbegin FROM athletes ORDER by athletes.yearbegin DESC LIMIT 0,30"  ; 
  $result = $mysqli->query($request);
       echo"<h2><span class='label label-warning'>2. Vyberte třídy</span></h2><form><div class='list-group'>";
       while($row = $result->fetch_array(MYSQLI_NUM)){
@@ -50,7 +50,22 @@
       $i++;
       }echo"<br> <strong>Každou třídu přidávejte pouze jednou! V případě chyby klepněte <a href='?id=".$id."'>sem</a>.</strong>
       </div>";
-      
+      echo"<div class='col-sm-4' style='float:right;'>
+          <div class='list-group'>
+            <a href='#' class='list-group-item active'>
+              <h4 class='list-group-item-heading'>Dokončit registraci tříd</h4>
+              <p class='list-group-item-text'>Po zvolení tříd již není možné dělat další změny do seznamu.</p>
+            </a>
+            <a href='?' class='list-group-item'>
+              <h4 class='list-group-item-heading'>Začít odznova</h4>
+              <p class='list-group-item-text'>Nějaká chyba? Stačí klepnout sem a vybrat znova.</p>
+            </a>
+            <a href='#' class='list-group-item'>
+              <h4 class='list-group-item-heading'>Vyskytl se problém?</h4>
+              <p class='list-group-item-text'>Kontakt: radim@lipovcan.cz Mobil: 728450179</p>
+            </a>
+          </div>
+        </div>";
       
       }
       else{
