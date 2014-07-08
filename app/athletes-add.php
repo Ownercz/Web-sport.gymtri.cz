@@ -1,4 +1,4 @@
-﻿<?PHP include "check.php"; 
+﻿<?PHP include $_SERVER['DOCUMENT_ROOT']."/Web-sport.gymtri.cz/functions/check.php"; 
 ?>
 <!DOCTYPE html>
 <html lang='en'>

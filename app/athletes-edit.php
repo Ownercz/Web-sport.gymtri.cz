@@ -1,4 +1,4 @@
-﻿<?PHP include "check.php"; 
+﻿<?PHP include $_SERVER['DOCUMENT_ROOT']."/Web-sport.gymtri.cz/functions/check.php"; 
 ?>
 <!DOCTYPE html>
 <html lang='en'>
@@ -93,7 +93,7 @@ include $_SERVER['DOCUMENT_ROOT']."/Web-sport.gymtri.cz/functions/dbconnect.php"
 $request= "SELECT DISTINCT class,yearbegin FROM athletes ORDER by athletes.yearbegin ASC"  ; 
  $result = $mysqli->query($request);
 
-while($row = $result->fetch_array(MYSQLI_NUM)){echo "<tr><td>/*Úprava třídy*/</td><td>".$row[0]."</td><td>".$row[1]."</td><td><form method='POST' style='margin:0'action='athletes-edit-class.php'><input type='submit' value='upravit' class='btn btn-primary'></input></form></td></tr>";}
+while($row = $result->fetch_array(MYSQLI_NUM)){echo "<tr><td>/*Úprava třídy*/</td><td>".$row[0]."</td><td>".$row[1]."</td><td><form method='POST' style='margin:0'action='athletes-edit-class.php?&class=".$row[0]."&yearbegin=".$row[1]."'><input type='submit' value='upravit' class='btn btn-primary'></input></form></td></tr>";}
 
 ?>
          </tbody> </table>

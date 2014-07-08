@@ -1,4 +1,4 @@
-﻿<?PHP include "check.php"; 
+﻿<?PHP include $_SERVER['DOCUMENT_ROOT']."/Web-sport.gymtri.cz/functions/check.php"; 
 ?>
 <!DOCTYPE html>
 <html lang='en'>
@@ -74,29 +74,37 @@
 
       <!-- Main jumbotron for a primary marketing message or call to action -->
       <div class='page-header'>
-        <h1>Vyberte třídu k editaci</h1>
+        <h1>Editace atleta</h1>
       </div>
       <div class='row'>
         <div class='col-md-12'>
           <table class='table'>
-            <thead>
+              <thead>
               <tr>
                 <th>#</th>
                 <th>Třída</th>
+                <th>Jméno</th>
+                <th>Příjmení</th>
+                <th>Pohlaví</th>
+                <th>Datum narození</th>
                 <th>Začátek studia</th>
                 <th></th>
               </tr>
             </thead>
            <tbody>
             <?PHP 
+
 include $_SERVER['DOCUMENT_ROOT']."/Web-sport.gymtri.cz/functions/dbconnect.php";
-$request= "SELECT DISTINCT class,yearbegin FROM athletes ORDER by athletes.yearbegin ASC"  ; 
+$class = $mysqli->real_escape_string($_GET['class']);
+$yearbegin = $mysqli->real_escape_string($_GET['yearbegin']);
+$request= "SELECT * FROM `athletes` WHERE `class` = '$class' AND `yearbegin` = '$yearbegin' ORDER BY `id` ASC"  ; 
  $result = $mysqli->query($request);
 
-while($row = $result->fetch_array(MYSQLI_NUM)){echo "<tr><td>/*Úprava třídy*/</td><td>".$row[0]."</td><td>".$row[1]."</td><td><form method='POST' style='margin:0'action='athletes-edit-class.php'><input type='submit' value='upravit' class='btn btn-primary'></input></form></td></tr>";}
+while($row = $result->fetch_array(MYSQLI_NUM)){echo "<form method='POST' style='margin:0'action='athletes-edit-class-script.php?id=".$row[0]."' target='_blank' onsubmit='setTimeout(function () { window.location.reload(); }, 30)'><tr><td>".$row[0]."</td><td><input type='text' name='trida' size='1' value='".$row[5]."'></input></td><td><input type='text' name='jmeno' value='".$row[1]."'></input></td><td><input type='text' name='sex' value='".$row[2]."'></input></td><td><input type='text' name='sex' size='1' value='".$row[3]."'></input></td><td><input type='text' name='narozeni' value='".$row[4]."'></input></td><td><input type='text' name='zacatek' value='".$row[6]."'></input></td><td><button type='submit' value='Aktualizovat' onClick='' class='btn btn-primary'>Aktualizovat</button></td></tr></form>";}
 
 ?>
          </tbody> </table>
+        
         </div>
 
       </div>
@@ -121,7 +129,12 @@ while($row = $result->fetch_array(MYSQLI_NUM)){echo "<tr><td>/*Úprava třídy*/
     <script src='https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js'></script>
     <script src='../js/bootstrap.min.js'></script>
     <script src='../js/docs.min.js'></script>
-   
+   <script>
+function reloader()
+{
+location.reload(true);alert("Welcome relaoder ");
+}
+</script>
    
   </body>
 </html>
