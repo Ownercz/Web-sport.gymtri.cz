@@ -35,7 +35,7 @@
 
     <div class="container">
 
-        <form class="form-signin" role="form" method="get" action="login_script.php">
+        <form class="form-signin" role="form" method="get" action="login-script.php">
             <h2 class="form-signin-heading">Přihlášení do systému</h2>
             <input type="login" class="form-control" placeholder="Login" required autofocus>
             <input type="password" class="form-control" placeholder="Heslo" required>

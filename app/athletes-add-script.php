@@ -1,5 +1,5 @@
 ﻿<?PHP
-include"../functions/dbconnect.php";
+include $_SERVER['DOCUMENT_ROOT']."/Web-sport.gymtri.cz/functions/dbconnect.php";
 
 if(isset($_GET["count"])){$count = $_GET["count"];}else{$count=1;}
 $trida = array();

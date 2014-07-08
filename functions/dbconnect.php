@@ -1,3 +1,4 @@
 ﻿<?PHP
-include "../config.php";
+include $_SERVER['DOCUMENT_ROOT']."/Web-sport.gymtri.cz/config.php";
 $mysqli = new mysqli($DB_HOST, $DB_USER , $DB_PASS, $DB_NAME);
+$mysqli->set_charset("utf8");
