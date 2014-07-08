@@ -1,4 +1,4 @@
-﻿<?PHP include $_SERVER['DOCUMENT_ROOT']."/Web-sport.gymtri.cz/functions/check.php"; 
+<?PHP include $_SERVER['DOCUMENT_ROOT']."/Web-sport.gymtri.cz/functions/check.php"; 
 ?>
 <!DOCTYPE html>
 <html lang='en'>
@@ -87,6 +87,9 @@
 <div class='page-header'>
         <h1>Správa</h1>
       </div>
+      <?PHP if(isset($_GET["register"])){echo"<div class='alert alert-success' role='alert'>
+        <strong>Hotovo!</strong> Nová soutěž byla založena.
+      </div>";} ?>
       <div class='row'>
      
         <div class='col-sm-4'>

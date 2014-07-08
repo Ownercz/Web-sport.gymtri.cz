@@ -1,4 +1,4 @@
-﻿<?PHP
+<?PHP
 include $_SERVER['DOCUMENT_ROOT']."/Web-sport.gymtri.cz/functions/dbconnect.php";
 include $_SERVER['DOCUMENT_ROOT']."/Web-sport.gymtri.cz/functions/check.php"; 
 
@@ -14,6 +14,6 @@ $request= "INSERT INTO `sport_gymtri_cz`.`event` (`id`, `event_name`, `event_cre
  $result = $mysqli->query($request);
 
     
-header('Location: '.URL.'/app/index.php', TRUE, 302);
+header('Location: '.URL.'/app/index.php?register=1', TRUE, 302);
 exit;
     ?>
