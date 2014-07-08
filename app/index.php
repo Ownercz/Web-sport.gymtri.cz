@@ -121,12 +121,12 @@
         <div class='col-sm-4'>
           <div class='list-group'>
             <a href='#' class='list-group-item active'>
-              <h4 class='list-group-item-heading'>Přidat atlety</h4>
-              <p class='list-group-item-text'>Vložení celé třídy</p>
+              <h4 class='list-group-item-heading'>Dát se do práce</h4>
+              <p class='list-group-item-text'>Vložení výsledků závodů</p>
             </a>
-            <a href='#' class='list-group-item'>
-              <h4 class='list-group-item-heading'>Upravit třídu</h4>
-              <p class='list-group-item-text'>Upraví třídu</p>
+            <a href='event/event-edit.php' class='list-group-item'>
+              <h4 class='list-group-item-heading'>Přidat třídy do soutěže</h4>
+              <p class='list-group-item-text'>Před zápisem výsledků je nutné vložit příslušnou třídu jako startující</p>
             </a>
            
           </div>

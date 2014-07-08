@@ -10,51 +10,51 @@
       </div>
 <?PHP
 include $_SERVER['DOCUMENT_ROOT']."/Web-sport.gymtri.cz/functions/dbconnect.php";
-$id = $mysqli->real_escape_string(isset($_GET['id']));
+$id = $mysqli->real_escape_string($_GET['id']);
 $request= "SELECT * FROM `event` WHERE `id` = '$id' LIMIT 0,1" ; 
  $result = $mysqli->query($request);
  while($row = $result->fetch_array(MYSQLI_NUM)){echo"
-<form class='form-horizontal' role='form' action='event-edit-single-script.php'  target='_blank' onsubmit='setTimeout(function () { window.location.reload(); }, 30)' method='POST'  >
+<form class='form-horizontal' role='form' action='event-edit-single-script.php?id=".$id."'  target='_blank' onsubmit='setTimeout(function () { window.location.reload(); }, 30)' method='POST'  >
   <div class='form-group'>
     <label for='inputEmail3' class='col-sm-2 control-label'>Název soutěže</label>
     <div class='col-sm-10'>
-      <input type='text' class='form-control' name='eventname' 'id='inputEmail3' value='".$row[1]."'>
+      <input type='text' class='form-control' name='event_name' 'id='inputEmail3' value='".$row[1]."'>
     </div>
   </div>
     <div class='form-group'>
     <label for='inputEmail3' class='col-sm-2 control-label'>Organizátor</label>
     <div class='col-sm-10'>
-      <input type='text' class='form-control' name='eventorganisator' id='inputEmail3' value='".$row[1]."'>
+      <input type='text' class='form-control' name='event_creator' id='inputEmail3' value='".$row[2]."'>
     </div>
   </div>
     <div class='form-group'>
     <label for='inputEmail3' class='col-sm-2 control-label'>Zapisující</label>
     <div class='col-sm-10'>
-      <input type='text' class='form-control' name='eventeditor' id='inputEmail3' value='".$row[1]."'>
+      <input type='text' class='form-control' name='event_editor' id='inputEmail3' value='".$row[3]."'>
     </div>
   </div>
   
     <div class='form-group has-error'>
     <label for='inputEmail3' class='col-sm-2 control-label'>Datum soutěže!</label>
     <div class='col-sm-10'>
-      <input type='text' class='form-control' name='eventdate' id='inputEmail3' value='".$row[1]."'>
+      <input type='text' class='form-control' name='event_date' id='inputEmail3' value='".$row[4]."'>
     </div>
    </div>
      <div class='form-group'>
     <label for='inputEmail3' class='col-sm-2 control-label'>Poznámka</label>
     <div class='col-sm-10'>
-      <input type='text' class='form-control' name='eventcomment' id='inputEmail3' value='".$row[1]."'>
+      <input type='text' class='form-control' name='event_comment' id='inputEmail3' value='".$row[5]."'>
     
   </div>
   </div>
   
   <div class='form-group'>
-    <div class='col-sm-offset-2 col-sm-10'>
-      <button type='submit' class='btn btn-lg btn-success' style='float:right;'>Aktualizovat</button>
- <button type='button' class='btn btn-lg btn-warning'>Je nutné dodržet formát data! Např. '". date('d/m/Y') ."'</button>  
+    <div class='col-sm-offset-2 col-sm-10' style='margin-left:0;'>
+   
+ &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<button type='button' class='btn btn-lg btn-warning'>Je nutné dodržet formát data! Např. '". date('d/m/Y') ."'</button>  <button type='submit' class='btn btn-lg btn-success' style='float:right;'>Aktualizovat</button>
     </div>
   </div>
-</form>";}?>
+</form>";}?>   <button type='button'  class='btn btn-lg btn-danger' style='float:right;margin-top:30px;margin-right: 18%;'>SMAZAT</button>
 
 
 
