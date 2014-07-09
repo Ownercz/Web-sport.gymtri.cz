@@ -124,7 +124,7 @@
               <h4 class='list-group-item-heading'>Dát se do práce</h4>
               <p class='list-group-item-text'>Vložení výsledků závodů</p>
             </a>
-            <a href='event/event-edit.php' class='list-group-item'>
+            <a href='classes/classes-add.php' class='list-group-item'>
               <h4 class='list-group-item-heading'>Přidat třídy do soutěže</h4>
               <p class='list-group-item-text'>Před zápisem výsledků je nutné vložit příslušnou třídu jako startující</p>
             </a>

@@ -1,4 +1,4 @@
-﻿<?PHP include $_SERVER['DOCUMENT_ROOT']."/Web-sport.gymtri.cz/functions/check.php"; 
+<?PHP include $_SERVER['DOCUMENT_ROOT']."/Web-sport.gymtri.cz/functions/check.php"; 
         include $_SERVER['DOCUMENT_ROOT']."/Web-sport.gymtri.cz/header.php";
 ?>
 
@@ -15,10 +15,10 @@
       if(isset($_GET['yearbegin'])){$yearbegin= $_GET['yearbegin'];}else{}
       
       if(isset($classes)){$classes = explode(",",$classes);}else{$classes = array();}
-      if(isset($_GET['classadd'])){array_push($classes,  $_GET['classadd']);$classes=implode(",",$classes);$a=12;}else{$classes=null;}
+      if(isset($_GET['classadd'])){array_push($classes,  $_GET['classadd']);$classes=implode(",",$classes);}else{$classes=null;}
       
       if(isset($yearbegin)){$yearbegin = explode(",",$yearbegin);}else{$yearbegin = array();}
-      if(isset($_GET['yearadd'])){array_push($yearbegin,  $_GET['yearadd']);$yearbegin=implode(",",$yearbegin);$a=12;}else{$yearbegin=null;}
+      if(isset($_GET['yearadd'])){array_push($yearbegin,  $_GET['yearadd']);$yearbegin=implode(",",$yearbegin);}else{$yearbegin=null;}
       include $_SERVER['DOCUMENT_ROOT']."/Web-sport.gymtri.cz/functions/dbconnect.php";
       if(isset($_GET['id'])){
       echo"<div class='alert alert-info' role='alert'>
@@ -52,7 +52,7 @@
       </div>";
       echo"<div class='col-sm-4' style='float:right;'>
           <div class='list-group'>
-            <a href='#' class='list-group-item active'>
+            <a href='classes-add-script.php?id=".$id."&classes=".$classes."&yearbegin=".$yearbegin."' class='list-group-item active'>
               <h4 class='list-group-item-heading'>Dokončit registraci tříd</h4>
               <p class='list-group-item-text'>Po zvolení tříd již není možné dělat další změny do seznamu.</p>
             </a>
