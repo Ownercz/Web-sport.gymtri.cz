@@ -33,8 +33,16 @@ print mic($koeficient,$vykon,$sex);
 elseif($discipline =="granát"){
 print granat($koeficient,$vykon,$sex);
 }
-elseif($discipline =="šplh"){}
-elseif($discipline =="25m plavání"){}
-elseif($discipline =="50m plavání"){}
-elseif($discipline =="100m plavání"){}
+elseif($discipline =="šplh"){
+print splh($koeficient,$vykon,$sex);
+}
+elseif($discipline =="25m plavání"){
+print dvacetpetkavz($koeficient,$vykon,$sex);
+}
+elseif($discipline =="50m plavání"){
+print padesatkavz($koeficient,$vykon,$sex);
+}
+elseif($discipline =="100m plavání"){
+print stovkavz($koeficient,$vykon,$sex);
+}
 else{exit;}
