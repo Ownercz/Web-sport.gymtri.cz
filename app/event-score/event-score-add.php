@@ -11,7 +11,7 @@
       <div class="alert alert-warning" role="alert">
         <strong>Upozornění!</strong> Výsledky ukládejte po jednotlivcích.
       </div>
-           <table class='table table-hover'>
+           <table class='table table-hover' style='margin-bottom:0px;'>
       <thead>
         <tr>
           <th>#</th>
@@ -25,7 +25,8 @@
           <th></th>
         </tr>
       </thead>
-      <tbody>
+      <tbody></tbody>
+    </table>
       <?PHP
       if(isset($_GET['id'])){$id= $_GET['id'];}else{}
       if(isset($_GET['class'])){$class= $_GET['class'];}else{}
@@ -52,28 +53,30 @@
       $beginyear = preg_replace("/ - Name:.*/", "", $beginyear);
       $now = date("Y");
       $year = $now-$beginyear;
-     echo"<tr>
-          <td>".$i."</td>
-          <td>".$row[1]."</td>
-          <td>".$row[2]."</td>
-          <td>";if($row[3]=="M"){echo"<span class='label label-primary'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>";}elseif($row[3]=="F"){echo"<span class='label label-danger'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>";}else{}
+      
+      $birthyear = $row[4];
+      $birthyear = substr($birthyear, 0, 4); 
+      $birthyear = $now-$birthyear;
+     echo"<form action='event-score-add-script.php?id=".$id."&athleteid=".$row[0]."&vek=".$birthyear."&sex=".$row[3]."' method='POST'><ul class='list-inline scoreboard'>
+          <li class='labele'>".$i." </li>
+           <li class='name'>".$row[1]."</li>
+           <li class='lastname'>".$row[2]."</li>
+           <li class='sex'>";if($row[3]=="M"){echo"<span class='label label-primary'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>";}elseif($row[3]=="F"){echo"<span class='label label-danger'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>";}else{}
           
           
-     echo"</td>
-          <td>".$year.".".$class."</td><td>".$row[4]."</td>
+     echo"</li>
+          <li class='class'>".$year.".".$class."</li><li class='birth'>".$row[4]." | Věk: ".$birthyear."
           
-          <td><select name='discipline'>";foreach ($disciplines as &$discipline) {
+         </li><li class='discipline'> <select name='discipline'>";foreach ($disciplines as &$discipline) {
    echo"<option value='".$discipline."'>".$discipline."</option>";
 }
 
-echo"</select></td>
-<td><input type='text' size='10'></input></td><td><button type='button' class='btn btn-sm btn-default'>Uložit</button></td>
-        </tr>";
+echo"</select></li> <li class='score'><input type='text' name='vykon' size='10'></input></li><li class='save'><input type='submit' class='btn btn-sm btn-default' value='Uložit'></input></li></ul></form>
+        ";
      }
      
       }else{exit;}?>
-      </tbody>
-    </table>
+      
     <div class="row">
         <div class="col-sm-4">
           <ul class="list-group">

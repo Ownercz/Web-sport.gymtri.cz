@@ -1,279 +1,40 @@
 ﻿<?PHP
 
-      include $_SERVER['DOCUMENT_ROOT']."/Web-sport.gymtri.cz/functions/dbconnect.php";
-function koeficient($vek,$sex){
-if($sex = "M"){
-if( in_array( $vek , range( 0 , 14 ) ) ){$koeficient = 1.06; return $koeficient;}
-if( in_array( $vek , range( 15 , 16 ) ) ){$koeficient = 1; return $koeficient;}
-if( in_array( $vek , range( 17 , 300 ) ) ){$koeficient = 0.97; return $koeficient;}
-}
-elseif($sex = "F"){
-if( in_array( $vek , range( 0 , 14 ) ) ){$koeficient = 1.07; return $koeficient;}
-if( in_array( $vek , range( 15 , 16 ) ) ){$koeficient = 1.05; return $koeficient;}
-if( in_array( $vek , range( 17 , 300 ) ) ){$koeficient = 1.02; return $koeficient;}
-}
-else{echo"Spatne zadane pohlavi."; exit;}
-}
+include "disciplines.php";
+if(isset($_POST['vykon'])){$vykon = $_POST['vykon'];$vykon = str_replace(",",".",$vykon); }
+if(isset($_POST['discipline'])){$discipline = $_POST['discipline']; }
+if(isset($_GET['vek'])){$vek = $_GET['vek'];$vek = str_replace(",",".",$vek); }
+if(isset($_GET['sex'])){$sex = $_GET['sex'];$sex = str_replace(",",".",$sex); }
+if(isset($_GET['id'])){$id = $_GET['id'];$id = str_replace(",",".",$id); }
+if(isset($_GET['athleteid'])){$athleteid = $_GET['athleteid'];$athleteid = str_replace(",",".",$athleteid); }
 
-function getClosest($search, $arr) { //copied
-   $closest = null;
-   foreach($arr as $item) {
-      if($closest == null || abs($search - $closest) > abs($item - $search)) {
-         $closest = $item;
-      }
-   }
-   return $closest;
+$koeficient = koeficient($vek,$sex);
+if($discipline =="60m"){
+ print sedesatka($koeficient,$vykon,$sex);
 }
-
-function sedesatka($koeficient,$vykon,$sex){
-include $_SERVER['DOCUMENT_ROOT']."/Web-sport.gymtri.cz/functions/dbconnect.php";
-$scorevalue= array();
-
-$request = "SELECT * FROM `points` WHERE `discipline_id` = 1 AND `score_value_gender` = '$sex'";
-$result = $mysqli->query($request);
-while($row = $result->fetch_array(MYSQLI_NUM)){
-      $raw = str_replace(",",".",$row[2]);
-      array_push($scorevalue, $raw );
-      }
-      
-$value = getClosest($vykon, $scorevalue);
-$value = str_replace(".",",",$value);
-$request = "SELECT * FROM `points` WHERE `discipline_id` = 1  AND `score_value_gender` = '$sex' AND `score_value` = '$value'";
-$result = $mysqli->query($request);
-while($row = $result->fetch_array(MYSQLI_NUM)){
-print $row[4];
+elseif($discipline =="100m"){
+ print stovka($koeficient,$vykon,$sex);
 }
-
+elseif($discipline =="1500m"){
+print patnactistovka($koeficient,$vykon,$sex);
 }
-function stovka($koeficient,$vykon,$sex){
-include $_SERVER['DOCUMENT_ROOT']."/Web-sport.gymtri.cz/functions/dbconnect.php";
-$scorevalue= array();
-
-$request = "SELECT * FROM `points` WHERE `discipline_id` = 2 AND `score_value_gender` = '$sex'";
-$result = $mysqli->query($request);
-while($row = $result->fetch_array(MYSQLI_NUM)){
-      $raw = str_replace(",",".",$row[2]);
-      array_push($scorevalue, $raw );
-      }
-      
-$value = getClosest($vykon, $scorevalue);
-$value = str_replace(".",",",$value);
-$request = "SELECT * FROM `points` WHERE `discipline_id` = 2  AND `score_value_gender` = '$sex' AND `score_value` = '$value'";
-$result = $mysqli->query($request);
-while($row = $result->fetch_array(MYSQLI_NUM)){
-print $row[4];
+elseif($discipline =="3000m"){
+print tritisicovka($koeficient,$vykon,$sex);
 }
+elseif($discipline =="dálka"){
+print dalka($koeficient,$vykon,$sex);
 }
-function patnactistovka($koeficient,$vykon,$sex){
-include $_SERVER['DOCUMENT_ROOT']."/Web-sport.gymtri.cz/functions/dbconnect.php";
-$scorevalue= array();
-
-$request = "SELECT * FROM `points` WHERE `discipline_id` = 3 AND `score_value_gender` = '$sex'";
-$result = $mysqli->query($request);
-while($row = $result->fetch_array(MYSQLI_NUM)){
-      $raw = str_replace(",",".",$row[2]);
-      array_push($scorevalue, $raw );
-      }
-      
-$value = getClosest($vykon, $scorevalue);
-$value = str_replace(".",",",$value);
-$request = "SELECT * FROM `points` WHERE `discipline_id` = 3  AND `score_value_gender` = '$sex' AND `score_value` = '$value'";
-$result = $mysqli->query($request);
-while($row = $result->fetch_array(MYSQLI_NUM)){
-print $row[4];
+elseif($discipline =="výška"){
+print vyska($koeficient,$vykon,$sex);
 }
+elseif($discipline =="míč"){
+print mic($koeficient,$vykon,$sex);
 }
-function tritisicovka($koeficient,$vykon,$sex){
-include $_SERVER['DOCUMENT_ROOT']."/Web-sport.gymtri.cz/functions/dbconnect.php";
-$scorevalue= array();
-
-$request = "SELECT * FROM `points` WHERE `discipline_id` = 4 AND `score_value_gender` = '$sex'";
-$result = $mysqli->query($request);
-while($row = $result->fetch_array(MYSQLI_NUM)){
-      $raw = str_replace(",",".",$row[2]);
-      array_push($scorevalue, $raw );
-      }
-      
-$value = getClosest($vykon, $scorevalue);
-$value = str_replace(".",",",$value);
-$request = "SELECT * FROM `points` WHERE `discipline_id` = 4  AND `score_value_gender` = '$sex' AND `score_value` = '$value'";
-$result = $mysqli->query($request);
-while($row = $result->fetch_array(MYSQLI_NUM)){
-print $row[4];
+elseif($discipline =="granát"){
+print granat($koeficient,$vykon,$sex);
 }
-}
-
-function dalka($koeficient,$vykon,$sex){
-include $_SERVER['DOCUMENT_ROOT']."/Web-sport.gymtri.cz/functions/dbconnect.php";
-$scorevalue= array();
-
-$request = "SELECT * FROM `points` WHERE `discipline_id` = 5 AND `score_value_gender` = '$sex'";
-$result = $mysqli->query($request);
-while($row = $result->fetch_array(MYSQLI_NUM)){
-      $raw = str_replace(",",".",$row[2]);
-      array_push($scorevalue, $raw );
-      }
-      
-$value = getClosest($vykon, $scorevalue);
-$value = str_replace(".",",",$value);
-$request = "SELECT * FROM `points` WHERE `discipline_id` = 5  AND `score_value_gender` = '$sex' AND `score_value` = '$value'";
-$result = $mysqli->query($request);
-while($row = $result->fetch_array(MYSQLI_NUM)){
-print $row[4];
-}
-}
-
-function vyska($koeficient,$vykon,$sex){
-include $_SERVER['DOCUMENT_ROOT']."/Web-sport.gymtri.cz/functions/dbconnect.php";
-$scorevalue= array();
-
-$request = "SELECT * FROM `points` WHERE `discipline_id` = 4 AND `score_value_gender` = '$sex'";
-$result = $mysqli->query($request);
-while($row = $result->fetch_array(MYSQLI_NUM)){
-      $raw = str_replace(",",".",$row[2]);
-      array_push($scorevalue, $raw );
-      }
-      
-$value = getClosest($vykon, $scorevalue);
-$value = str_replace(".",",",$value);
-$request = "SELECT * FROM `points` WHERE `discipline_id` = 4  AND `score_value_gender` = '$sex' AND `score_value` = '$value'";
-$result = $mysqli->query($request);
-while($row = $result->fetch_array(MYSQLI_NUM)){
-print $row[4];
-}
-}
-
-function mic($koeficient,$vykon,$sex){
-include $_SERVER['DOCUMENT_ROOT']."/Web-sport.gymtri.cz/functions/dbconnect.php";
-$scorevalue= array();
-
-$request = "SELECT * FROM `points` WHERE `discipline_id` = 4 AND `score_value_gender` = '$sex'";
-$result = $mysqli->query($request);
-while($row = $result->fetch_array(MYSQLI_NUM)){
-      $raw = str_replace(",",".",$row[2]);
-      array_push($scorevalue, $raw );
-      }
-      
-$value = getClosest($vykon, $scorevalue);
-$value = str_replace(".",",",$value);
-$request = "SELECT * FROM `points` WHERE `discipline_id` = 4  AND `score_value_gender` = '$sex' AND `score_value` = '$value'";
-$result = $mysqli->query($request);
-while($row = $result->fetch_array(MYSQLI_NUM)){
-print $row[4];
-}
-}
-
-function granat($koeficient,$vykon,$sex){
-include $_SERVER['DOCUMENT_ROOT']."/Web-sport.gymtri.cz/functions/dbconnect.php";
-$scorevalue= array();
-
-$request = "SELECT * FROM `points` WHERE `discipline_id` = 4 AND `score_value_gender` = '$sex'";
-$result = $mysqli->query($request);
-while($row = $result->fetch_array(MYSQLI_NUM)){
-      $raw = str_replace(",",".",$row[2]);
-      array_push($scorevalue, $raw );
-      }
-      
-$value = getClosest($vykon, $scorevalue);
-$value = str_replace(".",",",$value);
-$request = "SELECT * FROM `points` WHERE `discipline_id` = 4  AND `score_value_gender` = '$sex' AND `score_value` = '$value'";
-$result = $mysqli->query($request);
-while($row = $result->fetch_array(MYSQLI_NUM)){
-print $row[4];
-}
-}
-
-function splh($koeficient,$vykon,$sex){
-include $_SERVER['DOCUMENT_ROOT']."/Web-sport.gymtri.cz/functions/dbconnect.php";
-$scorevalue= array();
-
-$request = "SELECT * FROM `points` WHERE `discipline_id` = 4 AND `score_value_gender` = '$sex'";
-$result = $mysqli->query($request);
-while($row = $result->fetch_array(MYSQLI_NUM)){
-      $raw = str_replace(",",".",$row[2]);
-      array_push($scorevalue, $raw );
-      }
-      
-$value = getClosest($vykon, $scorevalue);
-$value = str_replace(".",",",$value);
-$request = "SELECT * FROM `points` WHERE `discipline_id` = 4  AND `score_value_gender` = '$sex' AND `score_value` = '$value'";
-$result = $mysqli->query($request);
-while($row = $result->fetch_array(MYSQLI_NUM)){
-print $row[4];
-}
-}
-
-function dvacetpetkavz($koeficient,$vykon,$sex){
-include $_SERVER['DOCUMENT_ROOT']."/Web-sport.gymtri.cz/functions/dbconnect.php";
-$scorevalue= array();
-
-$request = "SELECT * FROM `points` WHERE `discipline_id` = 4 AND `score_value_gender` = '$sex'";
-$result = $mysqli->query($request);
-while($row = $result->fetch_array(MYSQLI_NUM)){
-      $raw = str_replace(",",".",$row[2]);
-      array_push($scorevalue, $raw );
-      }
-      
-$value = getClosest($vykon, $scorevalue);
-$value = str_replace(".",",",$value);
-$request = "SELECT * FROM `points` WHERE `discipline_id` = 4  AND `score_value_gender` = '$sex' AND `score_value` = '$value'";
-$result = $mysqli->query($request);
-while($row = $result->fetch_array(MYSQLI_NUM)){
-print $row[4];
-}
-}
-
-function padesatkavz($koeficient,$vykon,$sex){
-include $_SERVER['DOCUMENT_ROOT']."/Web-sport.gymtri.cz/functions/dbconnect.php";
-$scorevalue= array();
-
-$request = "SELECT * FROM `points` WHERE `discipline_id` = 4 AND `score_value_gender` = '$sex'";
-$result = $mysqli->query($request);
-while($row = $result->fetch_array(MYSQLI_NUM)){
-      $raw = str_replace(",",".",$row[2]);
-      array_push($scorevalue, $raw );
-      }
-      
-$value = getClosest($vykon, $scorevalue);
-$value = str_replace(".",",",$value);
-$request = "SELECT * FROM `points` WHERE `discipline_id` = 4  AND `score_value_gender` = '$sex' AND `score_value` = '$value'";
-$result = $mysqli->query($request);
-while($row = $result->fetch_array(MYSQLI_NUM)){
-print $row[4];
-}
-}
-
-function stovkavz($koeficient,$vykon,$sex){
-include $_SERVER['DOCUMENT_ROOT']."/Web-sport.gymtri.cz/functions/dbconnect.php";
-$scorevalue= array();
-
-$request = "SELECT * FROM `points` WHERE `discipline_id` = 4 AND `score_value_gender` = '$sex'";
-$result = $mysqli->query($request);
-while($row = $result->fetch_array(MYSQLI_NUM)){
-      $raw = str_replace(",",".",$row[2]);
-      array_push($scorevalue, $raw );
-      }
-      
-$value = getClosest($vykon, $scorevalue);
-$value = str_replace(".",",",$value);
-$request = "SELECT * FROM `points` WHERE `discipline_id` = 4  AND `score_value_gender` = '$sex' AND `score_value` = '$value'";
-$result = $mysqli->query($request);
-while($row = $result->fetch_array(MYSQLI_NUM)){
-print $row[4];
-}
-}
-
-sedesatka(1,3.15,"M");
-
-?>
-
-/*
-20	M	0,97	F	1,02
-19	M	0,97	F	1,02
-18	M	0,97	F	1,02
-17	M	0,97	F	1,02
-16	M	1	F	1,05
-15	M	1	F	1,05
-14	M	1,06	F	1,07
-13	M	1,06	F	1,07
-*/
+elseif($discipline =="šplh"){}
+elseif($discipline =="25m plavání"){}
+elseif($discipline =="50m plavání"){}
+elseif($discipline =="100m plavání"){}
+else{exit;}

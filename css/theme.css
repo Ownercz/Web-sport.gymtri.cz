@@ -16,3 +16,11 @@ body {
 .theme-showcase .navbar .container {
   width: auto;
 }
+ul.scoreboard {border-bottom:1px solid; border-bottom-color:lightgray;}
+li.name{padding-left:40px;width:130px;}
+li.lastname{padding-left:20px;width:130px;}
+li.sex{padding-left:40px;width:100px;}
+li.class{padding-left:80px;width:100px;}
+li.birth{padding-left:80px;width:300px;}
+li.discipline{padding-left:30px;width:150px;}
+li.score{padding-left:30px;width:130px;}
