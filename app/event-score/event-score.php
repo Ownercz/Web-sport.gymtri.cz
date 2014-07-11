@@ -32,7 +32,7 @@
       $now = date("Y");
       $year = $now-$beginyear;
       
-      echo"<a href='event-score-add.php?id=".$id."&class=".$row[2]."&beginyear=".$row[1]."&date=".$dateevent."' class='list-group-item'>Třída: <strong>".$year.".".$row[2]."</strong> Rok začátku:".$row[1]." </a>";}
+      echo"<a href='event-score-add.php?id=".$id."&class=".$row[2]."&beginyear=".$row[1]."&date=".$dateevent."&trida=".$year.".".$row[2]."' class='list-group-item'>Třída: <strong>".$year.".".$row[2]."</strong> Rok začátku:".$row[1]." </a>";}
       echo"</div></form>";
       
      

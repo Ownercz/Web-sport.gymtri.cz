@@ -256,6 +256,7 @@ $value = getClosest($vykon, $scorevalue);
 $value = str_replace(".",",",$value);
 $request = "SELECT * FROM `points` WHERE `discipline_id` = 12  AND `score_value_gender` = '$sex' AND `score_value` = '$value'";
 $result = $mysqli->query($request);
+
 while($row = $result->fetch_array(MYSQLI_NUM)){
 return $row[4]*$koeficient;
 }

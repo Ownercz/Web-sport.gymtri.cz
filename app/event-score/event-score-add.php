@@ -28,7 +28,9 @@
       <tbody></tbody>
     </table>
       <?PHP
+
       if(isset($_GET['id'])){$id= $_GET['id'];}else{}
+      if(isset($_GET['trida'])){$trida= $_GET['trida'];}else{}
       if(isset($_GET['class'])){$class= $_GET['class'];}else{}
       if(isset($_GET['beginyear'])){$beginyear= $_GET['beginyear'];}else{}
        include $_SERVER['DOCUMENT_ROOT']."/Web-sport.gymtri.cz/functions/dbconnect.php";
@@ -40,9 +42,6 @@
    
      
       if(isset($_GET['id'])){
-
-      $request= "SELECT * FROM `athletes` WHERE `class` = '$class' AND `yearbegin` = '$beginyear'"  ; 
-      $result = $mysqli->query($request);
       
       $request1= "SELECT * FROM `discipline`"  ; 
       $result1 = $mysqli->query($request1);
@@ -50,7 +49,11 @@
       $i = 0;
       while($row1 = $result1->fetch_array(MYSQLI_NUM)){
       array_push($disciplines,  $row1[1]);
-      }
+      }  
+      
+      $request= "SELECT * FROM `athletes` WHERE `class` = '$class' AND `yearbegin` = '$beginyear'"  ; 
+      $result = $mysqli->query($request);
+      
      while($row = $result->fetch_array(MYSQLI_NUM)){
      $i++;
      $birth = $row[4];
@@ -58,12 +61,12 @@
       $beginyear = preg_replace("/ - Name:.*/", "", $beginyear);
       $now = date("Y");
       $year = $now-$beginyear;
-      $eventdate = new DateTime($eventdate);
+      $eventdatecurrent = new DateTime($eventdate);
       $birthdate = new DateTime($birth);
-      $vek = $eventdate->diff($birthdate);
+      $vek = $eventdatecurrent->diff($birthdate);
       $vek = $vek->y;
-      
-     echo"<form action='event-score-add-script.php?id=".$id."&athleteid=".$row[0]."&vek=".$vek."&sex=".$row[3]."&class=".$row[0]."' method='POST'><ul class='list-inline scoreboard'>
+      $classid=$row[0];
+     echo"<form action='event-score-add-script.php?id=".$id."&athleteid=".$row[0]."&vek=".$vek."&sex=".$row[3]."&class=".$row[0]."&trida=".$trida."' method='POST'><ul class='list-inline scoreboard'>
           <li class='labele'>".$i." </li>
            <li class='name'>".$row[1]."</li>
            <li class='lastname'>".$row[2]."</li>
@@ -115,7 +118,28 @@ echo"</select></li> <li class='score'><input type='text' name='vykon' size='10'>
           </ul>
         </div><!-- /.col-sm-4 -->
         
+        <?php 
+      $request= "SELECT * FROM `event_score` WHERE `event_id` = $id AND `class_id` = '$classid' ORDER BY `event_score`.`event_id` DESC"  ; 
+      $result = $mysqli->query($request);
+      $athletesid=array(); $athleteid=array(); $scorevalue=array(); $scorepoints=array(); $age=array();$jmeno=array();$prijmeni=array();$athletesids=array();
+      while($row = $result->fetch_array(MYSQLI_NUM)){
+      array_push($disciplineid,  $row[4]);
+      array_push($athleteid, $row[3]);
+      array_push($scorevalue, $row[5]);
+      array_push($scorepoints, $row[6]);
+      array_push($age, $row[8]);
+      }
+      $request1="SELECT * FROM `athletes` WHERE `id` =  ORDER BY `id` DESC";
+      $result1 = $mysqli->query($request1);
+       while($row1 = $result1->fetch_array(MYSQLI_NUM)){array_push($jmeno,$row1[1]);array_push($prijmeni,$row1[2]);array_push($athletesids,$row1[0]);}
+      
+      
+      
+      
+     
         
+        
+        ?>
      
       </div>
       <div class="alert alert-info" role="alert">
