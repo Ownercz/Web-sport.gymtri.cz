@@ -63,7 +63,7 @@
       $vek = $eventdate->diff($birthdate);
       $vek = $vek->y;
       
-     echo"<form action='event-score-add-script.php?id=".$id."&athleteid=".$row[0]."&vek=".$vek."&sex=".$row[3]."' method='POST'><ul class='list-inline scoreboard'>
+     echo"<form action='event-score-add-script.php?id=".$id."&athleteid=".$row[0]."&vek=".$vek."&sex=".$row[3]."&class=".$row[0]."' method='POST'><ul class='list-inline scoreboard'>
           <li class='labele'>".$i." </li>
            <li class='name'>".$row[1]."</li>
            <li class='lastname'>".$row[2]."</li>
