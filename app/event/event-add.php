@@ -1,4 +1,4 @@
-﻿<?PHP include $_SERVER['DOCUMENT_ROOT']."/Web-sport.gymtri.cz/functions/check.php"; 
+<?PHP include $_SERVER['DOCUMENT_ROOT']."/Web-sport.gymtri.cz/functions/check.php"; 
         include $_SERVER['DOCUMENT_ROOT']."/Web-sport.gymtri.cz/header.php";
 ?>
 
@@ -33,7 +33,7 @@
     <div class="form-group has-error">
     <label for="inputEmail3" class="col-sm-2 control-label">Datum soutěže!</label>
     <div class="col-sm-10">
-      <input type="text" class="form-control" name="eventdate" id="inputEmail3" value="<?php echo date('d/m/Y'); ?>">
+      <input type="text" class="form-control" name="eventdate" id="inputEmail3" value="<?php echo date('d-m-Y'); ?>">
     </div>
    </div>
      <div class="form-group">
@@ -47,7 +47,7 @@
   <div class="form-group">
     <div class="col-sm-offset-2 col-sm-10">
       <button type="submit" class="btn btn-lg btn-success" style="float:right;">Vytvořit novou soutěž</button>
- <button type="button" class="btn btn-lg btn-warning">Je nutné dodržet formát data! Např. "<?php echo date('d/m/Y'); ?>"</button>  
+ <button type="button" class="btn btn-lg btn-warning">Je nutné dodržet formát data! Např. "<?php echo date('d-m-Y'); ?>"</button>  
     </div>
   </div>
 </form>

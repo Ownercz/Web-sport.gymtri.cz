@@ -1,7 +1,18 @@
 ﻿<?PHP
 
 include "disciplines.php";
-if(isset($_POST['vykon'])){$vykon = $_POST['vykon'];$vykon = str_replace(",",".",$vykon); }
+if(isset($_POST['vykon'])){
+$vykon = $_POST['vykon'];$vykon = str_replace(",",".",$vykon); 
+    if (strpos($vykon,':') !== false) {
+    $array = explode(":", $vykon, 2);
+    $mins = $array[0]; $secondsb = $array[1];
+    $secondsa = $mins*60;
+    $vykon = $secondsa+$secondsb;
+    }
+
+
+
+}
 if(isset($_POST['discipline'])){$discipline = $_POST['discipline']; }
 if(isset($_GET['vek'])){$vek = $_GET['vek'];$vek = str_replace(",",".",$vek); }
 if(isset($_GET['sex'])){$sex = $_GET['sex'];$sex = str_replace(",",".",$sex); }

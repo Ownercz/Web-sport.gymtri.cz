@@ -87,9 +87,11 @@
 <div class='page-header'>
         <h1>Správa</h1>
       </div>
-      <?PHP if(isset($_GET["register"])){echo"<div class='alert alert-success' role='alert'>
+      <?PHP if(isset($_GET["register"])){ if($_GET["register"] == "1"){echo"<div class='alert alert-success' role='alert'>
         <strong>Hotovo!</strong> Nová soutěž byla založena.
-      </div>";} ?>
+      </div>";}elseif($_GET["register"] == "2"){echo"<div class='alert alert-success' role='alert'>
+        <strong>Hotovo!</strong> Třída byla přidána.
+      </div>";}} ?>
       <div class='row'>
      
         <div class='col-sm-4'>
@@ -120,7 +122,7 @@
         </div><!-- /.col-sm-4 -->
         <div class='col-sm-4'>
           <div class='list-group'>
-            <a href='#' class='list-group-item active'>
+            <a href='event-score/event-score.php' class='list-group-item active'>
               <h4 class='list-group-item-heading'>Dát se do práce</h4>
               <p class='list-group-item-text'>Vložení výsledků závodů</p>
             </a>

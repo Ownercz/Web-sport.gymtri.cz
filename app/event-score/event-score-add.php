@@ -1,4 +1,4 @@
-﻿<?PHP include $_SERVER['DOCUMENT_ROOT']."/Web-sport.gymtri.cz/functions/check.php"; 
+<?PHP include $_SERVER['DOCUMENT_ROOT']."/Web-sport.gymtri.cz/functions/check.php"; 
         include $_SERVER['DOCUMENT_ROOT']."/Web-sport.gymtri.cz/header.php";
 ?>
 
@@ -31,10 +31,14 @@
       if(isset($_GET['id'])){$id= $_GET['id'];}else{}
       if(isset($_GET['class'])){$class= $_GET['class'];}else{}
       if(isset($_GET['beginyear'])){$beginyear= $_GET['beginyear'];}else{}
-      
-    
+       include $_SERVER['DOCUMENT_ROOT']."/Web-sport.gymtri.cz/functions/dbconnect.php";
+     $request2="SELECT * FROM `event` WHERE `id` = $id ORDER BY `event_date` DESC";
+      $result2 = $mysqli->query($request2);
+      while($row2 = $result2->fetch_array(MYSQLI_NUM)){
+      $eventdate=$row2[4]; 
+      }
    
-      include $_SERVER['DOCUMENT_ROOT']."/Web-sport.gymtri.cz/functions/dbconnect.php";
+     
       if(isset($_GET['id'])){
 
       $request= "SELECT * FROM `athletes` WHERE `class` = '$class' AND `yearbegin` = '$beginyear'"  ; 
@@ -49,15 +53,17 @@
       }
      while($row = $result->fetch_array(MYSQLI_NUM)){
      $i++;
+     $birth = $row[4];
      $beginyear = $row[6];
       $beginyear = preg_replace("/ - Name:.*/", "", $beginyear);
       $now = date("Y");
       $year = $now-$beginyear;
+      $eventdate = new DateTime($eventdate);
+      $birthdate = new DateTime($birth);
+      $vek = $eventdate->diff($birthdate);
+      $vek = $vek->y;
       
-      $birthyear = $row[4];
-      $birthyear = substr($birthyear, 0, 4); 
-      $birthyear = $now-$birthyear;
-     echo"<form action='event-score-add-script.php?id=".$id."&athleteid=".$row[0]."&vek=".$birthyear."&sex=".$row[3]."' method='POST'><ul class='list-inline scoreboard'>
+     echo"<form action='event-score-add-script.php?id=".$id."&athleteid=".$row[0]."&vek=".$vek."&sex=".$row[3]."' method='POST'><ul class='list-inline scoreboard'>
           <li class='labele'>".$i." </li>
            <li class='name'>".$row[1]."</li>
            <li class='lastname'>".$row[2]."</li>
@@ -65,7 +71,7 @@
           
           
      echo"</li>
-          <li class='class'>".$year.".".$class."</li><li class='birth'>".$row[4]." | Věk: ".$birthyear."
+          <li class='class'>".$year.".".$class."</li><li class='birth'>".$birth." | Věk: ".$vek."
           
          </li><li class='discipline'> <select name='discipline'>";foreach ($disciplines as &$discipline) {
    echo"<option value='".$discipline."'>".$discipline."</option>";
@@ -109,9 +115,12 @@ echo"</select></li> <li class='score'><input type='text' name='vykon' size='10'>
           </ul>
         </div><!-- /.col-sm-4 -->
         
+        
      
       </div>
-      
+      <div class="alert alert-info" role="alert">
+        <strong>Upozornění!</strong> Při pozdějším zadávání výsledků se počítá věk atleta dle data zaregistrování soutěže a ne podle aktuálního data.
+      </div>
 
      
 
