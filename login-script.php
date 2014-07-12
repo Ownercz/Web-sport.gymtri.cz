@@ -1,14 +1,13 @@
 <?PHP
-include "/functions/dbconnect.php";
-
+include "./functions/dbconnect.php";
 $login = $_GET["login"];
 $password = $_GET["password"];
 $login = "ownercz";
 $password = "test";
-
+echo"o";
 $hash = hash('sha256',$password.$salt);
 
-$request = "SELECT * FROM `authentication` WHERE `username` = 'ownercz' LIMIT 0,1";
+$request = "SELECT * FROM `authentication` WHERE `username` = 'Ownercz' LIMIT 0,1";
 $result = $mysqli->query($request);
 
 if(mysqli_num_rows($result) > 0){
@@ -26,7 +25,7 @@ if(mysqli_num_rows($result) > 0){
                     setcookie('gymtri_username', $login);
                     setcookie('gymtri_password', $hash);
                     }
-                    header('Location: http://192.168.1.11/Web-sport.gymtri.cz/app/');
+                    header('Location: ../Web-Sport.gymtri.cz/app/');
             }
             else{
             header('Location: ' . $_SERVER['HTTP_REFERER'].'?w=1');

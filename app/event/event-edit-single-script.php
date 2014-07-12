@@ -10,10 +10,10 @@
 
 
 
-<?PHP  include $_SERVER['DOCUMENT_ROOT']."/Web-sport.gymtri.cz/functions/check.php"; 
+<?PHP  include $_SERVER['DOCUMENT_ROOT']."/Web-Sport.gymtri.cz/functions/check.php"; 
 
 
-include $_SERVER['DOCUMENT_ROOT']."/Web-sport.gymtri.cz/functions/dbconnect.php";
+include $_SERVER['DOCUMENT_ROOT']."/Web-Sport.gymtri.cz/functions/dbconnect.php";
 $id = $mysqli->real_escape_string($_GET['id']);
 $event_name = $mysqli->real_escape_string($_POST['event_name']);
 $event_creator = $mysqli->real_escape_string($_POST['event_creator']);

@@ -1,5 +1,5 @@
-<?PHP include $_SERVER['DOCUMENT_ROOT']."/Web-sport.gymtri.cz/functions/check.php"; 
-        include $_SERVER['DOCUMENT_ROOT']."/Web-sport.gymtri.cz/header.php";
+<?PHP include $_SERVER['DOCUMENT_ROOT']."/Web-Sport.gymtri.cz/functions/check.php"; 
+        include $_SERVER['DOCUMENT_ROOT']."/Web-Sport.gymtri.cz/header.php";
 ?>
     <div class='container theme-showcase' role='main'>
 
@@ -12,7 +12,7 @@
             if(isset($_GET['id'])){$id= $_GET['id'];}
             elseif(isset($_GET['id'])&&(isset($_GET['delete']))){$id= $_GET['id'];$delete= $_GET['delete'];}else{}
     
-      include $_SERVER['DOCUMENT_ROOT']."/Web-sport.gymtri.cz/functions/dbconnect.php";
+      include $_SERVER['DOCUMENT_ROOT']."/Web-Sport.gymtri.cz/functions/dbconnect.php";
       if(isset($_GET['id']) && (!isset($_GET['delete']))){
       echo"<div class='alert alert-info' role='alert'>
         <strong>Rekapitulace registrace závodu</strong> Pokud je zde chyba, smažte danou soutěž klepnutím na tlačítko smazat. 
@@ -26,12 +26,12 @@
       $now = date("Y");
       $year = $now-$beginyear;
       
-      echo"<a href='?id=".$id."' class='list-group-item'>Třída: <strong>".$year.".".$row[2]."</strong> Rok začátku:".$row[1]." </a>";}
+      echo"<a href='#' class='list-group-item'>Třída: <strong>".$year.".".$row[2]."</strong> Rok začátku:".$row[1]." </a>";}
       echo"</div></form>";
      
       echo"<div class='col-sm-4' style='float:right;'>
           <div class='list-group'>
-            <a href='classes-add-script.php' class='list-group-item active'>
+            <a href='..' class='list-group-item active'>
               <h4 class='list-group-item-heading'>Dokončit registraci tříd</h4>
               <p class='list-group-item-text'>Po zvolení tříd již není možné dělat další změny do seznamu.</p>
             </a>

@@ -1,5 +1,5 @@
-<?PHP include $_SERVER['DOCUMENT_ROOT']."/Web-sport.gymtri.cz/functions/check.php"; 
-        include $_SERVER['DOCUMENT_ROOT']."/Web-sport.gymtri.cz/header.php";
+<?PHP include $_SERVER['DOCUMENT_ROOT']."/Web-Sport.gymtri.cz/functions/check.php"; 
+        include $_SERVER['DOCUMENT_ROOT']."/Web-Sport.gymtri.cz/header.php";
 ?>
 
     <div class='container theme-showcase' role='main'>
@@ -34,7 +34,7 @@
       if(isset($_GET['class'])){$class= $_GET['class'];}else{}
       if(isset($_GET['classid'])){$classid= $_GET['classid'];}else{}
       if(isset($_GET['beginyear'])){$beginyear= $_GET['beginyear'];}else{}
-       include $_SERVER['DOCUMENT_ROOT']."/Web-sport.gymtri.cz/functions/dbconnect.php";
+       include $_SERVER['DOCUMENT_ROOT']."/Web-Sport.gymtri.cz/functions/dbconnect.php";
      $request2="SELECT * FROM `event` WHERE `id` = $id ORDER BY `event_date` DESC";
       $result2 = $mysqli->query($request2);
       while($row2 = $result2->fetch_array(MYSQLI_NUM)){
@@ -128,8 +128,8 @@ echo"</select></li> <li class='score'><input type='text' name='vykon' size='10'>
       $result = $mysqli->query($request);
      $i = 1;
       while($row = $result->fetch_array(MYSQLI_NUM)){
-echo"<form action='event-score-add-script.php?id=".$id."&athleteid=".$row[0]."&delete=1' method='POST' target='_blank' onsubmit='setTimeout(function () { window.location.reload(); }, 30)'><ul class='list-inline scoreboard'>
-          <li class='labele'>".$i." </li>
+echo"<form action='event-score-add-script.php?id=".$id."&athleteidtodelete=".$row[0]."&delete=1' method='POST' target='_blank' onsubmit='setTimeout(function () { window.location.reload(); }, 30)'><ul class='list-inline scoreboard'>
+          <li class='labele'>".$row[0]." </li>
            <li class='name'>".$row[10]."</li>
            <li class='lastname'>".$row[11]."</li>
            <li class='sex'>";if($row[7]=="M"){echo"<span class='label label-primary'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>";}elseif($row[7]=="F"){echo"<span class='label label-danger'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>";}else{}
@@ -141,7 +141,7 @@ echo"<form action='event-score-add-script.php?id=".$id."&athleteid=".$row[0]."&d
          </li>";
          
 
-echo"</select></li> <li class='result'>Body: <strong>".$row[6]."</strong> </li><li class='koeficient'>Koeficient: <strong>".$row[9]."</strong></li><li class='save'><input type='submit' class='btn btn-sm btn-danger' value='Smazat'></input></li></ul>";
+echo"</select></li><li class='result'>Výkon:".$row[5]." </li><li class='result'>Body: <strong>".$row[6]."</strong> </li><li class='koeficient'>Koeficient: <strong>".$row[9]."</strong></li><li class='save'><input type='submit' class='btn btn-sm btn-danger' value='Smazat'></input></li></ul></form>";
 $i++;}
    
       

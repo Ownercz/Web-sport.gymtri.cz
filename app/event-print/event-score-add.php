@@ -1,7 +1,7 @@
 
 
 
-<?PHP include $_SERVER['DOCUMENT_ROOT']."/Web-sport.gymtri.cz/functions/check.php"; ?>
+<?PHP include $_SERVER['DOCUMENT_ROOT']."/Web-Sport.gymtri.cz/functions/check.php"; ?>
 <!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml">
 <meta charset="UTF-8" />
@@ -111,7 +111,7 @@ tr td:hover { background: #666; color: #FFF; } /* Hover cell effect! */
       if(isset($_GET['class'])){$class= $_GET['class'];}else{}
       if(isset($_GET['classid'])){$classid= $_GET['classid'];}else{}
       if(isset($_GET['beginyear'])){$beginyear= $_GET['beginyear'];}else{}
-       include $_SERVER['DOCUMENT_ROOT']."/Web-sport.gymtri.cz/functions/dbconnect.php";
+       include $_SERVER['DOCUMENT_ROOT']."/Web-Sport.gymtri.cz/functions/dbconnect.php";
      $request2="SELECT * FROM `event` WHERE `id` = $id ORDER BY `event_date` DESC";
       $result2 = $mysqli->query($request2);
       $row2 = $result2->fetch_array(MYSQLI_NUM);
@@ -138,7 +138,7 @@ tr td:hover { background: #666; color: #FFF; } /* Hover cell effect! */
     <div class='page'>
         <div class='subpage'><h1>Gymtri výsledková listina - <strong>".$row2[1]."</strong></h1> 
         Soutěž konána dne: ".$row2[4]." <br>Vytvořil: ".$row2[2]." <br>Zapisovali: ".$row2[3]." <br> <h2>Třída: ".$trida."</h2>";
-        $request= "SELECT * FROM `event_score` WHERE `event_id` = $id AND `class_id` = '$classid' ORDER BY `event_score`.`score_points` DESC"  ; 
+        $request= "SELECT * FROM `event_score` WHERE `event_id` = $id AND `class_id` = '$classid' ORDER BY `event_score`.`score_points` ASC"  ; 
       $result = $mysqli->query($request);
      $i = 1;
      echo"<table class='thetable'><tr><th>#</th><th>Jméno</th><th>Příjmení</th><th>Disciplína</th><th>Výkon</th><th>Body</th></tr>";

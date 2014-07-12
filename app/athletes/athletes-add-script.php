@@ -1,5 +1,5 @@
 ﻿<?PHP
-include $_SERVER['DOCUMENT_ROOT']."/Web-sport.gymtri.cz/functions/dbconnect.php";
+include $_SERVER['DOCUMENT_ROOT']."/Web-Sport.gymtri.cz/functions/dbconnect.php";
 
 if(isset($_GET["count"])){$count = $_GET["count"];}else{$count=1;}
 $trida = array();
@@ -33,7 +33,7 @@ $zacateki = $zacatek[$a];
   $i++; 
  $a++;
     }
-echo "<script>window.close();</script>";
+header('Location: ..');
 
 exit;
     ?>

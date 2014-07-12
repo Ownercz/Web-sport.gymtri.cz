@@ -1,6 +1,6 @@
 <?PHP
-include $_SERVER['DOCUMENT_ROOT']."/Web-sport.gymtri.cz/functions/dbconnect.php";
-include $_SERVER['DOCUMENT_ROOT']."/Web-sport.gymtri.cz/functions/check.php"; 
+include $_SERVER['DOCUMENT_ROOT']."/Web-Sport.gymtri.cz/functions/dbconnect.php";
+include $_SERVER['DOCUMENT_ROOT']."/Web-Sport.gymtri.cz/functions/check.php"; 
 
 $eventname = $mysqli->real_escape_string($_POST['eventname']);
 $eventorganisator = $mysqli->real_escape_string($_POST['eventorganisator']);
@@ -14,6 +14,6 @@ $request= "INSERT INTO `sport_gymtri_cz`.`event` (`id`, `event_name`, `event_cre
  $result = $mysqli->query($request);
 
     
-header('Location: '.URL.'/app/index.php?register=1', TRUE, 302);
+header('Location: ../index.php?register=1', TRUE, 302);
 exit;
     ?>

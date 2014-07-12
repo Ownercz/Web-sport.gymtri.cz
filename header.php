@@ -11,19 +11,19 @@
     <title>Theme Template for Bootstrap</title>
 
     <!-- Bootstrap core CSS -->
-    <link href='http://192.168.1.11/Web-sport.gymtri.cz/css/bootstrap.min.css' rel='stylesheet'>
+    <link href='http://lipovcan.cz/Web-Sport.gymtri.cz/css/bootstrap.min.css' rel='stylesheet'>
     <!-- Bootstrap theme -->
-    <link href='http://192.168.1.11/Web-sport.gymtri.cz/css/bootstrap-theme.min.css' rel='stylesheet'>
+    <link href='http://lipovcan.cz/Web-Sport.gymtri.cz/css/bootstrap-theme.min.css' rel='stylesheet'>
 
     <!-- Custom styles for this template -->
-    <link href='http://192.168.1.11/Web-sport.gymtri.cz/css/theme.css' rel='stylesheet'>
+    <link href='http://lipovcan.cz/Web-Sport.gymtri.cz/css/theme.css' rel='stylesheet'>
 
     <!-- Just for debugging purposes. Don't actually copy these 2 lines! -->
     <!--[if lt IE 9]><script src='../assets/js/ie8-responsive-file-warning.js'></script><![endif]-->
-    <script src='http://192.168.1.11/Web-sport.gymtri.cz/assets/js/ie-emulation-modes-warning.js'></script>
+    <script src='http://lipovcan.cz/Web-Sport.gymtri.cz/assets/js/ie-emulation-modes-warning.js'></script>
 
     <!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
-    <script src='http://192.168.1.11/Web-sport.gymtri.cz/assets/js/ie10-viewport-bug-workaround.js'></script>
+    <script src='http://lipovcan.cz/Web-Sport.gymtri.cz/assets/js/ie10-viewport-bug-workaround.js'></script>
 
     <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
     <!--[if lt IE 9]>
@@ -44,11 +44,11 @@
             <span class='icon-bar'></span>
             <span class='icon-bar'></span>
           </button>
-          <a class='navbar-brand' href='/Web-sport.gymtri.cz/app/'>Gymtri Sport</a>
+          <a class='navbar-brand' href='/Web-Sport.gymtri.cz/app/'>Gymtri Sport</a>
         </div>
         <div class='navbar-collapse collapse'>
           <ul class='nav navbar-nav'>
-            <li class='active'><a href='/Web-sport.gymtri.cz/app/'>Domů</a></li>
+            <li class='active'><a href='/Web-Sport.gymtri.cz/app/'>Domů</a></li>
 
               </ul>
             </li>

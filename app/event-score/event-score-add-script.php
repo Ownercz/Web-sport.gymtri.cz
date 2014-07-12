@@ -1,10 +1,10 @@
-﻿<?PHP
-include $_SERVER['DOCUMENT_ROOT']."/Web-sport.gymtri.cz/functions/check.php"; 
-include $_SERVER['DOCUMENT_ROOT']."/Web-sport.gymtri.cz/functions/dbconnect.php";
+<?PHP
+include $_SERVER['DOCUMENT_ROOT']."/Web-Sport.gymtri.cz/functions/check.php"; 
+include $_SERVER['DOCUMENT_ROOT']."/Web-Sport.gymtri.cz/functions/dbconnect.php";
 include "disciplines.php";
 if(isset($_GET['delete'])){
-$idathletestodelete=$_GET['athleteid'];
-$request = "DELETE FROM `sport_gymtri_cz`.`event_score` WHERE `event_score`.`id` = $idathletestodelete";
+$athleteidtodelete=$_GET['athleteidtodelete'];
+$request = "DELETE FROM `sport_gymtri_cz`.`event_score` WHERE `event_score`.`id` = $athleteidtodelete";
 $result = $mysqli->query($request);
 echo "<script>window.close();</script>";
 exit;
