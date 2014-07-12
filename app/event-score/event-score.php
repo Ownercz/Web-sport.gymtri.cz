@@ -1,4 +1,4 @@
-﻿<?PHP include $_SERVER['DOCUMENT_ROOT']."/Web-sport.gymtri.cz/functions/check.php"; 
+<?PHP include $_SERVER['DOCUMENT_ROOT']."/Web-sport.gymtri.cz/functions/check.php"; 
         include $_SERVER['DOCUMENT_ROOT']."/Web-sport.gymtri.cz/header.php";
 ?>
 
@@ -32,7 +32,7 @@
       $now = date("Y");
       $year = $now-$beginyear;
       
-      echo"<a href='event-score-add.php?id=".$id."&class=".$row[2]."&beginyear=".$row[1]."&date=".$dateevent."&trida=".$year.".".$row[2]."' class='list-group-item'>Třída: <strong>".$year.".".$row[2]."</strong> Rok začátku:".$row[1]." </a>";}
+      echo"<a href='event-score-add.php?id=".$id."&class=".$row[2]."&beginyear=".$row[1]."&date=".$dateevent."&trida=".$year.".".$row[2]."&classid=".$row[0]."' class='list-group-item'>Třída: <strong>".$year.".".$row[2]."</strong> Rok začátku:".$row[1]." </a>";}
       echo"</div></form>";
       
      
@@ -42,7 +42,7 @@
       $request= "SELECT * FROM `event` ORDER BY `event_date` DESC LIMIT 0,3";
       $result = $mysqli->query($request);
       echo"<h2><span class='label label-warning'>1. Vyberte soutěž</span></h2><form><div class='list-group'>";
-      while($row = $result->fetch_array(MYSQLI_NUM)){echo"<a href='?id=".$row[0]."&date=".$row[3]."' class='list-group-item'>Název: ".$row[1]." Datum: ".$row[4]."</a>";}
+      while($row = $result->fetch_array(MYSQLI_NUM)){echo"<a href='?id=".$row[0]."&date=".$row[4]."' class='list-group-item'>Název: ".$row[1]." Datum: ".$row[4]."</a>";}
       echo"</div></form>";
       }
       

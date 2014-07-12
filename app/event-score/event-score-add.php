@@ -32,6 +32,7 @@
       if(isset($_GET['id'])){$id= $_GET['id'];}else{}
       if(isset($_GET['trida'])){$trida= $_GET['trida'];}else{}
       if(isset($_GET['class'])){$class= $_GET['class'];}else{}
+      if(isset($_GET['classid'])){$classid= $_GET['classid'];}else{}
       if(isset($_GET['beginyear'])){$beginyear= $_GET['beginyear'];}else{}
        include $_SERVER['DOCUMENT_ROOT']."/Web-sport.gymtri.cz/functions/dbconnect.php";
      $request2="SELECT * FROM `event` WHERE `id` = $id ORDER BY `event_date` DESC";
@@ -45,10 +46,12 @@
       
       $request1= "SELECT * FROM `discipline`"  ; 
       $result1 = $mysqli->query($request1);
-      $disciplines = array();
+      $disciplines = array(); $disciplinesid=array();
       $i = 0;
       while($row1 = $result1->fetch_array(MYSQLI_NUM)){
       array_push($disciplines,  $row1[1]);
+      array_push($disciplinesid,  $row1[0]);
+      
       }  
       
       $request= "SELECT * FROM `athletes` WHERE `class` = '$class' AND `yearbegin` = '$beginyear'"  ; 
@@ -65,8 +68,8 @@
       $birthdate = new DateTime($birth);
       $vek = $eventdatecurrent->diff($birthdate);
       $vek = $vek->y;
-      $classid=$row[0];
-     echo"<form action='event-score-add-script.php?id=".$id."&athleteid=".$row[0]."&vek=".$vek."&sex=".$row[3]."&class=".$row[0]."&trida=".$trida."' method='POST'><ul class='list-inline scoreboard'>
+    
+     echo"<form action='event-score-add-script.php?id=".$id."&athleteid=".$row[0]."&vek=".$vek."&sex=".$row[3]."&classid=".$classid."&trida=".$trida."' method='POST' target='_blank' onsubmit='setTimeout(function () { window.location.reload(); }, 30)'><ul class='list-inline scoreboard'>
           <li class='labele'>".$i." </li>
            <li class='name'>".$row[1]."</li>
            <li class='lastname'>".$row[2]."</li>
@@ -116,23 +119,31 @@ echo"</select></li> <li class='score'><input type='text' name='vykon' size='10'>
             <li class="list-group-item">50m plavání - čas 1 minuta 13,11s zapiš: <strong>01:13,11</strong> </li>
             <li class="list-group-item">100m plavání - čas 1 minuta 13,11s zapiš: <strong>01:13,11</strong> </li>
           </ul>
-        </div><!-- /.col-sm-4 -->
-        
+        </div><!-- /.col-sm-4 --></div>
+        <div class="alert alert-info" role="alert">
+        <strong>Vložené výsledky</strong> V případě chyby klepněte na smazat a vložte znovu :)
+      </div>
         <?php 
-      $request= "SELECT * FROM `event_score` WHERE `event_id` = $id AND `class_id` = '$classid' ORDER BY `event_score`.`event_id` DESC"  ; 
+      $request= "SELECT * FROM `event_score` WHERE `event_id` = $id AND `class_id` = '$classid' ORDER BY `event_score`.`score_points` DESC"  ; 
       $result = $mysqli->query($request);
-      $athletesid=array(); $athleteid=array(); $scorevalue=array(); $scorepoints=array(); $age=array();$jmeno=array();$prijmeni=array();$athletesids=array();
+     $i = 1;
       while($row = $result->fetch_array(MYSQLI_NUM)){
-      array_push($disciplineid,  $row[4]);
-      array_push($athleteid, $row[3]);
-      array_push($scorevalue, $row[5]);
-      array_push($scorepoints, $row[6]);
-      array_push($age, $row[8]);
-      }
-      $request1="SELECT * FROM `athletes` WHERE `id` =  ORDER BY `id` DESC";
-      $result1 = $mysqli->query($request1);
-       while($row1 = $result1->fetch_array(MYSQLI_NUM)){array_push($jmeno,$row1[1]);array_push($prijmeni,$row1[2]);array_push($athletesids,$row1[0]);}
-      
+echo"<form action='event-score-add-script.php?id=".$id."&athleteid=".$row[0]."&delete=1' method='POST' target='_blank' onsubmit='setTimeout(function () { window.location.reload(); }, 30)'><ul class='list-inline scoreboard'>
+          <li class='labele'>".$i." </li>
+           <li class='name'>".$row[10]."</li>
+           <li class='lastname'>".$row[11]."</li>
+           <li class='sex'>";if($row[7]=="M"){echo"<span class='label label-primary'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>";}elseif($row[7]=="F"){echo"<span class='label label-danger'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>";}else{}
+          
+          
+     echo"</li>
+          <li class='age'>Věk: ".$row[8]."</li></li class='disciplineresult'>";
+          foreach ($disciplinesid as &$discipline) {if ($discipline == $row[4]){ $num = -1+$row[4];echo$disciplines[$num]; }}echo"
+         </li>";
+         
+
+echo"</select></li> <li class='result'>Body: <strong>".$row[6]."</strong> </li><li class='koeficient'>Koeficient: <strong>".$row[9]."</strong></li><li class='save'><input type='submit' class='btn btn-sm btn-danger' value='Smazat'></input></li></ul>";
+$i++;}
+   
       
       
       
@@ -141,7 +152,7 @@ echo"</select></li> <li class='score'><input type='text' name='vykon' size='10'>
         
         ?>
      
-      </div>
+      
       <div class="alert alert-info" role="alert">
         <strong>Upozornění!</strong> Při pozdějším zadávání výsledků se počítá věk atleta dle data zaregistrování soutěže a ne podle aktuálního data.
       </div>
