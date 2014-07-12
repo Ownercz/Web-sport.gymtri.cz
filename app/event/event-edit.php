@@ -19,6 +19,7 @@
                 <th>Datum</th>
                 <th>Komentář</th>
                 <th></th>
+                <th></th>
               </tr>
             </thead>
            <tbody>
@@ -27,7 +28,7 @@ include $_SERVER['DOCUMENT_ROOT']."/Web-sport.gymtri.cz/functions/dbconnect.php"
 $request= "SELECT * FROM `event` ORDER BY `event`.`event_date` DESC"  ; 
  $result = $mysqli->query($request);
 
-while($row = $result->fetch_array(MYSQLI_NUM)){echo "<tr><td>".$row[1]."</td><td>".$row[2]."</td><td>".$row[3]."</td><td>".$row[4]."</td><td>".$row[5]."</td><td><form method='POST' style='margin:0'action='event-edit-single.php?&id=".$row[0]."'><input type='submit' value='upravit' class='btn btn-primary'></input></form></td></tr>";}
+while($row = $result->fetch_array(MYSQLI_NUM)){echo "<tr><td>".$row[1]."</td><td>".$row[2]."</td><td>".$row[3]."</td><td>".$row[4]."</td><td>".$row[5]."</td><td><form method='POST' style='margin:0'action='event-edit-single.php?&id=".$row[0]."'><input type='submit' value='upravit' class='btn btn-primary'></input></form></td><td><form method='POST' style='margin:0'action='event-edit-single-script.php?&id=".$row[0]."&delete=1' target='_blank'onsubmit='setTimeout(function () { window.location.reload(); }, 30)'><input type='submit' value='DELETE' class='btn btn-danger'></input></form></td></tr>";}
 
 ?>
          </tbody> </table>

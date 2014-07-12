@@ -26,7 +26,7 @@
       $now = date("Y");
       $year = $now-$beginyear;
       
-      echo"<a href='?id=".$id."' class='list-group-item'>Třída: <strong>".$year.".".$row[0]."</strong> Rok začátku:".$row[1]." </a>";}
+      echo"<a href='?id=".$id."' class='list-group-item'>Třída: <strong>".$year.".".$row[2]."</strong> Rok začátku:".$row[1]." </a>";}
       echo"</div></form>";
      
       echo"<div class='col-sm-4' style='float:right;'>

@@ -33,6 +33,7 @@ $zacateki = $zacatek[$a];
   $i++; 
  $a++;
     }
-header('Location: '.URL.'/app/index.php?register=2', TRUE, 302);
+echo "<script>window.close();</script>";
+
 exit;
     ?>
