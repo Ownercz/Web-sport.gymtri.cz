@@ -74,9 +74,8 @@
 
       <!-- Main jumbotron for a primary marketing message or call to action -->
       <div class='jumbotron'>
-        <h1>Gymtri - Sport app</h1>
-        <p>Na této stránce uvidíte předešlé ročníky a hlavní ovládací prvky.</p>
-        <p><button type="button" class="btn btn-lg btn-info">Disciplíny</button>&nbsp;<button type="button" class="btn btn-lg btn-info">Atleti</button>&nbsp;<button type="button" class="btn btn-lg btn-info">Ročníky</button>&nbsp;<button type="button" class="btn btn-lg btn-warning">Vložení výsledků</button></p>
+        <h1>Gymtri - Sport app {BETA 1.05}</h1>
+
       </div>
 
 
@@ -130,7 +129,10 @@
               <h4 class='list-group-item-heading'>Přidat třídy do soutěže</h4>
               <p class='list-group-item-text'>Před zápisem výsledků je nutné vložit příslušnou třídu jako startující</p>
             </a>
-           
+           <a href='event-print/event-print.php' class='list-group-item'>
+              <h4 class='list-group-item-heading'>Tisk výsledků</h4>
+              <p class='list-group-item-text'>Vytiskne výsledky soutěže</p>
+            </a>
           </div>
         </div><!-- /.col-sm-4 -->
       </div>
