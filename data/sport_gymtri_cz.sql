@@ -1,13 +1,13 @@
 -- phpMyAdmin SQL Dump
--- version 4.1.12
+-- version 3.4.11.1deb2
 -- http://www.phpmyadmin.net
 --
--- Počítač: 127.0.0.1
--- Vytvořeno: Sob 12. čec 2014, 14:50
--- Verze serveru: 5.6.16
--- Verze PHP: 5.5.11
+-- Počítač: localhost
+-- Vygenerováno: Sob 12. čec 2014, 20:14
+-- Verze MySQL: 1.0.11
+-- Verze PHP: 5.4.4-14+deb7u10
 
-SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
+SET SQL_MODE="NO_AUTO_VALUE_ON_ZERO";
 SET time_zone = "+00:00";
 
 
@@ -35,18 +35,7 @@ CREATE TABLE IF NOT EXISTS `athletes` (
   `class` text NOT NULL,
   `yearbegin` year(4) NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COMMENT='Table of athletes' AUTO_INCREMENT=11 ;
-
---
--- Vypisuji data pro tabulku `athletes`
---
-
-INSERT INTO `athletes` (`id`, `first_name`, `last_name`, `gender`, `birthdate`, `class`, `yearbegin`) VALUES
-(6, 'Radim', 'Lipovčan', 'M', '11-11-1995', 'B', 2008),
-(7, 'Lucie', 'Lysková', 'F', '01-01-1995', 'B', 2008),
-(8, 'Radim', 'sdad', 'F', '11-11-1995', 'B', 2008),
-(9, 'asdads', 'adsdas', 'M', '01-01-1995', 'B', 2008),
-(10, 'Radim', 'sdad', 'F', '11-11-1995', 'B', 2008);
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='Table of athletes' AUTO_INCREMENT=1 ;
 
 -- --------------------------------------------------------
 
@@ -66,7 +55,7 @@ CREATE TABLE IF NOT EXISTS `authentication` (
 --
 
 INSERT INTO `authentication` (`id`, `username`, `password`) VALUES
-(1, 'Ownercz', '7ce9349263c1ac726c006e1a0326b38896eb7d4ecb39de13d4541b7d56d46427');
+(1, 'Ownercz', 'slghddhaslghdasdhlbasdadsf4ds56g4ds564g6f5d4g65fd4g56df4g54ds56v16ds5v1456');
 
 -- --------------------------------------------------------
 
@@ -81,14 +70,7 @@ CREATE TABLE IF NOT EXISTS `classes` (
   `event_id` int(11) NOT NULL,
   PRIMARY KEY (`id`),
   KEY `id` (`id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=10 ;
-
---
--- Vypisuji data pro tabulku `classes`
---
-
-INSERT INTO `classes` (`id`, `yearbegin`, `type`, `event_id`) VALUES
-(9, '2008', 'B', 3);
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 AUTO_INCREMENT=1 ;
 
 -- --------------------------------------------------------
 
@@ -135,14 +117,7 @@ CREATE TABLE IF NOT EXISTS `event` (
   `event_date` text,
   `event_comment` text,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COMMENT='Table of events' AUTO_INCREMENT=4 ;
-
---
--- Vypisuji data pro tabulku `event`
---
-
-INSERT INTO `event` (`id`, `event_name`, `event_creator`, `event_editor`, `event_date`, `event_comment`) VALUES
-(3, 'Olympijský šestiboj', 'Radim Lipovčan', 'Radim Lipovčák', '12-07-2014', '');
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='Table of events' AUTO_INCREMENT=1 ;
 
 -- --------------------------------------------------------
 
@@ -167,19 +142,7 @@ CREATE TABLE IF NOT EXISTS `event_score` (
   `event_name` text NOT NULL,
   `event_date` text NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=49 ;
-
---
--- Vypisuji data pro tabulku `event_score`
---
-
-INSERT INTO `event_score` (`id`, `event_id`, `class_id`, `athlete_id`, `discipline_id`, `score_value`, `score_points`, `gender`, `age`, `koeficient`, `first_name`, `last_name`, `class_name`, `event_name`, `event_date`) VALUES
-(43, 3, '1', 6, 1, '11', '19.4', 'M', 18, '0.97', 'Radim', 'Lipovčan', '6.B', 'Olympijský šestiboj', '12-07-2014'),
-(44, 3, '1', 7, 1, '12', '10.67', 'F', 19, '0.97', 'Lucie', 'Lysková', '6.B', 'Olympijský šestiboj', '12-07-2014'),
-(45, 3, '4', 6, 11, '34', '91.18', 'M', 18, '0.97', 'Radim', 'Lipovčan', '6.B', 'Olympijský šestiboj', '12-07-2014'),
-(46, 3, '4', 7, 10, '26', '59.17', 'F', 19, '0.97', 'Lucie', 'Lysková', '6.B', 'Olympijský šestiboj', '12-07-2014'),
-(47, 3, '7', 6, 11, '32.1', '94.09', 'M', 18, '0.97', 'Radim', 'Lipovčan', '6.B', 'Olympijský šestiboj', '12-07-2014'),
-(48, 3, '7', 7, 10, '35', '28.13', 'F', 19, '0.97', 'Lucie', 'Lysková', '6.B', 'Olympijský šestiboj', '12-07-2014');
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 AUTO_INCREMENT=1 ;
 
 -- --------------------------------------------------------
 
