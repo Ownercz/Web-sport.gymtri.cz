@@ -18,15 +18,16 @@
           <th>Jméno</th>
           <th>Příjmení</th>
           <th>Pohlaví</th>
-          <th>Třída</th>
+
           <th>Věk</th>
           <th>Disciplína</th>
           <th>Výkon</th>
-          <th></th>
+          <th>Koeficient</th>
+          <th>Body</th>
+          <th>Akce</th>
         </tr>
       </thead>
-      <tbody></tbody>
-    </table>
+      <tbody>
       <?PHP
 
       if(isset($_GET['id'])){$id= $_GET['id'];}else{}
@@ -57,24 +58,25 @@
      while($row = $result->fetch_array(MYSQLI_NUM)){
      $i++;
     
-     echo"<form action='event-score-add-script.php?id=".$id."&athleteid=".$row[3]."&vek=".$$row[8]."&sex=".$row[7]."&classid=".$classid."&trida=".$trida."' method='POST' target='_blank' onsubmit='setTimeout(function () { window.location.reload(); }, 30)'><ul class='list-inline scoreboard'>
-          <li class='labele'>".$i." </li>
-           <li class='name'>".$row[10]."</li>
-           <li class='lastname'>".$row[11]."</li>
-           <li class='sex'>";if($row[7]=="M"){echo"<span class='label label-primary'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>";}elseif($row[7]=="F"){echo"<span class='label label-danger'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>";}else{echo"ERROR! Oznam radim@lipovcan.cz!";}
+     echo"<form action='event-score-add-script.php?id=".$id."&athleteid=".$row[3]."&vek=".$$row[8]."&sex=".$row[7]."&classid=".$classid."&trida=".$trida."' method='POST' target='_blank' onsubmit='setTimeout(function () { window.location.reload(); }, 30)'><tr>
+          <td class='labele'>".$i." </td>
+           <td class='name'>".$row[10]."</td>
+           <td class='lastname'>".$row[11]."</td>
+           <td class='sex'>";if($row[7]=="M"){echo"<span class='label label-primary'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>";}elseif($row[7]=="F"){echo"<span class='label label-danger'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>";}else{echo"ERROR! Oznam radim@lipovcan.cz!";}
           
           
-     echo"</li>
-          <li class='class'>".$year.".".$class."</li><li class='birth'>Věk: ".$row[8]."
+     echo"</td>
+       <td class='birth'>Věk: ".$row[8]."
           
-         </li><li class='discipline'> <input type='hidden' name='discipline' value='".$disciplines[$row[4]-1]."'></input>";echo$disciplines[$row[4]-1];
+         </td><td class='discipline'> <input type='hidden' name='discipline' value='".$disciplines[$row[4]-1]."'></input>";echo$disciplines[$row[4]-1];
 
-echo"</li> <li class='score'><input type='text' name='vykon' size='10' placeholder='".$row[5]."'></input></li><li class='score'>".$row[9]."</li><li class='score'>".$row[6]."</li><li class='save'><input type='submit' class='btn btn-sm btn-default' value='Uložit'></input></li></ul></form>
-        ";echo"<form action='event-score-add-script.php?id=".$id."&athleteidtodelete=".$row[0]."&delete=1' method='POST' target='_blank' onsubmit='setTimeout(function () { window.location.reload(); }, 30)'><ul class='list-inline scoreboard'><input type='submit' class='btn btn-sm btn-danger' value='Smazat'></input></li></ul></form>";
+echo"</td> <td class='score'><input type='text' name='vykon' size='10' placeholder='".$row[5]."'></input></td><td class='score'>".$row[9]."</td><td class='score'>".$row[6]."</td><td class='save'><input type='submit' class='btn btn-sm btn-default' value='Uložit'></input></td></form>
+        ";
      }
      
       }else{exit;}?>
-      
+      </tbody>
+    </table>
     <div class="row">
         <div class="col-sm-4">
           <ul class="list-group">

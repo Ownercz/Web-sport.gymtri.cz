@@ -24,8 +24,7 @@
           <th></th>
         </tr>
       </thead>
-      <tbody></tbody>
-    </table>
+      <tbody>
       <?PHP
 
       if(isset($_GET['id'])){$id= $_GET['id'];}else{}
@@ -68,49 +67,63 @@
       $vek = $eventdatecurrent->diff($birthdate);
       $vek = $vek->y;
     
-     echo"<form action='start-list-set-script.php?id=".$id."&athleteid=".$row[0]."&vek=".$vek."&sex=".$row[3]."&classid=".$classid."&trida=".$trida."' method='POST' target='_blank' onsubmit='setTimeout(function () { window.location.reload(); }, 30)'><ul class='list-inline scoreboard'>
-          <li class='labele'>".$i." </li>
-           <li class='name'>".$row[1]."</li>
-           <li class='lastname'>".$row[2]."</li>
-           <li class='sex'>";if($row[3]=="M"){echo"<span class='label label-primary'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>";}elseif($row[3]=="F"){echo"<span class='label label-danger'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>";}else{}
+     echo"<form action='start-list-set-script.php?id=".$id."&athleteid=".$row[0]."&vek=".$vek."&sex=".$row[3]."&classid=".$classid."&trida=".$trida."' method='POST' target='_blank' onsubmit='setTimeout(function () { window.location.reload(); }, 30)'><tr>
+          <td class='labele'>".$i." </td>
+           <td class='name'>".$row[1]."</td>
+           <td class='lastname'>".$row[2]."</td>
+           <td class='sex'>";if($row[3]=="M"){echo"<span class='label label-primary'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>";}elseif($row[3]=="F"){echo"<span class='label label-danger'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>";}else{}
           
           
-     echo"</li>
-          <li class='class'>".$year.".".$class."</li><li class='birth'>".$birth." | Věk: ".$vek."
+     echo"</td>
+          <td class='class'>".$year.".".$class."</td><td class='birth'>".$birth." | Věk: ".$vek."
           
-         </li><li class='discipline'> <select name='discipline'>";foreach ($disciplines as &$discipline) {
+         </td><td class='discipline'> <select name='discipline'>";foreach ($disciplines as &$discipline) {
    echo"<option value='".$discipline."'>".$discipline."</option>";
 }
 
-echo"</select></li> <li class='save'><input type='submit' class='btn btn-sm btn-default' value='Uložit'></input></li></ul></form>
+echo"</select></td> <td class='save'><input type='submit' class='btn btn-sm btn-default' value='Uložit'></input></td></form></tr>
         ";
      }
      
       }else{exit;}?>
       
 
-        <div class="alert alert-info" role="alert">
+        </tbody>
+    </table><div class="alert alert-info" role="alert">
         <strong>Nastavené disciplíny</strong> V případě chyby klepněte na smazat a vložte znovu :)
       </div>
+                 <table class='table table-hover' style='margin-bottom:0px;'>
+      <thead>
+        <tr>
+          <th>#</th>
+          <th>Jméno</th>
+          <th>Příjmení</th>
+          <th>Pohlaví</th>
+          <th>Věk</th>
+          <th>Disciplína</th>
+          <th></th>
+        </tr>
+      </thead>
+      <tbody>
         <?php 
       $request= "SELECT * FROM `event_score` WHERE `event_id` = $id AND `class_id` = '$classid' ORDER BY `event_score`.`score_points` DESC"  ; 
       $result = $mysqli->query($request);
      $i = 1;
       while($row = $result->fetch_array(MYSQLI_NUM)){
-echo"<form action='start-list-set-script.php?id=".$id."&athleteidtodelete=".$row[0]."&delete=1' method='POST' target='_blank' onsubmit='setTimeout(function () { window.location.reload(); }, 30)'><ul class='list-inline scoreboard'>
-          <li class='labele'>".$row[0]." </li>
-           <li class='name'>".$row[10]."</li>
-           <li class='lastname'>".$row[11]."</li>
-           <li class='sex'>";if($row[7]=="M"){echo"<span class='label label-primary'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>";}elseif($row[7]=="F"){echo"<span class='label label-danger'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>";}else{}
+echo"<form action='start-list-set-script.php?id=".$id."&athleteidtodelete=".$row[0]."&delete=1' method='POST' target='_blank' onsubmit='setTimeout(function () { window.location.reload(); }, 30)'>
+          <td class='labele'>".$row[0]." </td>
+           <td class='name'>".$row[10]."</td>
+           <td class='lastname'>".$row[11]."</td>
+           <td class='sex'>";if($row[7]=="M"){echo"<span class='label label-primary'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>";}elseif($row[7]=="F"){echo"<span class='label label-danger'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>";}else{}
           
           
-     echo"</li>
-          <li class='age'>Věk: ".$row[8]."</li></li class='disciplineresult'>";
+     echo"</td>
+          <td class='age'>Věk: ".$row[8]."</td><td class='disciplineresult'>";
           foreach ($disciplinesid as &$discipline) {if ($discipline == $row[4]){ $num = -1+$row[4];echo$disciplines[$num]; }}echo"
-         </li>";
+         </td>";
          
 
-echo"</select></li><li class='save'><input type='submit' class='btn btn-sm btn-danger' value='Smazat'></input></li></ul></form>";
+echo"</select></td><td class='save'><input type='submit' class='btn btn-sm btn-danger' value='Smazat'></input></td></form>";
 $i++;}
    
       
@@ -120,7 +133,7 @@ $i++;}
         
         
         ?>
-     
+     </tbody></table>
       
       <div class="alert alert-info" role="alert">
         <strong>Upozornění!</strong> Při pozdějším zadávání výsledků se počítá věk atleta dle data zaregistrování soutěže a ne podle aktuálního data.
