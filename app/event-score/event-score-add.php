@@ -53,27 +53,20 @@
       array_push($disciplinesid,  $row1[0]);
       
       }  
-      
-      $request= "SELECT * FROM `athletes` WHERE `class` = '$class' AND `yearbegin` = '$beginyear'"  ; 
+      $request= "SELECT * FROM `classes` WHERE `id` = '$classid'"  ; 
+      $result = $mysqli->query($request);
+      while($row = $result->fetch_array(MYSQLI_NUM)){$now = date("Y");$year = $now-$row[1];}
+      $request= "SELECT * FROM `event_score` WHERE `event_id` = $id AND `class_id` = '$classid' ORDER BY `event_score`.`score_points` DESC"  ; 
       $result = $mysqli->query($request);
       
      while($row = $result->fetch_array(MYSQLI_NUM)){
      $i++;
-     $birth = $row[4];
-     $beginyear = $row[6];
-      $beginyear = preg_replace("/ - Name:.*/", "", $beginyear);
-      $now = date("Y");
-      $year = $now-$beginyear;
-      $eventdatecurrent = new DateTime($eventdate);
-      $birthdate = new DateTime($birth);
-      $vek = $eventdatecurrent->diff($birthdate);
-      $vek = $vek->y;
     
      echo"<form action='event-score-add-script.php?id=".$id."&athleteid=".$row[0]."&vek=".$vek."&sex=".$row[3]."&classid=".$classid."&trida=".$trida."' method='POST' target='_blank' onsubmit='setTimeout(function () { window.location.reload(); }, 30)'><ul class='list-inline scoreboard'>
           <li class='labele'>".$i." </li>
-           <li class='name'>".$row[1]."</li>
-           <li class='lastname'>".$row[2]."</li>
-           <li class='sex'>";if($row[3]=="M"){echo"<span class='label label-primary'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>";}elseif($row[3]=="F"){echo"<span class='label label-danger'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>";}else{}
+           <li class='name'>".$row[10]."</li>
+           <li class='lastname'>".$row[11]."</li>
+           <li class='sex'>";if($row[7]=="M"){echo"<span class='label label-primary'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>";}elseif($row[7]=="F"){echo"<span class='label label-danger'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>";}else{echo"ERROR! Oznam radim@lipovcan.cz!";}
           
           
      echo"</li>
@@ -84,7 +77,7 @@
 }
 
 echo"</select></li> <li class='score'><input type='text' name='vykon' size='10'></input></li><li class='save'><input type='submit' class='btn btn-sm btn-default' value='Uložit'></input></li></ul></form>
-        ";
+        ";echo"<form action='event-score-add-script.php?id=".$id."&athleteidtodelete=".$row[0]."&delete=1' method='POST' target='_blank' onsubmit='setTimeout(function () { window.location.reload(); }, 30)'><ul class='list-inline scoreboard'><input type='submit' class='btn btn-sm btn-danger' value='Smazat'></input></li></ul></form>";
      }
      
       }else{exit;}?>
@@ -123,34 +116,13 @@ echo"</select></li> <li class='score'><input type='text' name='vykon' size='10'>
         <div class="alert alert-info" role="alert">
         <strong>Vložené výsledky</strong> V případě chyby klepněte na smazat a vložte znovu :)
       </div>
-        <?php 
-      $request= "SELECT * FROM `event_score` WHERE `event_id` = $id AND `class_id` = '$classid' ORDER BY `event_score`.`score_points` DESC"  ; 
-      $result = $mysqli->query($request);
-     $i = 1;
-      while($row = $result->fetch_array(MYSQLI_NUM)){
-echo"<form action='event-score-add-script.php?id=".$id."&athleteidtodelete=".$row[0]."&delete=1' method='POST' target='_blank' onsubmit='setTimeout(function () { window.location.reload(); }, 30)'><ul class='list-inline scoreboard'>
-          <li class='labele'>".$row[0]." </li>
-           <li class='name'>".$row[10]."</li>
-           <li class='lastname'>".$row[11]."</li>
-           <li class='sex'>";if($row[7]=="M"){echo"<span class='label label-primary'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>";}elseif($row[7]=="F"){echo"<span class='label label-danger'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>";}else{}
-          
-          
-     echo"</li>
-          <li class='age'>Věk: ".$row[8]."</li></li class='disciplineresult'>";
-          foreach ($disciplinesid as &$discipline) {if ($discipline == $row[4]){ $num = -1+$row[4];echo$disciplines[$num]; }}echo"
-         </li>";
-         
 
-echo"</select></li><li class='result'>Výkon:".$row[5]." </li><li class='result'>Body: <strong>".$row[6]."</strong> </li><li class='koeficient'>Koeficient: <strong>".$row[9]."</strong></li><li class='save'><input type='submit' class='btn btn-sm btn-danger' value='Smazat'></input></li></ul></form>";
-$i++;}
    
       
       
       
      
-        
-        
-        ?>
+
      
       
       <div class="alert alert-info" role="alert">
