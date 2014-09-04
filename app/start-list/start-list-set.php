@@ -9,7 +9,7 @@
         <h1><span class="label label-default">Vložení výsledků</span></h1>
       </div>
       <div class="alert alert-warning" role="alert">
-        <strong>Upozornění!</strong> Výsledky ukládejte po jednotlivcích.
+        <strong>Upozornění!</strong> Horní část seznamu slouží k výběru disciplíny. Ty, jenž jste již ráčili vybrat, naleznete níže!!!
       </div>
            <table class='table table-hover' style='margin-bottom:0px;'>
       <thead>
@@ -68,7 +68,7 @@
       $vek = $eventdatecurrent->diff($birthdate);
       $vek = $vek->y;
     
-     echo"<form action='event-score-add-script.php?id=".$id."&athleteid=".$row[0]."&vek=".$vek."&sex=".$row[3]."&classid=".$classid."&trida=".$trida."' method='POST' target='_blank' onsubmit='setTimeout(function () { window.location.reload(); }, 30)'><ul class='list-inline scoreboard'>
+     echo"<form action='start-list-set-script.php?id=".$id."&athleteid=".$row[0]."&vek=".$vek."&sex=".$row[3]."&classid=".$classid."&trida=".$trida."' method='POST' target='_blank' onsubmit='setTimeout(function () { window.location.reload(); }, 30)'><ul class='list-inline scoreboard'>
           <li class='labele'>".$i." </li>
            <li class='name'>".$row[1]."</li>
            <li class='lastname'>".$row[2]."</li>
@@ -97,7 +97,7 @@ echo"</select></li> <li class='save'><input type='submit' class='btn btn-sm btn-
       $result = $mysqli->query($request);
      $i = 1;
       while($row = $result->fetch_array(MYSQLI_NUM)){
-echo"<form action='event-score-add-script.php?id=".$id."&athleteidtodelete=".$row[0]."&delete=1' method='POST' target='_blank' onsubmit='setTimeout(function () { window.location.reload(); }, 30)'><ul class='list-inline scoreboard'>
+echo"<form action='start-list-set-script.php?id=".$id."&athleteidtodelete=".$row[0]."&delete=1' method='POST' target='_blank' onsubmit='setTimeout(function () { window.location.reload(); }, 30)'><ul class='list-inline scoreboard'>
           <li class='labele'>".$row[0]." </li>
            <li class='name'>".$row[10]."</li>
            <li class='lastname'>".$row[11]."</li>
