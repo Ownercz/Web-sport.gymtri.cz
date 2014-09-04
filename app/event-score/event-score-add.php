@@ -19,7 +19,7 @@
           <th>Příjmení</th>
           <th>Pohlaví</th>
           <th>Třída</th>
-          <th>Datum narození</th>
+          <th>Věk</th>
           <th>Disciplína</th>
           <th>Výkon</th>
           <th></th>
@@ -62,7 +62,7 @@
      while($row = $result->fetch_array(MYSQLI_NUM)){
      $i++;
     
-     echo"<form action='event-score-add-script.php?id=".$id."&athleteid=".$row[0]."&vek=".$vek."&sex=".$row[3]."&classid=".$classid."&trida=".$trida."' method='POST' target='_blank' onsubmit='setTimeout(function () { window.location.reload(); }, 30)'><ul class='list-inline scoreboard'>
+     echo"<form action='event-score-add-script.php?id=".$id."&athleteid=".$row[3]."&vek=".$$row[8]."&sex=".$row[7]."&classid=".$classid."&trida=".$trida."' method='POST' target='_blank' onsubmit='setTimeout(function () { window.location.reload(); }, 30)'><ul class='list-inline scoreboard'>
           <li class='labele'>".$i." </li>
            <li class='name'>".$row[10]."</li>
            <li class='lastname'>".$row[11]."</li>
@@ -70,13 +70,11 @@
           
           
      echo"</li>
-          <li class='class'>".$year.".".$class."</li><li class='birth'>".$birth." | Věk: ".$vek."
+          <li class='class'>".$year.".".$class."</li><li class='birth'>Věk: ".$row[8]."
           
-         </li><li class='discipline'> <select name='discipline'>";foreach ($disciplines as &$discipline) {
-   echo"<option value='".$discipline."'>".$discipline."</option>";
-}
+         </li><li class='discipline'> <input type='hidden' name='discipline' value='".$disciplines[$row[4]]."'></input>";echo$disciplines[$row[4]];
 
-echo"</select></li> <li class='score'><input type='text' name='vykon' size='10'></input></li><li class='save'><input type='submit' class='btn btn-sm btn-default' value='Uložit'></input></li></ul></form>
+echo"</li> <li class='score'><input type='text' name='vykon' size='10' placeholder='".$row[5]."'></input></li><li class='score'>".$row[9]."</li><li class='score'>".$row[6]."</li><li class='save'><input type='submit' class='btn btn-sm btn-default' value='Uložit'></input></li></ul></form>
         ";echo"<form action='event-score-add-script.php?id=".$id."&athleteidtodelete=".$row[0]."&delete=1' method='POST' target='_blank' onsubmit='setTimeout(function () { window.location.reload(); }, 30)'><ul class='list-inline scoreboard'><input type='submit' class='btn btn-sm btn-danger' value='Smazat'></input></li></ul></form>";
      }
      

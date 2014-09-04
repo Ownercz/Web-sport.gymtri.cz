@@ -40,64 +40,66 @@ $koeficient = koeficient($vek,$sex);
 print $koeficient.$discipline;
 if($discipline =="60m"){
 $points= sedesatka($koeficient,$vykon,$sex);
-$request = "INSERT INTO `sport_gymtri_cz`.`event_score` (`id`, `event_id`, `class_id`, `athlete_id`, `discipline_id`, `score_value`, `score_points`, `gender`, `age`, `koeficient`, `first_name`, `last_name`, `class_name`, `event_name`, `event_date`) VALUES (NULL, '$id', '$class', '$athleteid', '1', '$vykon', '$points', '$sex', '$vek', '$koeficient', '$jmeno', '$prijmeni', '$trida', '$event_name', '$event_date')";
+$request = "UPDATE event_score SET koeficient = $koeficient , score_value = $vykon, score_points = $points WHERE event_id = $id AND class_id = $class AND athlete_id = $athleteid;";
 echo$request;
 $result = $mysqli->query($request);
 }
 elseif($discipline =="100m"){
 $points = stovka($koeficient,$vykon,$sex);
-$request = "INSERT INTO `sport_gymtri_cz`.`event_score` (`id`, `event_id`, `class_id`, `athlete_id`, `discipline_id`, `score_value`, `score_points`, `gender`, `age`, `koeficient`, `first_name`, `last_name`, `class_name`, `event_name`, `event_date`) VALUES (NULL, '$id', '$class', '$athleteid', '2', '$vykon', '$points', '$sex', '$vek', '$koeficient', '$jmeno', '$prijmeni', '$trida', '$event_name', '$event_date')";
+$request = "UPDATE event_score SET koeficient = $koeficient , score_value = $vykon, score_points = $points WHERE event_id = $id AND class_id = $class AND athlete_id = $athleteid;";
 $result = $mysqli->query($request);
 }
 elseif($discipline =="1500m"){
 $points = patnactistovka($koeficient,$vykon,$sex);
-$request = "INSERT INTO `sport_gymtri_cz`.`event_score` (`id`, `event_id`, `class_id`, `athlete_id`, `discipline_id`, `score_value`, `score_points`, `gender`, `age`, `koeficient`, `first_name`, `last_name`, `class_name`, `event_name`, `event_date`) VALUES (NULL, '$id', '$class', '$athleteid', '3', '$vykon', '$points', '$sex', '$vek', '$koeficient', '$jmeno', '$prijmeni', '$trida', '$event_name', '$event_date')";
+$request = "UPDATE event_score SET koeficient = $koeficient , score_value = $vykon, score_points = $points WHERE event_id = $id AND class_id = $class AND athlete_id = $athleteid;";
 $result = $mysqli->query($request);
 }
 elseif($discipline =="3000m"){
 $points = tritisicovka($koeficient,$vykon,$sex);
-$request = "INSERT INTO `sport_gymtri_cz`.`event_score` (`id`, `event_id`, `class_id`, `athlete_id`, `discipline_id`, `score_value`, `score_points`, `gender`, `age`, `koeficient`, `first_name`, `last_name`, `class_name`, `event_name`, `event_date`) VALUES (NULL, '$id', '$class', '$athleteid', '4', '$vykon', '$points', '$sex', '$vek', '$koeficient', '$jmeno', '$prijmeni', '$trida', '$event_name', '$event_date')";
+$request = "UPDATE event_score SET koeficient = $koeficient , score_value = $vykon, score_points = $points WHERE event_id = $id AND class_id = $class AND athlete_id = $athleteid;";
 $result = $mysqli->query($request);
 }
 elseif($discipline =="dálka"){
 $points = dalka($koeficient,$vykon,$sex);
-$request = "INSERT INTO `sport_gymtri_cz`.`event_score` (`id`, `event_id`, `class_id`, `athlete_id`, `discipline_id`, `score_value`, `score_points`, `gender`, `age`, `koeficient`, `first_name`, `last_name`, `class_name`, `event_name`, `event_date`) VALUES (NULL, '$id', '$class', '$athleteid', '5', '$vykon', '$points', '$sex', '$vek', '$koeficient', '$jmeno', '$prijmeni', '$trida', '$event_name', '$event_date')";
+$request = "UPDATE event_score SET koeficient = $koeficient , score_value = $vykon, score_points = $points WHERE event_id = $id AND class_id = $class AND athlete_id = $athleteid;";
 $result = $mysqli->query($request);
 }
 elseif($discipline =="výška"){
 $points = vyska($koeficient,$vykon,$sex);
-$request = "INSERT INTO `sport_gymtri_cz`.`event_score` (`id`, `event_id`, `class_id`, `athlete_id`, `discipline_id`, `score_value`, `score_points`, `gender`, `age`, `koeficient`, `first_name`, `last_name`, `class_name`, `event_name`, `event_date`) VALUES (NULL, '$id', '$class', '$athleteid', '6', '$vykon', '$points', '$sex', '$vek', '$koeficient', '$jmeno', '$prijmeni', '$trida', '$event_name', '$event_date')";
+$request = "UPDATE event_score SET koeficient = $koeficient , score_value = $vykon, score_points = $points WHERE event_id = $id AND class_id = $class AND athlete_id = $athleteid;";
 $result = $mysqli->query($request);
 }
 elseif($discipline =="míč"){
 $points = mic($koeficient,$vykon,$sex);
-$request = "INSERT INTO `sport_gymtri_cz`.`event_score` (`id`, `event_id`, `class_id`, `athlete_id`, `discipline_id`, `score_value`, `score_points`, `gender`, `age`, `koeficient`, `first_name`, `last_name`, `class_name`, `event_name`, `event_date`) VALUES (NULL, '$id', '$class', '$athleteid', '7', '$vykon', '$points', '$sex', '$vek', '$koeficient', '$jmeno', '$prijmeni', '$trida', '$event_name', '$event_date')";
+$request = "UPDATE event_score SET koeficient = $koeficient , score_value = $vykon, score_points = $points WHERE event_id = $id AND class_id = $class AND athlete_id = $athleteid;";
 $result = $mysqli->query($request);
 }
 elseif($discipline =="granát"){
 $points = granat($koeficient,$vykon,$sex);
-$request = "INSERT INTO `sport_gymtri_cz`.`event_score` (`id`, `event_id`, `class_id`, `athlete_id`, `discipline_id`, `score_value`, `score_points`, `gender`, `age`, `koeficient`, `first_name`, `last_name`, `class_name`, `event_name`, `event_date`) VALUES (NULL, '$id', '$class', '$athleteid', '8', '$vykon', '$points', '$sex', '$vek', '$koeficient', '$jmeno', '$prijmeni', '$trida', '$event_name', '$event_date')";
+$request = "UPDATE event_score SET koeficient = $koeficient , score_value = $vykon, score_points = $points WHERE event_id = $id AND class_id = $class AND athlete_id = $athleteid;";
 $result = $mysqli->query($request);
 }
 elseif($discipline =="šplh"){
 $points = splh($koeficient,$vykon,$sex);
-$request = "INSERT INTO `sport_gymtri_cz`.`event_score` (`id`, `event_id`, `class_id`, `athlete_id`, `discipline_id`, `score_value`, `score_points`, `gender`, `age`, `koeficient`, `first_name`, `last_name`, `class_name`, `event_name`, `event_date`) VALUES (NULL, '$id', '$class', '$athleteid', '9', '$vykon', '$points', '$sex', '$vek', '$koeficient', '$jmeno', '$prijmeni', '$trida', '$event_name', '$event_date')";
+$request = "UPDATE event_score SET koeficient = $koeficient , score_value = $vykon, score_points = $points WHERE event_id = $id AND class_id = $class AND athlete_id = $athleteid;";
 $result = $mysqli->query($request);
 }
 elseif($discipline =="25m plavání"){
 $points = dvacetpetkavz($koeficient,$vykon,$sex);
-$request = "INSERT INTO `sport_gymtri_cz`.`event_score` (`id`, `event_id`, `class_id`, `athlete_id`, `discipline_id`, `score_value`, `score_points`, `gender`, `age`, `koeficient`, `first_name`, `last_name`, `class_name`, `event_name`, `event_date`) VALUES (NULL, '$id', '$class', '$athleteid', '10', '$vykon', '$points', '$sex', '$vek', '$koeficient', '$jmeno', '$prijmeni', '$trida', '$event_name', '$event_date')";
+$request = "UPDATE event_score SET koeficient = $koeficient , score_value = $vykon, score_points = $points WHERE event_id = $id AND class_id = $class AND athlete_id = $athleteid;";
 $result = $mysqli->query($request);
 }
 elseif($discipline =="50m plavání"){
 $points = padesatkavz($koeficient,$vykon,$sex);
-$request = "INSERT INTO `sport_gymtri_cz`.`event_score` (`id`, `event_id`, `class_id`, `athlete_id`, `discipline_id`, `score_value`, `score_points`, `gender`, `age`, `koeficient`, `first_name`, `last_name`, `class_name`, `event_name`, `event_date`) VALUES (NULL, '$id', '$class', '$athleteid', '11', '$vykon', '$points', '$sex', '$vek', '$koeficient', '$jmeno', '$prijmeni', '$trida', '$event_name', '$event_date')";
+$request = "UPDATE event_score SET koeficient = $koeficient , score_value = $vykon, score_points = $points WHERE event_id = $id AND class_id = $class AND athlete_id = $athleteid;";
 $result = $mysqli->query($request);
 }
 elseif($discipline =="100m plavání"){
 $points = stovkavz($koeficient,$vykon,$sex);
-$request = "INSERT INTO `sport_gymtri_cz`.`event_score` (`id`, `event_id`, `class_id`, `athlete_id`, `discipline_id`, `score_value`, `score_points`, `gender`, `age`, `koeficient`, `first_name`, `last_name`, `class_name`, `event_name`, `event_date`) VALUES (NULL, '$id', '$class', '$athleteid', '12', '$vykon', '$points', '$sex', '$vek', '$koeficient', '$jmeno', '$prijmeni', '$trida', '$event_name', '$event_date')";
+$request = "UPDATE event_score SET koeficient = $koeficient , score_value = $vykon, score_points = $points WHERE event_id = $id AND class_id = $class AND athlete_id = $athleteid;";
 $result = $mysqli->query($request);
 }
 else{exit;}
-echo "<script>window.close();</script>";
+echo$request;
+echo"<br>";
+echo$sex;
