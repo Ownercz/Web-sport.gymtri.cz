@@ -6,7 +6,7 @@
 
       <!-- Main jumbotron for a primary marketing message or call to action -->
       <div class='page-header'>
-        <h1><span class="label label-default">Vložení výsledků do závodu</span></h1>
+        <h1><span class="label label-default">Tisk startovek</span></h1>
       </div>
       
       <?PHP
@@ -22,26 +22,23 @@
       include $_SERVER['DOCUMENT_ROOT']."/functions/dbconnect.php";
       if(isset($_GET['id'])){
       echo"<div class='alert alert-info' role='alert'>
-        <strong>Vybráno!</strong> Závod byl úspěšně vybrán a nyní je potřeba zvolit třídu, kterou budete zapisovat. (pokud byl vybrán špatný závod, klepněte <a href='?'>zde</a>)
+        <strong>Vybráno!</strong> Závod byl úspěšně vybrán a nyní je potřeba vybrat disciplínu k sestavení startovky! (pokud byl vybrán špatný závod, klepněte <a href='?'>zde</a>)
       </div>";
-      $request= "SELECT * FROM `classes` WHERE `event_id` = $id ORDER BY `yearbegin` DESC"  ; 
- $result = $mysqli->query($request);
-      echo"<h2><span class='label label-warning'>2. Vyberte disciplínu pro zápis výsledků</span></h2><form><div class='list-group'>";
-      $request1= "SELECT * FROM `discipline` ORDER by id ASC"  ; 
+      $request1= "SELECT * FROM `discipline`"  ; 
       $result1 = $mysqli->query($request1);
       $disciplines = array(); $disciplinesid=array();
-      $i = 1;
+      $i = 0;
       while($row1 = $result1->fetch_array(MYSQLI_NUM)){
       array_push($disciplines,  $row1[1]);
       array_push($disciplinesid,  $row1[0]);
       
       }  
      
-
+      echo"<h2><span class='label label-warning'>2. Vyberte třídy pro nastavení disciplíny</span></h2><form><div class='list-group'>";
      foreach ($disciplines as &$discipline) {
+   echo"<a href='start-list-set.php?id=".$id."&class=".$row[2]."&beginyear=".$row[1]."&date=".$dateevent."&trida=".$year.".".$row[2]."&classid=".$row[0]."' class='list-group-item'>".$discipline."</a>";
+}
       
-      echo"<a href='event-score-add.php?id=".$id."&class=".$row[2]."&beginyear=".$row[1]."&date=".$dateevent."&trida=".$year.".".$row[2]."&classid=".$row[0]."&discipline=".$i++."' class='list-group-item'>".$discipline."</a>";
-      }
       
      
       

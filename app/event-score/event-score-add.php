@@ -30,10 +30,7 @@
       <?PHP
 
       if(isset($_GET['id'])){$id= $_GET['id'];}else{}
-      if(isset($_GET['trida'])){$trida= $_GET['trida'];}else{}
-      if(isset($_GET['class'])){$class= $_GET['class'];}else{}
-      if(isset($_GET['classid'])){$classid= $_GET['classid'];}else{}
-      if(isset($_GET['beginyear'])){$beginyear= $_GET['beginyear'];}else{}
+      if(isset($_GET['discipline'])){$discipline= $_GET['discipline'];}else{}
        include $_SERVER['DOCUMENT_ROOT']."/functions/dbconnect.php";
      $request2="SELECT * FROM `event` WHERE `id` = $id ORDER BY `event_date` DESC";
       $result2 = $mysqli->query($request2);
@@ -53,10 +50,8 @@
       array_push($disciplinesid,  $row1[0]);
       
       }  
-      $request= "SELECT * FROM `classes` WHERE `id` = '$classid'"  ; 
-      $result = $mysqli->query($request);
-      while($row = $result->fetch_array(MYSQLI_NUM)){$now = date("Y");$year = $now-$row[1];}
-      $request= "SELECT * FROM `event_score` WHERE `event_id` = $id AND `class_id` = '$classid' ORDER BY `event_score`.`score_points` DESC"  ; 
+
+      $request= "SELECT * FROM `event_score` WHERE `event_id` = $id AND `discipline_id` = '$discipline' ORDER BY `event_score`.`score_points` DESC"  ; 
       $result = $mysqli->query($request);
       
      while($row = $result->fetch_array(MYSQLI_NUM)){
@@ -72,7 +67,7 @@
      echo"</li>
           <li class='class'>".$year.".".$class."</li><li class='birth'>Věk: ".$row[8]."
           
-         </li><li class='discipline'> <input type='hidden' name='discipline' value='".$disciplines[$row[4]]."'></input>";echo$disciplines[$row[4]];
+         </li><li class='discipline'> <input type='hidden' name='discipline' value='".$disciplines[$row[4]-1]."'></input>";echo$disciplines[$row[4]-1];
 
 echo"</li> <li class='score'><input type='text' name='vykon' size='10' placeholder='".$row[5]."'></input></li><li class='score'>".$row[9]."</li><li class='score'>".$row[6]."</li><li class='save'><input type='submit' class='btn btn-sm btn-default' value='Uložit'></input></li></ul></form>
         ";echo"<form action='event-score-add-script.php?id=".$id."&athleteidtodelete=".$row[0]."&delete=1' method='POST' target='_blank' onsubmit='setTimeout(function () { window.location.reload(); }, 30)'><ul class='list-inline scoreboard'><input type='submit' class='btn btn-sm btn-danger' value='Smazat'></input></li></ul></form>";
