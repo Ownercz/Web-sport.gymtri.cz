@@ -1,5 +1,5 @@
-<?PHP include $_SERVER['DOCUMENT_ROOT']."/Web-Sport.gymtri.cz/functions/check.php"; 
-        include $_SERVER['DOCUMENT_ROOT']."/Web-Sport.gymtri.cz/header.php";
+<?PHP include $_SERVER['DOCUMENT_ROOT']."/functions/check.php"; 
+        include $_SERVER['DOCUMENT_ROOT']."/header.php";
 ?>
 
     <div class='container theme-showcase' role='main'>

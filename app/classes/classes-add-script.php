@@ -1,5 +1,5 @@
 <?PHP
-include $_SERVER['DOCUMENT_ROOT']."/Web-Sport.gymtri.cz/functions/dbconnect.php";
+include $_SERVER['DOCUMENT_ROOT']."/functions/dbconnect.php";
 $classes = array();
 $yearbegin = array();
 if((isset($_GET['classes'])) && isset($_GET['yearbegin']) && isset($_GET['id'])){

@@ -1,5 +1,5 @@
-<?PHP include $_SERVER['DOCUMENT_ROOT']."/Web-Sport.gymtri.cz/functions/check.php"; 
-include $_SERVER['DOCUMENT_ROOT']."/Web-Sport.gymtri.cz/header.php";
+<?PHP include $_SERVER['DOCUMENT_ROOT']."/functions/check.php"; 
+include $_SERVER['DOCUMENT_ROOT']."/header.php";
 ?>
 
     <div class='container theme-showcase' role='main'>
@@ -43,11 +43,12 @@ include $_SERVER['DOCUMENT_ROOT']."/Web-Sport.gymtri.cz/header.php";
             <a href='event/event-add.php' class='list-group-item active'>
               <h4 class='list-group-item-heading'>Založit soutěž</h4>
               <p class='list-group-item-text'>Vytvoření nového ročníku OL6B</p>
-            </a>
+            </a>            
             <a href='event/event-edit.php' class='list-group-item'>
               <h4 class='list-group-item-heading'>Smazat / upravit soutěž</h4>
               <p class='list-group-item-text'>Smaže / upraví ročník</p>
             </a>
+            
            
           </div>
         </div><!-- /.col-sm-4 -->
@@ -59,7 +60,11 @@ include $_SERVER['DOCUMENT_ROOT']."/Web-Sport.gymtri.cz/header.php";
             </a>
             <a href='classes/classes-add.php' class='list-group-item'>
               <h4 class='list-group-item-heading'>Přidat třídy do soutěže</h4>
-              <p class='list-group-item-text'>Před zápisem výsledků je nutné vložit příslušnou třídu jako startující</p>
+              <p class='list-group-item-text'>Před zápisem výsledků a tiskem startovek je nutné vložit příslušnou třídu jako startující</p>
+            </a>
+            <a href='start-list/start-list.php' class='list-group-item active'>
+              <h4 class='list-group-item-heading'>Startovky</h4>
+              <p class='list-group-item-text'>Startovní listiny</p>
             </a>
            <a href='event-print/event-print.php' class='list-group-item'>
               <h4 class='list-group-item-heading'>Tisk výsledků</h4>
@@ -67,6 +72,7 @@ include $_SERVER['DOCUMENT_ROOT']."/Web-Sport.gymtri.cz/header.php";
             </a>
           </div>
         </div><!-- /.col-sm-4 -->
+        
       </div>
       
 

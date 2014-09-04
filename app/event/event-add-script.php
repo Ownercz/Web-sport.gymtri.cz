@@ -1,6 +1,6 @@
 <?PHP
-include $_SERVER['DOCUMENT_ROOT']."/Web-Sport.gymtri.cz/functions/dbconnect.php";
-include $_SERVER['DOCUMENT_ROOT']."/Web-Sport.gymtri.cz/functions/check.php"; 
+include $_SERVER['DOCUMENT_ROOT']."/functions/dbconnect.php";
+include $_SERVER['DOCUMENT_ROOT']."/functions/check.php"; 
 
 $eventname = $mysqli->real_escape_string($_POST['eventname']);
 $eventorganisator = $mysqli->real_escape_string($_POST['eventorganisator']);

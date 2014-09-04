@@ -21,7 +21,6 @@
           <th>Třída</th>
           <th>Datum narození</th>
           <th>Disciplína</th>
-          <th>Výkon</th>
           <th></th>
         </tr>
       </thead>
@@ -83,45 +82,15 @@
    echo"<option value='".$discipline."'>".$discipline."</option>";
 }
 
-echo"</select></li> <li class='score'><input type='text' name='vykon' size='10'></input></li><li class='save'><input type='submit' class='btn btn-sm btn-default' value='Uložit'></input></li></ul></form>
+echo"</select></li> <li class='save'><input type='submit' class='btn btn-sm btn-default' value='Uložit'></input></li></ul></form>
         ";
      }
      
       }else{exit;}?>
       
-    <div class="row">
-        <div class="col-sm-4">
-          <ul class="list-group">
-            <li class="list-group-item alert-success"><strong>Jak zadat výsledky</strong></li>
-            <li class="list-group-item">60m - čas 13,11 sekund zapiš: <strong>13,11</strong> </li>
-            <li class="list-group-item">100m - čas 13,11 sekund zapiš: <strong>13,11</strong> </li>
-            <li class="list-group-item">1500m - čas 1 minuta 13,11 sekund zapiš: <strong>01:13,11</strong> </li>
-            <li class="list-group-item">3000m - čas 1 minuta 13,11 sekund zapiš: <strong>01:13,11</strong> </li>
-          </ul>
-        </div><!-- /.col-sm-4 -->
-        
-        <div class="col-sm-4">
-          <ul class="list-group">
-            <li class="list-group-item alert-success"><strong>Jak zadat výsledky</strong></li>
-            <li class="list-group-item">dálka - 433cm zapiš: <strong>433</strong> </li>
-            <li class="list-group-item">výška - 155cm zapiš: <strong>155</strong> </li>
-            <li class="list-group-item">míč - 35m zapiš: <strong>35</strong> </li>
-            <li class="list-group-item">granát - 70m zapiš: <strong>70</strong> </li>
-          </ul>
-        </div><!-- /.col-sm-4 -->
-        
-      
-        <div class="col-sm-4">
-          <ul class="list-group">
-            <li class="list-group-item alert-success"><strong>Jak zadat výsledky</strong></li>
-            <li class="list-group-item">šplh - čas 3,11 sekund zapiš: <strong>3,11</strong> </li>
-            <li class="list-group-item">25m plavání - čas 13,11 sekund zapiš: <strong>13,11</strong> </li>
-            <li class="list-group-item">50m plavání - čas 1 minuta 13,11s zapiš: <strong>01:13,11</strong> </li>
-            <li class="list-group-item">100m plavání - čas 1 minuta 13,11s zapiš: <strong>01:13,11</strong> </li>
-          </ul>
-        </div><!-- /.col-sm-4 --></div>
+
         <div class="alert alert-info" role="alert">
-        <strong>Vložené výsledky</strong> V případě chyby klepněte na smazat a vložte znovu :)
+        <strong>Nastavené disciplíny</strong> V případě chyby klepněte na smazat a vložte znovu :)
       </div>
         <?php 
       $request= "SELECT * FROM `event_score` WHERE `event_id` = $id AND `class_id` = '$classid' ORDER BY `event_score`.`score_points` DESC"  ; 
@@ -141,7 +110,7 @@ echo"<form action='event-score-add-script.php?id=".$id."&athleteidtodelete=".$ro
          </li>";
          
 
-echo"</select></li><li class='result'>Výkon:".$row[5]." </li><li class='result'>Body: <strong>".$row[6]."</strong> </li><li class='koeficient'>Koeficient: <strong>".$row[9]."</strong></li><li class='save'><input type='submit' class='btn btn-sm btn-danger' value='Smazat'></input></li></ul></form>";
+echo"</select></li><li class='save'><input type='submit' class='btn btn-sm btn-danger' value='Smazat'></input></li></ul></form>";
 $i++;}
    
       

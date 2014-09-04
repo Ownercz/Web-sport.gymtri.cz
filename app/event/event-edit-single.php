@@ -1,5 +1,5 @@
-<?PHP include $_SERVER['DOCUMENT_ROOT']."/Web-Sport.gymtri.cz/functions/check.php"; 
-        include $_SERVER['DOCUMENT_ROOT']."/Web-Sport.gymtri.cz/header.php";
+<?PHP include $_SERVER['DOCUMENT_ROOT']."/functions/check.php"; 
+        include $_SERVER['DOCUMENT_ROOT']."/header.php";
 ?>
 
     <div class='container theme-showcase' role='main'>
@@ -9,7 +9,7 @@
         <h1>Vytvoření nové soutěže</h1>
       </div>
 <?PHP
-include $_SERVER['DOCUMENT_ROOT']."/Web-Sport.gymtri.cz/functions/dbconnect.php";
+include $_SERVER['DOCUMENT_ROOT']."/functions/dbconnect.php";
 $id = $mysqli->real_escape_string($_GET['id']);
 $request= "SELECT * FROM `event` WHERE `id` = '$id' LIMIT 0,1" ; 
  $result = $mysqli->query($request);

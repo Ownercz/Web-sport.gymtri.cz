@@ -10,10 +10,10 @@ Aktualizováno.
 
 
 
-<?PHP  include $_SERVER['DOCUMENT_ROOT']."/Web-Sport.gymtri.cz/functions/check.php"; 
+<?PHP  include $_SERVER['DOCUMENT_ROOT']."/functions/check.php"; 
 
 
-include $_SERVER['DOCUMENT_ROOT']."/Web-Sport.gymtri.cz/functions/dbconnect.php";
+include $_SERVER['DOCUMENT_ROOT']."/functions/dbconnect.php";
 $id = $mysqli->real_escape_string($_GET['id']);
 $trida = $mysqli->real_escape_string($_POST['trida']);
 $jmeno = $mysqli->real_escape_string($_POST['jmeno']);

@@ -1,5 +1,5 @@
-<?PHP include $_SERVER['DOCUMENT_ROOT']."/Web-Sport.gymtri.cz/functions/check.php"; 
-        include $_SERVER['DOCUMENT_ROOT']."/Web-Sport.gymtri.cz/header.php";
+<?PHP include $_SERVER['DOCUMENT_ROOT']."/functions/check.php"; 
+        include $_SERVER['DOCUMENT_ROOT']."/header.php";
 ?>
     <div class='container theme-showcase' role='main'>
 
@@ -12,7 +12,7 @@
             if(isset($_GET['id'])){$id= $_GET['id'];}
             elseif(isset($_GET['id'])&&(isset($_GET['delete']))){$id= $_GET['id'];$delete= $_GET['delete'];}else{}
     
-      include $_SERVER['DOCUMENT_ROOT']."/Web-Sport.gymtri.cz/functions/dbconnect.php";
+      include $_SERVER['DOCUMENT_ROOT']."/functions/dbconnect.php";
       if(isset($_GET['id']) && (!isset($_GET['delete']))){
       echo"<div class='alert alert-info' role='alert'>
         <strong>Rekapitulace registrace závodu</strong> Pokud je zde chyba, smažte danou soutěž klepnutím na tlačítko smazat. 

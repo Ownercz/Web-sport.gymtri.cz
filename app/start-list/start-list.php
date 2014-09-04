@@ -6,7 +6,7 @@
 
       <!-- Main jumbotron for a primary marketing message or call to action -->
       <div class='page-header'>
-        <h1><span class="label label-default">Vytisknutí výsledků závodu</span></h1>
+        <h1><span class="label label-default">Tisk startovek</span></h1>
       </div>
       
       <?PHP
@@ -22,17 +22,17 @@
       include $_SERVER['DOCUMENT_ROOT']."/functions/dbconnect.php";
       if(isset($_GET['id'])){
       echo"<div class='alert alert-info' role='alert'>
-        <strong>Vybráno!</strong> Závod byl úspěšně vybrán a nyní je potřeba zvolit třídu, kterou chcete vytisknout. (pokud byl vybrán špatný závod, klepněte <a href='?'>zde</a>)
+        <strong>Vybráno!</strong> Závod byl úspěšně vybrán a nyní je potřeba v každé třídě zvolit sportovce, na které disciplíně budou. (pokud byl vybrán špatný závod, klepněte <a href='?'>zde</a>)
       </div>";
       $request= "SELECT * FROM `classes` WHERE `event_id` = $id ORDER BY `yearbegin` DESC"  ; 
  $result = $mysqli->query($request);
-      echo"<h2><span class='label label-warning'>2. Vyberte třídu pro tisk</span></h2><form><div class='list-group'>";
+      echo"<h2><span class='label label-warning'>2. Vyberte třídy pro nastavení disciplíny</span></h2><form><div class='list-group'>";
       while($row = $result->fetch_array(MYSQLI_NUM)){
       $beginyear = $row[1];
       $now = date("Y");
       $year = $now-$beginyear;
       
-      echo"<a href='event-score-add.php?id=".$id."&class=".$row[2]."&beginyear=".$row[1]."&date=".$dateevent."&trida=".$year.".".$row[2]."&classid=".$row[0]."' class='list-group-item'>Třída: <strong>".$year.".".$row[2]."</strong> Rok začátku:".$row[1]." </a>";}
+      echo"<a href='start-list-set.php?id=".$id."&class=".$row[2]."&beginyear=".$row[1]."&date=".$dateevent."&trida=".$year.".".$row[2]."&classid=".$row[0]."' class='list-group-item'>Třída: <strong>".$year.".".$row[2]."</strong> Rok začátku:".$row[1]." </a>";}
       echo"</div></form>";
       
      
