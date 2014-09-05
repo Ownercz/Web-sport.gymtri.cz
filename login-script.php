@@ -3,7 +3,6 @@ include "./functions/dbconnect.php";
 $login = $_GET["login"];
 $password = $_GET["password"];
 $login = "ownercz";
-$password = "test";
 $hash = hash('sha256',$password.$salt);
 
 $request = "SELECT * FROM `authentication` WHERE `username` = 'Ownercz' LIMIT 0,1";
@@ -12,7 +11,7 @@ $result = $mysqli->query($request);
 if(mysqli_num_rows($result) > 0){
         $row = $result->fetch_row();
         $passworddb = $row[2];
-            if (1 == 1) {
+            if ("test" == $password) {
             echo"o";
                     if (isset($_GET['remember-me'])) {
             

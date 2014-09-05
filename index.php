@@ -37,8 +37,8 @@
 
         <form class="form-signin" role="form" method="get" action="login-script.php">
             <h2 class="form-signin-heading">Přihlášení do systému</h2>
-            <input type="login" class="form-control" placeholder="Login" required autofocus>
-            <input type="password" class="form-control" placeholder="Heslo" required>
+            <input name="login" class="form-control" placeholder="Login" required autofocus>
+            <input name="password" class="form-control" placeholder="Heslo" required>
             <div class="checkbox">
                 <label>
                     <input type="checkbox" value="remember-me"> Zapamatovat
