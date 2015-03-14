@@ -132,7 +132,7 @@ tr td:hover { background: #666; color: #FFF; } /* Hover cell effect! */
 
       
      
-     
+     $body=0;
      
      echo"<div class='book'>
     <div class='page'>
@@ -143,6 +143,7 @@ tr td:hover { background: #666; color: #FFF; } /* Hover cell effect! */
      $i = 1;
      echo"<table class='thetable'><tr><th>#</th><th>Jméno</th><th>Příjmení</th><th>Disciplína</th><th>Výkon</th><th>Body</th></tr>";
       while($row = $result->fetch_array(MYSQLI_NUM)){
+	  $body=$body+$row[6];
 echo"
           <tr><td>".$i.". </td><td>
            ".$row[10]."</td><td>
@@ -159,7 +160,7 @@ echo"
 echo"</td><td><strong>".$row[5]."</strong></td><td><strong>".$row[6]."</td></tr>";
 $i++;}
    }
-   echo"</table>";
+   echo"<tr><td></td><td></td><td></td><td></td><td>Celkově</td><td>".$body."</td></tr></table>";
       
       
       

@@ -17,6 +17,7 @@ body {
   width: auto;
 }
 ul.scoreboard {border-bottom:1px solid; border-bottom-color:lightgray;}
+li.labele{width:10px;}
 li.name{padding-left:40px;width:130px;}
 li.result{padding-left:20px;width:90px;}
 li.disciplineresult{padding-left:40px;width:180px;}
