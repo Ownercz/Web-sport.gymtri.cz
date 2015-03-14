@@ -6,7 +6,7 @@
 
       <!-- Main jumbotron for a primary marketing message or call to action -->
       <div class='page-header'>
-        <h1>Tables</h1>
+        <h1>Vložit atlety</h1>
       </div>
       <div class='row'>
         <div class='col-md-12'>
@@ -26,14 +26,15 @@
             
             <form name="formatus" action="athletes-add-script.php" method="POST">
             <div id="dynamicInput">
-            <input type='text' class='form-control' name='trida1' placeholder='Třída' value=''><input type='text' class='form-control' name='jmeno1' placeholder='Jméno'><input type='text' class='form-control' name='prijmeni1' placeholder='Příjmení'><input type='text' class='form-control' name='sex1' placeholder='M nebo F'><input type='text' class='form-control'name='narozeni1' placeholder='dd-mm-yyyy' ><input type='number' class='form-control' min='1900' max='2100' name='zacatek1' >
+            <input type='text' class='form-control' name='trida1' placeholder='Třída "A"' value=''><input type='text' class='form-control' name='jmeno1' placeholder='Jméno "Pepa"'><input type='text' class='form-control' name='prijmeni1' placeholder='Příjmení "Novák"'><input type='text' class='form-control' name='sex1' placeholder='Muž "M" Žena "F"'><input type='text' class='form-control'name='narozeni1' placeholder='Tvar "dd-mm-yyyy"' ><input type='number' class='form-control' min='1900' max='2100' name='zacatek1' placeholder='"2008"' >
      
      </div>
      <input type="button" value="Přidat dalšího" onClick="addInput('dynamicInput');">
 <button type="submit" class="btn btn-primary" style="float:right">
-  <i class="icon-user icon-white"></i> Přidat třídu
+  <i class="icon-user icon-white"></i> Přidat atlety
 </button>
-    </form>
+    </form>
+
         </div>
 
       </div>
