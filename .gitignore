@@ -217,3 +217,5 @@ config.php
 *config*
 points.*
 .idea/
+.idea/*
+
