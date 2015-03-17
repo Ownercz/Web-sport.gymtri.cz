@@ -61,10 +61,6 @@ include $_SERVER['DOCUMENT_ROOT']."/header.php";
                         <h4 class='list-group-item-heading'>Upravit třídy v soutěži</h4>
                         <p class='list-group-item-text'>Nějaká třída chybí? Nevadí, pojdme ji upravit!</p>
                     </a>
-                    <a href='event-print/event-print.php' class='list-group-item'>
-                        <h4 class='list-group-item-heading'>...</h4>
-                        <p class='list-group-item-text'>Tady nic</p>
-                    </a>
                 </div>
             </div><!-- /.col-sm-4 -->
         </div>
@@ -80,18 +76,9 @@ include $_SERVER['DOCUMENT_ROOT']."/header.php";
                         <h4 class='list-group-item-heading'>Upravit startovky</h4>
                         <p class='list-group-item-text'>Upraví startovní </p>
                     </a>
-
-                </div>
-            </div><!-- /.col-sm-4 -->
-            <div class='col-sm-4'>
-                <div class='list-group'>
-                    <a href='event/event-add.php' class='list-group-item active'>
-                        <h4 class='list-group-item-heading'>Založit soutěž</h4>
-                        <p class='list-group-item-text'>Vytvoření nového ročníku OL6B</p>
-                    </a>
-                    <a href='event/event-edit.php' class='list-group-item'>
-                        <h4 class='list-group-item-heading'>Smazat / upravit soutěž</h4>
-                        <p class='list-group-item-text'>Smaže / upraví ročník</p>
+                    <a href="athletes/athletes-edit.php" class='list-group-item'>
+                        <h4 class='list-group-item-heading'>Tisk startovek</h4>
+                        <p class='list-group-item-text'>Vytiskne startovky dle disciplín </p>
                     </a>
 
                 </div>
@@ -99,12 +86,8 @@ include $_SERVER['DOCUMENT_ROOT']."/header.php";
             <div class='col-sm-4'>
                 <div class='list-group'>
                     <a href='event-score/event-score.php' class='list-group-item active'>
-                        <h4 class='list-group-item-heading'>Dát se do práce</h4>
-                        <p class='list-group-item-text'>Vložení výsledků závodů</p>
-                    </a>
-                    <a href='classes/classes-add.php' class='list-group-item'>
-                        <h4 class='list-group-item-heading'>Přidat třídy do soutěže</h4>
-                        <p class='list-group-item-text'>Před zápisem výsledků je nutné vložit příslušnou třídu jako startující</p>
+                        <h4 class='list-group-item-heading'>Vkládání výsledků</h4>
+                        <p class='list-group-item-text'>Vložení výsledků závodů a jejich úpravy</p>
                     </a>
                     <a href='event-print/event-print.php' class='list-group-item'>
                         <h4 class='list-group-item-heading'>Tisk výsledků</h4>
