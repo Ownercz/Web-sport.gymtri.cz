@@ -106,7 +106,7 @@ echo"</select></td> <td class='save'><input type='submit' class='btn btn-sm btn-
       </thead>
       <tbody>
         <?php 
-      $request= "SELECT * FROM `event_score` WHERE `event_id` = $id AND `class_id` = '$classid' ORDER BY `event_score`.`score_points` DESC"  ; 
+      $request= "SELECT * FROM `event_score` WHERE `event_id` = $id AND `class_id` = '$classid' ORDER BY `event_score`.`discipline_id` DESC"  ;
       $result = $mysqli->query($request);
      $i = 1;
       while($row = $result->fetch_array(MYSQLI_NUM)){
