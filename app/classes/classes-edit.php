@@ -5,7 +5,7 @@
 
       <!-- Main jumbotron for a primary marketing message or call to action -->
       <div class='page-header'>
-        <h1>Vyberte třídu k editaci</h1>
+        <h1>Editace seznamu tříd v závodě</h1>
       </div>
      
             <?PHP 
@@ -59,9 +59,16 @@
       else{
       $request= "SELECT * FROM `classes` GROUP BY `event_id` DESC LIMIT 0,10";
       $result = $mysqli->query($request);
+          $row_cnt = $result->num_rows;
+          if($row_cnt==0){
+              echo"<div class='alert alert-danger' role='alert'>";
+              echo"Nebyly nalezeny žádné soutěže! <strong><a href='javascript:history.go(-1)'>Zpět.</a></strong>";
+              echo"</div>";
+          }else{
       echo"<h2><span class='label label-warning'>1. Vyberte soutěž</span></h2><form><div class='list-group'>";
       while($row = $result->fetch_array(MYSQLI_NUM)){echo"<a href='?id=".$row[3]."' class='list-group-item'>Název: ".$row[1]." Datum: ".$row[3]."</a>";}
       echo"</div></form>";
+          }
       }
 ?>
         
