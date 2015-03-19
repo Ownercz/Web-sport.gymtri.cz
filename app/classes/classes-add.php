@@ -48,7 +48,7 @@ include $_SERVER['DOCUMENT_ROOT'] . "/header.php";
         $yearbegin = array();
     }
 
-    if (isset($_GET['yearadd'])) {
+    if (isset($_GET['yearadd']) && isset($yearbegin)) {
         array_push($yearbegin, $_GET['yearadd']);
         $yearbegin = implode(",", $yearbegin);
     } else {
@@ -71,28 +71,31 @@ include $_SERVER['DOCUMENT_ROOT'] . "/header.php";
     }else{
         echo "<h2><span class='label label-warning'>2. Vyberte třídy</span></h2><form><div class='list-group'>";
         while ($row = $result->fetch_array(MYSQLI_NUM)) {
+            $classname=$row[0];
             $beginyear = $row[1];
             $beginyear = preg_replace("/ - Name:.*/", "", $beginyear);
             $now = date("Y");
             $year = $now - $beginyear;
 
-            echo "<a href='?id=" . $id . "&classes=" . $classes . "&classadd=" . $row[0] . "&yearbegin=" . $yearbegin . "&yearadd=" . $row[1] . "' class='list-group-item'>Třída: <strong>" . $year . "." . $row[0] . "</strong> Rok začátku:" . $row[1] . " </a>";
+            echo "<a href='?id=" . $id ;
+            if(isset($classes)){echo"&classes=" . $classes;}
+            echo"&classadd=" . $classname . "&yearbegin=" . $yearbegin . "&yearadd=" . $beginyear . "' class='list-group-item'>Třída: <strong>" . $year . "." . $row[0] . "</strong> Rok začátku:" . $row[1] . " </a>";
         }
         echo "</div></form>";
-        $i = 1;
+        $i = 0;
         $tridy = array();
         $zacatek = array();
         $tridy = explode(",", $classes);
         $zacatek = explode(",", $yearbegin);
         $count = count($tridy);
         echo "<div class='alert alert-success' role='alert'><strong>Přidáno:</strong>   ";
-
+        if(!(isset($classes))){echo"***";}else{
         while ($i < $count) {
             $now = date("Y");
             $year = $now - $zacatek[$i];
             print$year . "." . $tridy[$i] . ",";
             $i++;
-        }
+        }}
         echo "<br> <strong>Každou třídu přidávejte pouze jednou! V případě chyby klepněte <a href='?id=" . $id . "'>sem</a>.</strong>
       </div>";
         echo "<div class='col-sm-4' style='float:right;'>
@@ -113,8 +116,9 @@ include $_SERVER['DOCUMENT_ROOT'] . "/header.php";
         </div>";
 
     }} else {
-        $request = "SELECT * FROM `event` ORDER BY `event_date` DESC LIMIT 0,3";
+        $request = "SELECT * FROM `event` ORDER BY `event_date`";
         $result = $mysqli->query($request);
+        $row_cnt = $result->num_rows;
         echo "<h2><span class='label label-warning'>1. Vyberte soutěž</span></h2><form><div class='list-group'>";
     if($row_cnt==0){
         echo"<div class='alert alert-danger' role='alert'>";
