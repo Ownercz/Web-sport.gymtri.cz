@@ -1,5 +1,8 @@
-﻿<?PHP include $_SERVER['DOCUMENT_ROOT']."/functions/check.php"; 
+﻿<?PHP
+//DEPRECATED, TO BE DELETED
+include $_SERVER['DOCUMENT_ROOT']."/functions/check.php";
         include $_SERVER['DOCUMENT_ROOT']."/header.php";
+exit;
 ?>
     <div class='container theme-showcase' role='main'>
 

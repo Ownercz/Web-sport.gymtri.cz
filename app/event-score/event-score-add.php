@@ -31,7 +31,7 @@
 
       if(isset($_GET['id'])){$id= $_GET['id'];}else{}
       if(isset($_GET['trida'])){$trida= $_GET['trida'];}else{}
-      if(isset($_GET['class'])){$class= $_GET['class'];}else{}
+     //NOT USED if(isset($_GET['class'])){$class= $_GET['class'];}else{}
       if(isset($_GET['classid'])){$classid= $_GET['classid'];}else{}
       if(isset($_GET['beginyear'])){$beginyear= $_GET['beginyear'];}else{}
        include $_SERVER['DOCUMENT_ROOT']."/functions/dbconnect.php";
@@ -54,9 +54,9 @@
       
       }  
       
-      $request= "SELECT * FROM `athletes` WHERE `class` = '$class' AND `yearbegin` = '$beginyear'"  ; 
+      $request= "SELECT * FROM  `event_score`  WHERE  `score_value` IS NULL  AND  `score_points` IS NULL  AND  `koeficient` IS NULL AND `class` = '$classid'"; //AND `yearbegin` = '$beginyear'"  ; NO USED QUERY
       $result = $mysqli->query($request);
-      
+      echo $classid;
      while($row = $result->fetch_array(MYSQLI_NUM)){
      $i++;
      $birth = $row[4];

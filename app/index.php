@@ -53,11 +53,11 @@ include $_SERVER['DOCUMENT_ROOT']."/header.php";
             </div><!-- /.col-sm-4 -->
             <div class='col-sm-4'>
                 <div class='list-group'>
-                    <a href='event-score/event-score.php' class='list-group-item active'>
+                    <a href='classes/classes-add.php' class='list-group-item active'>
                         <h4 class='list-group-item-heading'>Přidat třídy do soutěže</h4>
                         <p class='list-group-item-text'>Před zápisem výsledků je nutné vložit příslušnou třídu jako startující</p>
                     </a>
-                    <a href='classes/classes-add.php' class='list-group-item'>
+                    <a href='classes/classes-edit.php' class='list-group-item'>
                         <h4 class='list-group-item-heading'>Upravit třídy v soutěži</h4>
                         <p class='list-group-item-text'>Nějaká třída chybí? Nevadí, pojdme ji upravit!</p>
                     </a>
@@ -68,15 +68,15 @@ include $_SERVER['DOCUMENT_ROOT']."/header.php";
 
             <div class='col-sm-4'>
                 <div class='list-group'>
-                    <a href="athletes/athletes-add.php" class='list-group-item active'>
+                    <a href="start-list/start-list.php" class='list-group-item active'>
                         <h4 class='list-group-item-heading'>Vytvoření startovek</h4>
                         <p class='list-group-item-text'>Přiřazení atletů do disciplín</p>
                     </a>
-                    <a href="athletes/athletes-edit.php" class='list-group-item'>
+                    <a href="start-list/start-list-edit.php" class='list-group-item'>
                         <h4 class='list-group-item-heading'>Upravit startovky</h4>
                         <p class='list-group-item-text'>Upraví startovní </p>
                     </a>
-                    <a href="athletes/athletes-edit.php" class='list-group-item'>
+                    <a href="start-list-print/start-list.php" class='list-group-item'>
                         <h4 class='list-group-item-heading'>Tisk startovek</h4>
                         <p class='list-group-item-text'>Vytiskne startovky dle disciplín </p>
                     </a>
