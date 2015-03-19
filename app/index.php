@@ -1,4 +1,4 @@
-<?PHP include $_SERVER['DOCUMENT_ROOT']."/functions/check.php"; 
+<?PHP include $_SERVER['DOCUMENT_ROOT']."/functions/check.php";
 include $_SERVER['DOCUMENT_ROOT']."/header.php";
 ?>
 
@@ -14,7 +14,7 @@ include $_SERVER['DOCUMENT_ROOT']."/header.php";
 
 
 
-      
+
 <div class='page-header'>
         <h1>Správa</h1>
       </div>
@@ -96,7 +96,7 @@ include $_SERVER['DOCUMENT_ROOT']."/header.php";
                 </div>
             </div><!-- /.col-sm-4 -->
         </div>
-      
+
 
     </div> <!-- /container -->
 
