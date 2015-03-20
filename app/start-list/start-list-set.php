@@ -1,7 +1,7 @@
 <?PHP include $_SERVER['DOCUMENT_ROOT']."/functions/check.php"; 
         include $_SERVER['DOCUMENT_ROOT']."/header.php";
-?>
 
+//Pridat tlacitko pro sestiboj?>
     <div class='container theme-showcase' role='main'>
 
       <!-- Main jumbotron for a primary marketing message or call to action -->
@@ -66,7 +66,7 @@
       $birthdate = new DateTime($birth);
       $vek = $eventdatecurrent->diff($birthdate);
       $vek = $vek->y;
-    
+      $sex = $row[3];
      echo"<form action='start-list-set-script.php?id=".$id."&athleteid=".$row[0]."&vek=".$vek."&sex=".$row[3]."&classid=".$classid."&trida=".$trida."' method='POST' target='_blank' onsubmit='setTimeout(function () { window.location.reload(); }, 30)'><tr>
           <td class='labele'>".$i." </td>
            <td class='name'>".$row[1]."</td>
@@ -77,11 +77,18 @@
      echo"</td>
           <td class='class'>".$year.".".$class."</td><td class='birth'>".$birth." | Věk: ".$vek."
           
-         </td><td class='discipline'> <select name='discipline'>";foreach ($disciplines as &$discipline) {
-   echo"<option value='".$discipline."'>".$discipline."</option>";
-}
+         </td><td class='discipline'> <select name='discipline'>";
+        foreach ($disciplines as &$discipline) {
+             if(($vek<=14)&&($sex=="M")&&($discipline=="100m"||$discipline=="3000m"||$discipline=="50m plavání"||$discipline=="100m plavání"||$discipline=="granát")){}
+             elseif(($vek<=14)&&($sex=="F")&&($discipline=="100m"||$discipline=="3000m"||$discipline=="50m plavání"||$discipline=="100m plavání"||$discipline=="granát")){}
+             elseif(($vek==15||$vek==16)&&($sex=="M")&&($discipline=="60m"||$discipline=="1500m"||$discipline=="25m plavání"||$discipline=="100m plavání"||$discipline=="míč")){}
+             elseif(($vek==15||$vek==16)&&($sex=="F")&&($discipline=="60m"||$discipline=="3000m"||$discipline=="25m plavání"||$discipline=="100m plavání"||$discipline=="míč")){}
+             elseif(($vek>16)&&($sex=="M")&&($discipline=="60m"||$discipline=="1500m"||$discipline=="25m plavání"||$discipline=="100m plavání"||$discipline=="míč")){}
+             elseif(($vek>16)&&($sex=="F")&&($discipline=="60m"||$discipline=="3000m"||$discipline=="25m plavání"||$discipline=="100m plavání"||$discipline=="míč")){}
+             else{echo"<option value='".$discipline."'>".$discipline."</option>";}
+            }
 
-echo"</select></td> <td class='save'><input type='submit' class='btn btn-sm btn-default' value='Uložit'></input></td></form></tr>
+echo"</select></td> <td class='save'><select name='sebrlecup'>";echo"<option value='no'>Ne</option><option value='yes'>Ano</option></select><input type='submit' class='btn btn-sm btn-default' value='Uložit'></input></td></form></tr>
         ";
      }
      
@@ -106,11 +113,12 @@ echo"</select></td> <td class='save'><input type='submit' class='btn btn-sm btn-
       </thead>
       <tbody>
         <?php 
+      //$request= "SELECT * FROM `event_score` WHERE `event_id` = $id AND `class_id` = '$classid' ORDER BY `event_score`.`discipline_id` DESC"  ;
       $request= "SELECT * FROM `event_score` WHERE `event_id` = $id AND `class_id` = '$classid' ORDER BY `event_score`.`discipline_id` DESC"  ;
       $result = $mysqli->query($request);
      $i = 1;
       while($row = $result->fetch_array(MYSQLI_NUM)){
-echo"<form action='start-list-set-script.php?id=".$id."&athleteidtodelete=".$row[0]."&delete=1' method='POST' target='_blank' onsubmit='setTimeout(function () { window.location.reload(); }, 30)'>
+echo"<tr><form action='start-list-set-script.php?id=".$id."&athleteidtodelete=".$row[0]."&delete=1' method='POST' target='_blank' onsubmit='setTimeout(function () { window.location.reload(); }, 30)'>
           <td class='labele'>".$row[0]." </td>
            <td class='name'>".$row[10]."</td>
            <td class='lastname'>".$row[11]."</td>
@@ -123,7 +131,7 @@ echo"<form action='start-list-set-script.php?id=".$id."&athleteidtodelete=".$row
          </td>";
          
 
-echo"</select></td><td class='save'><input type='submit' class='btn btn-sm btn-danger' value='Smazat'></input></td></form>";
+echo"</select></td><td class='save'><input type='submit' class='btn btn-sm btn-danger' value='Smazat'></input></td></form></tr>";
 $i++;}
    
       

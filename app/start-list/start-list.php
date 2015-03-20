@@ -11,14 +11,6 @@
       
       <?PHP
       if(isset($_GET['id'])){$id= $_GET['id'];}else{}if(isset($_GET['dateevent'])){$dateevent= $_GET['dateevent'];}else{$dateevent="";}
-      if(isset($_GET['classes'])){$classes= $_GET['classes'];}else{}
-      if(isset($_GET['yearbegin'])){$yearbegin= $_GET['yearbegin'];}else{}
-      
-      if(isset($classes)){$classes = explode(",",$classes);}else{$classes = array();}
-      if(isset($_GET['classadd'])){array_push($classes,  $_GET['classadd']);$classes=implode(",",$classes);}else{$classes=null;}
-      
-      if(isset($yearbegin)){$yearbegin = explode(",",$yearbegin);}else{$yearbegin = array();}
-      if(isset($_GET['yearadd'])){array_push($yearbegin,  $_GET['yearadd']);$yearbegin=implode(",",$yearbegin);}else{$yearbegin=null;}
       include $_SERVER['DOCUMENT_ROOT']."/functions/dbconnect.php";
       if(isset($_GET['id'])){
       echo"<div class='alert alert-info' role='alert'>

@@ -6,7 +6,7 @@
 
       <!-- Main jumbotron for a primary marketing message or call to action -->
       <div class='page-header'>
-        <h1>Vložit atlety</h1>
+        <h1>Vložit závodníky</h1>
       </div>
       <div class='row'>
         <div class='col-md-12'>

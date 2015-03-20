@@ -28,7 +28,7 @@ include $_SERVER['DOCUMENT_ROOT']."/header.php";
             <div class='col-sm-4'>
                 <div class='list-group'>
                     <a href="athletes/athletes-add.php" class='list-group-item active'>
-                        <h4 class='list-group-item-heading'>Přidat atlety</h4>
+                        <h4 class='list-group-item-heading'>Přidat závodníky</h4>
                         <p class='list-group-item-text'>Vložení celé třídy</p>
                     </a>
                     <a href="athletes/athletes-edit.php" class='list-group-item'>

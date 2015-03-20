@@ -11,7 +11,7 @@ if(isset($yearbegin)){$yearbegin = explode(",",$yearbegin);}else{$yearbegin = ar
 $count1 = count($classes);
 $count2 = count($yearbegin);
 if ($count1 != $count2){echo"Neplatny vstup, jdete na uvodni stranu a vyplnte registraci trid do souteze znova";exit; }else{$count=$count1;}
-$i=1;
+$i=0;
 while($i<$count){
 
 $request = "INSERT INTO `sport_gymtri_cz`.`classes` (`id`, `yearbegin`, `type`, `event_id`) VALUES (NULL, '$yearbegin[$i]', '$classes[$i]', '$id')";
@@ -19,5 +19,5 @@ $result = $mysqli->query($request);
 
 $i++;
 }
-header('Location: ../classes/classes-edit.php');
+header('Location: ../index.php');
     ?>

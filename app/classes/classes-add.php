@@ -18,16 +18,21 @@ include $_SERVER['DOCUMENT_ROOT'] . "/header.php";
 
     if (isset($_GET['classes'])) {
         $classes = $_GET['classes'];
+        $tridy = $classes;
     } else {
         $classes= null;
+        $tridy=null;
     }
 
 
     if (isset($_GET['yearbegin'])) {
         $yearbegin = $_GET['yearbegin'];
+        $zacatek = $yearbegin;
+        $yearbegin = explode(",", $yearbegin);
     } else {
+        $zacatek=null;
     }
-    $yearbegin = null;
+    //$yearbegin = null;
 
     if (isset($classes)) {
         $classes = explode(",", $classes);
@@ -35,25 +40,26 @@ include $_SERVER['DOCUMENT_ROOT'] . "/header.php";
         $classes = array();
     }
 
-    if (isset($_GET['classadd'])) {
+    /*if (isset($_GET['classadd'])) {
         array_push($classes, $_GET['classadd']);
         $classes = implode(",", $classes);
     } else {
         $classes = null;
-    }
-
+    }*/
+/*
     if (isset($yearbegin)) {
         $yearbegin = explode(",", $yearbegin);
+        exit;
     } else {
-        $yearbegin = array();
+        $yearbegin = null;
     }
 
-    if (isset($_GET['yearadd']) && isset($yearbegin)) {
+   /* if (isset($_GET['yearadd']) && isset($yearbegin)) {
         array_push($yearbegin, $_GET['yearadd']);
         $yearbegin = implode(",", $yearbegin);
     } else {
         $yearbegin = null;
-    }
+    }*/
 
 
 
@@ -73,34 +79,47 @@ include $_SERVER['DOCUMENT_ROOT'] . "/header.php";
         while ($row = $result->fetch_array(MYSQLI_NUM)) {
             $classname=$row[0];
             $beginyear = $row[1];
-            $beginyear = preg_replace("/ - Name:.*/", "", $beginyear);
+            //$beginyear = preg_replace("/ - Name:.*/", "", $beginyear);
             $now = date("Y");
             $year = $now - $beginyear;
 
             echo "<a href='?id=" . $id ;
-            if(isset($classes)){echo"&classes=" . $classes;}
-            echo"&classadd=" . $classname . "&yearbegin=" . $yearbegin . "&yearadd=" . $beginyear . "' class='list-group-item'>Třída: <strong>" . $year . "." . $row[0] . "</strong> Rok začátku:" . $row[1] . " </a>";
+            //if(isset($classes)){echo"&classes=" . $classes;}
+           // if(isset($classes)){echo"&classes=" . $classes;}
+            //echo"&classadd=" . $classname . "&yearbegin=" . $yearbegin . "&yearadd=" . $beginyear . "' class='list-group-item'>Třída: <strong>" . $year . "." . $row[0] . "</strong> Rok začátku:" . $row[1] . " </a>";
+            echo"&classes=";
+            if($tridy!=null){echo$tridy.",";}
+
+            echo$classname."&yearbegin=";
+            if($zacatek!=null){echo $zacatek.",";}
+            echo$beginyear."' class='list-group-item'>Třída: <strong>" . $year . "." . $classname . "</strong> Rok začátku:" . $row[1] . " </a>";
         }
         echo "</div></form>";
         $i = 0;
-        $tridy = array();
-        $zacatek = array();
-        $tridy = explode(",", $classes);
-        $zacatek = explode(",", $yearbegin);
-        $count = count($tridy);
+        //$tridy = array();
+        //$zacatek = array();
+        //$tridy = explode(",", $classes);
+        //$tridy = implode(",", $classes);
+        //$zacatek = explode(",", $yearbegin);
+        //$zacatek = $yearbegin;
+        $count = count($classes);
+        //$count--;
+        echo$count;        //$count--; Nope?
         echo "<div class='alert alert-success' role='alert'><strong>Přidáno:</strong>   ";
-        if(!(isset($classes))){echo"***";}else{
+        if($classes==null){echo"***";}else{
         while ($i < $count) {
             $now = date("Y");
-            $year = $now - $zacatek[$i];
-            print$year . "." . $tridy[$i] . ",";
+            //$year = 2015 - $yearbegin[$i];
+            $year=$now-$yearbegin[$i];
+            //print $yearbegin;
+            print$yearbegin[0] . "." . $classes[$i] . ",";
             $i++;
         }}
         echo "<br> <strong>Každou třídu přidávejte pouze jednou! V případě chyby klepněte <a href='?id=" . $id . "'>sem</a>.</strong>
       </div>";
         echo "<div class='col-sm-4' style='float:right;'>
           <div class='list-group'>
-            <a href='classes-add-script.php?id=" . $id . "&classes=" . $classes . "&yearbegin=" . $yearbegin . "' class='list-group-item active'>
+            <a href='classes-add-script.php?id=" . $id . "&classes=" . $tridy . "&yearbegin=" . $zacatek . "' class='list-group-item active'>
               <h4 class='list-group-item-heading'>Dokončit registraci tříd</h4>
               <p class='list-group-item-text'>Po zvolení tříd již není možné dělat další změny do seznamu.</p>
             </a>

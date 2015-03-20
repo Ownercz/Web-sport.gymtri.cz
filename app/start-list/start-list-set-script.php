@@ -9,8 +9,26 @@ $result = $mysqli->query($request);
 echo "<script>window.close();</script>";
 exit;
 }
-    
-if(isset($_POST['discipline'])){$discipline = $_POST['discipline']; }
+if(isset($_POST['sebrlecup'])){
+    $request1= "SELECT * FROM `discipline`"  ;
+    $result1 = $mysqli->query($request1);
+    $disciplines = array(); $disciplinesid=array();
+    $i = 0;
+    while($row1 = $result1->fetch_array(MYSQLI_NUM)){
+        array_push($disciplines,  $row1[1]);
+        array_push($disciplinesid,  $row1[0]);
+
+    }
+    foreach ($disciplines as &$discipline) {
+        //curl volání pro všechny disciplíny
+        //běhy dle věku
+        //online soupisky
+        //startovka polohový závod
+
+
+    }
+}
+if(isset($_POST['discipline'])){$discipline = $_POST['discipline']; }elseif(isset($_GET['discipline'])){$discipline=$_GET["discipline"];}
 if(isset($_GET['vek'])){$vek = $_GET['vek'];$vek = str_replace(",",".",$vek); }
 if(isset($_GET['trida'])){$trida = $_GET['trida']; }
 if(isset($_GET['classid'])){$class = $_GET['classid']; }

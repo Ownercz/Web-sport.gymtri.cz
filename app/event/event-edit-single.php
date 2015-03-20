@@ -51,7 +51,7 @@ $request= "SELECT * FROM `event` WHERE `id` = '$id' LIMIT 0,1" ;
   <div class='form-group'>
     <div class='col-sm-offset-2 col-sm-10' style='margin-left:0;'>
    
- &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<button type='button' class='btn btn-lg btn-warning'>Je nutné dodržet formát data! Např. '". date('d/m/Y') ."'</button>  <button type='submit' class='btn btn-lg btn-success' style='float:right;'>Aktualizovat</button>
+ &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<button type='button' class='btn btn-lg btn-warning'>Je nutné dodržet formát data! Např. '". date('d-m-Y') ."'</button>  <button type='submit' class='btn btn-lg btn-success' style='float:right;'>Aktualizovat</button>
     </div>
   </div>
 </form>";}?>  
