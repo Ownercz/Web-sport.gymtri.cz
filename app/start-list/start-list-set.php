@@ -6,7 +6,7 @@
 
       <!-- Main jumbotron for a primary marketing message or call to action -->
       <div class='page-header'>
-        <h1><span class="label label-default">Vložení výsledků</span></h1>
+        <h1><span class="label label-default">Vložení startovek</span></h1>
       </div>
       <div class="alert alert-warning" role="alert">
         <strong>Upozornění!</strong> Horní část seznamu slouží k výběru disciplíny. Ty, jenž jste již ráčili vybrat, naleznete níže!!!
