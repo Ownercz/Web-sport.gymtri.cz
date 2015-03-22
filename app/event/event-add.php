@@ -70,8 +70,8 @@
     </div>
   <div class="form-group">
     <div class="col-sm-offset-2 col-sm-10">
-      <button type="submit" class="btn btn-lg btn-success" style="float:right;">Vytvořit novou soutěž</button>
- <button type="button" class="btn btn-lg btn-warning">Je nutné dodržet formát data! Např. "<?php echo date('d-m-Y'); ?>"</button>  
+
+ <button type="button" class="btn btn-lg btn-warning">Je nutné dodržet formát data! Např. "<?php echo date('d-m-Y'); ?>"</button>   <button type="submit" class="btn btn-lg btn-success">Vytvořit novou soutěž</button>
     </div>
   </div>
 </form>
