@@ -11,6 +11,8 @@
 
  
 <form class="form-horizontal" role="form" action="event-add-script.php" method="POST"  >
+    <div style="float:left;width:50%;">
+        <h2>Základní údaje</h2>
   <div class="form-group">
     <label for="inputEmail3" class="col-sm-2 control-label">Název soutěže</label>
     <div class="col-sm-10">
@@ -42,8 +44,30 @@
       <input type="text" class="form-control" name="eventcomment" id="inputEmail3" placeholder="...">
     
   </div>
-  </div>
-  
+  </div></div><div style="float:left;width:50%;">
+    <h2>Časový harmonogram</h2>
+
+        <?PHP
+        $i = 0;
+        $count=0;
+        $disciplines=array();
+        $disciplinesid=array();
+        include $_SERVER['DOCUMENT_ROOT'] . "/functions/dbconnect.php";
+        $request1 = "SELECT * FROM `discipline` ORDER by id ASC";
+        $result1 = $mysqli->query($request1);
+        while ($row1 = $result1->fetch_array(MYSQLI_NUM)) {
+        array_push($disciplines, $row1[1]);
+        array_push($disciplinesid, $row1[0]);
+        $count++;
+        }?>
+        <?PHP while($i<$count){echo"
+    <div class='form-group'>
+        <label for='inputEmail3' class='col-sm-2 control-label'>".$disciplines[$i]."</label>
+        <div class='col-sm-10'>
+            <input type='text' class='form-control' name='".$disciplinesid[$i]."' id='inputEmail3' placeholder='10:00'>
+        </div>
+    </div>"; $i++;}?>
+    </div>
   <div class="form-group">
     <div class="col-sm-offset-2 col-sm-10">
       <button type="submit" class="btn btn-lg btn-success" style="float:right;">Vytvořit novou soutěž</button>

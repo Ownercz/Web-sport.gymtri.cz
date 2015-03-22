@@ -6,7 +6,7 @@
 
       <!-- Main jumbotron for a primary marketing message or call to action -->
       <div class='page-header'>
-        <h1>Vytvoření nové soutěže</h1>
+        <h1>Úprava soutěže</h1>
       </div>
 <?PHP
 include $_SERVER['DOCUMENT_ROOT']."/functions/dbconnect.php";
@@ -15,6 +15,8 @@ $request= "SELECT * FROM `event` WHERE `id` = '$id' LIMIT 0,1" ;
  $result = $mysqli->query($request);
  while($row = $result->fetch_array(MYSQLI_NUM)){echo"
 <form class='form-horizontal' role='form' action='event-edit-single-script.php?id=".$id."'  target='_blank' onsubmit='setTimeout(function () { window.location.reload(); }, 30)' method='POST'  >
+  <div style='float:left;width:50%;'>
+        <h2>Základní údaje</h2>
   <div class='form-group'>
     <label for='inputEmail3' class='col-sm-2 control-label'>Název soutěže</label>
     <div class='col-sm-10'>
@@ -47,7 +49,37 @@ $request= "SELECT * FROM `event` WHERE `id` = '$id' LIMIT 0,1" ;
     
   </div>
   </div>
-  
+  </div>
+
+
+  <div style='float:left;width:50%;'>
+    <h2>Časový harmonogram</h2>
+
+
+    ";
+
+        $i = 0;
+        $count=0;
+        $disciplines=array();
+        $disciplinesid=array();
+       // include $_SERVER['DOCUMENT_ROOT'] . "/functions/dbconnect.php";
+        $request1 = "SELECT * FROM `discipline` ORDER by id ASC";
+        $result1 = $mysqli->query($request1);
+        while ($row1 = $result1->fetch_array(MYSQLI_NUM)) {
+            array_push($disciplines, $row1[1]);
+            array_push($disciplinesid, $row1[0]);
+            $count++;
+            }
+         while($i<$count){echo"
+    <div class='form-group'>
+        <label for='inputEmail3' class='col-sm-2 control-label'>".$disciplines[$i]."</label>
+        <div class='col-sm-10'>
+            <input type='text' class='form-control' name='".$disciplinesid[$i]."' id='inputEmail3' value='".$row[$i+6]."'>
+        </div>
+    </div>"; $i++;}
+
+
+     echo"</div>
   <div class='form-group'>
     <div class='col-sm-offset-2 col-sm-10' style='margin-left:0;'>
    
