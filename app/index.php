@@ -73,9 +73,9 @@ include $_SERVER['DOCUMENT_ROOT']."/header.php";
                         <p class='list-group-item-text'>Přiřazení atletů do disciplín</p>
                     </a>
                     <a href="start-list/start-list-edit.php" class='list-group-item'>
-                        <h4 class='list-group-item-heading'>Upravit startovky</h4>
-                        <p class='list-group-item-text'>Upraví startovní </p>
-                    </
+                        <h4 class='list-group-item-heading'>Upravit/vytisknout startovky</h4>
+                        <p class='list-group-item-text'>Upraví startovní listiny nebo je vytiskne </p>
+                    </a>
                 </div>
             </div><!-- /.col-sm-4 -->
             <div class='col-sm-4'>

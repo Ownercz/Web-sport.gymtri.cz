@@ -27,6 +27,10 @@ include $_SERVER['DOCUMENT_ROOT'] . "/header.php";
         $yearbegin = $_GET['yearbegin'];
     } else {
     }
+    if(isset($_GET['discipline'])){
+        $discipline=$_GET['discipline'];
+
+    }else{$discipline="no";}
 
     if (isset($classes)) {
         $classes = explode(",", $classes);
@@ -52,7 +56,7 @@ include $_SERVER['DOCUMENT_ROOT'] . "/header.php";
         $yearbegin = null;
     }
     include $_SERVER['DOCUMENT_ROOT'] . "/functions/dbconnect.php";
-    if (isset($_GET['id']) && ($_GET['discipline'] == 54)) {
+    if (isset($_GET['id'])&&($discipline=="no")) {
         echo "<div class='alert alert-info' role='alert'>
         <strong>Vybráno!</strong> Závod byl úspěšně vybrán a nyní je potřeba vybrat disciplínu k edtitaci startovky! (pokud byl vybrán špatný závod, klepněte <a href='?'>zde</a>)
       </div>";
@@ -90,34 +94,37 @@ include $_SERVER['DOCUMENT_ROOT'] . "/header.php";
         $request = "SELECT * FROM `event` WHERE `id` = $id";
         $result = $mysqli->query($request);
         while ($row = $result->fetch_array(MYSQLI_ASSOC)) {$eventdate=$row["event_date"];
-            print $eventdate;
+           // print $eventdate;
         //$eventdate=preg_replace("-","/")
         }
+        function athleteinfo($athleteid,$mysqli){
+            $request = "SELECT * FROM `athletes` WHERE `id` = $athleteid";
+            $result = $mysqli->query($request);
+            $row = $result->fetch_array(MYSQLI_ASSOC);
+            return $row;
 
+
+        }
+
+        $athlete = athleteinfo(3,$mysqli);
+        print_r($athlete);
         $request = "SELECT * FROM `event_score` WHERE `event_id` = $id AND `discipline_id` = $discipline";
         $result = $mysqli->query($request);
+        if($result->num_rows === 0)
+        {
+            echo "<a href='?'>Nenalezeno > zpět!</a>";
+        }
+        while ($row = $result->fetch_array(MYSQLI_ASSOC)) {
+            $sex = $row["gender"];
+            $age = $row["age"];
+            echo "<form action='start-list-set-script.php?id=" . $id . "&athleteid=" . $row["athlete_id"] . "' method='POST' target='_blank' onsubmit='setTimeout(function () { window.location.reload(); }, 30)'><tr>
 
-        while ($row = $result->fetch_array(MYSQLI_NUM)) {
-            $i++;
-            $birth = $row[4];
-            $beginyear = $row[6];
-            $beginyear = preg_replace("/ - Name:.*/", "", $beginyear);
-            $now = date("Y");
-            $year = $now - $beginyear;
-            $eventdatecurrent = DateTime::createFromFormat('d-m-Y', $eventdate);
-            //$eventdatecurrent = new DateTime($eventdate);
-            $birthdate = new DateTime($birth);
-            $vek = $eventdatecurrent->diff($birthdate);
-            $vek = $vek->y;
-            $sex = $row[3];
-            echo "<form action='start-list-set-script.php?id=" . $id . "&athleteid=" . $row[0] . "&vek=" . $vek . "&sex=" . $row[3] . "&classid=" . $classid . "&trida=" . $trida . "' method='POST' target='_blank' onsubmit='setTimeout(function () { window.location.reload(); }, 30)'><tr>
-          <td class='labele'>" . $i . " </td>
-           <td class='name'>" . $row[1] . "</td>
-           <td class='lastname'>" . $row[2] . "</td>
+           <td class='name'>" . $row["first_name"] . "</td>
+           <td class='lastname'>" . $row["last_name"] . "</td>
            <td class='sex'>";
-            if ($row[3] == "M") {
+            if ($sex == "M") {
                 echo "<span class='label label-primary'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>";
-            } elseif ($row[3] == "F") {
+            } elseif ($sex == "F") {
                 echo "<span class='label label-danger'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>";
             } else {
             }
