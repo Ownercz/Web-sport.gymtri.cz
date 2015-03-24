@@ -6,7 +6,7 @@
  * Time: 10:51
  */
 
-function athleteinfo($athleteid,$mysqli){
+function athleteInfo($athleteid,$mysqli){
     $request = "SELECT * FROM `athletes` WHERE `id` = $athleteid";
     $result = $mysqli->query($request);
     $row = $result->fetch_array(MYSQLI_ASSOC);
@@ -25,11 +25,43 @@ function removeevent($eventid,$mysqli){
     $result = $mysqli->query($request);
     return $result;
 }
+function eventInfo($eventid,$mysqli){
+    $request = "SELECT * FROM `sport_gymtri_cz`.`event` WHERE `event`.`id` = $eventid";
+    $result = $mysqli->query($request);
+    return $result;
+}
+function eventAge($eventid,$athleteid,$mysqli){
+    $eventinfo = eventInfo($eventid,$mysqli);
+    $athleteinfo= atheleteInfo($athleteid,$mysqli);
+    //$beginyear = preg_replace("/ - Name:.*/", "", $athleteinfo["yearbegin"]);
+    //$now = date("Y");
+    //$year = $now-$beginyear;
+    $eventdatecurrent = new DateTime($eventinfo["event_date"]);
+    $birthdate = new DateTime($athleteinfo["birthdate"]);
+    $vek = $eventdatecurrent->diff($birthdate);
+    return $vek->y;
+
+
+}
+function eventAgeClass($eventid,$athleteid,$mysqli){
+    $eventinfo = eventInfo($eventid,$mysqli);
+    $athleteinfo= athleteInfo($athleteid,$mysqli);
+    $beginyear = preg_replace("/ - Name:.*/", "", $athleteinfo["yearbegin"]);
+    $now = date("Y");
+    $year = $now-$beginyear;
+    /*$eventdatecurrent = new DateTime($eventinfo["event_date"]);
+    $birthdate = new DateTime($athleteinfo["birthdate"]);
+    $vek = $eventdatecurrent->diff($birthdate);*/
+    return $year;
+
+
+}
 function removescore($eventid,$athleteid,$mysqli){
     $request = "DELETE FROM `sport_gymtri_cz`.`event_score` WHERE `event_score`.`event_id` = $eventid AND `event_score`.`athlete_id` = $athleteid ";
     $result = $mysqli->query($request);
     return $result;
 }
+
 
 //funkce pro import trid
 //funkce pro export cele DB
