@@ -1,4 +1,4 @@
-<?PHP include $_SERVER['DOCUMENT_ROOT'] . "/functions/check.php";
+<?PHP include $_SERVER['DOCUMENT_ROOT'] . "/functions/check.php"; include $_SERVER['DOCUMENT_ROOT'] . "/functions/functions.php";
 include $_SERVER['DOCUMENT_ROOT'] . "/header.php";
 ?>
 
@@ -14,47 +14,12 @@ include $_SERVER['DOCUMENT_ROOT'] . "/header.php";
         $id = $_GET['id'];
     } else {
     }
-    if (isset($_GET['dateevent'])) {
-        $dateevent = $_GET['dateevent'];
-    } else {
-        $dateevent = "";
-    }
-    if (isset($_GET['classes'])) {
-        $classes = $_GET['classes'];
-    } else {
-    }
-    if (isset($_GET['yearbegin'])) {
-        $yearbegin = $_GET['yearbegin'];
-    } else {
-    }
+
     if(isset($_GET['discipline'])){
         $discipline=$_GET['discipline'];
 
     }else{$discipline="no";}
 
-    if (isset($classes)) {
-        $classes = explode(",", $classes);
-    } else {
-        $classes = array();
-    }
-    if (isset($_GET['classadd'])) {
-        array_push($classes, $_GET['classadd']);
-        $classes = implode(",", $classes);
-    } else {
-        $classes = null;
-    }
-
-    if (isset($yearbegin)) {
-        $yearbegin = explode(",", $yearbegin);
-    } else {
-        $yearbegin = array();
-    }
-    if (isset($_GET['yearadd'])) {
-        array_push($yearbegin, $_GET['yearadd']);
-        $yearbegin = implode(",", $yearbegin);
-    } else {
-        $yearbegin = null;
-    }
     include $_SERVER['DOCUMENT_ROOT'] . "/functions/dbconnect.php";
     if (isset($_GET['id'])&&($discipline=="no")) {
         echo "<div class='alert alert-info' role='alert'>
@@ -97,17 +62,17 @@ include $_SERVER['DOCUMENT_ROOT'] . "/header.php";
            // print $eventdate;
         //$eventdate=preg_replace("-","/")
         }
-        function athleteinfo($athleteid,$mysqli){
+      /*  function athleteinfo($athleteid,$mysqli){
             $request = "SELECT * FROM `athletes` WHERE `id` = $athleteid";
             $result = $mysqli->query($request);
             $row = $result->fetch_array(MYSQLI_ASSOC);
             return $row;
 
 
-        }
+        }*/
 
-        $athlete = athleteinfo(3,$mysqli);
-        print_r($athlete);
+        //$athlete = athleteinfo(3,$mysqli);
+        //print_r($athlete);
         $request = "SELECT * FROM `event_score` WHERE `event_id` = $id AND `discipline_id` = $discipline";
         $result = $mysqli->query($request);
         if($result->num_rows === 0)
@@ -115,9 +80,11 @@ include $_SERVER['DOCUMENT_ROOT'] . "/header.php";
             echo "<a href='?'>Nenalezeno > zpět!</a>";
         }
         while ($row = $result->fetch_array(MYSQLI_ASSOC)) {
-            $sex = $row["gender"];
-            $age = $row["age"];
-            echo "<form action='start-list-set-script.php?id=" . $id . "&athleteid=" . $row["athlete_id"] . "' method='POST' target='_blank' onsubmit='setTimeout(function () { window.location.reload(); }, 30)'><tr>
+            $athlete=athleteinfo($row["athlete_id"],$mysqli);
+
+            //$sex = $row["gender"];
+           // $age = $row["age"];
+            echo "<form action='start-list-edit-script.php?id=" . $id . "&athleteid=" . $row["athlete_id"] . "' method='POST' target='_blank' onsubmit='setTimeout(function () { window.location.reload(); }, 30)'><tr>
 
            <td class='name'>" . $row["first_name"] . "</td>
            <td class='lastname'>" . $row["last_name"] . "</td>
@@ -130,24 +97,22 @@ include $_SERVER['DOCUMENT_ROOT'] . "/header.php";
             }
 
 
-            echo "</td>
-          <td class='class'>" . $year . "." . $class . "</td><td class='birth'>" . $birth . " | Věk: " . $vek . "
-
-         </td><td class='discipline'> <select name='discipline'>";
-            foreach ($disciplines as &$discipline) {
-                if (($vek <= 14) && ($sex == "M") && ($discipline == "100m" || $discipline == "3000m" || $discipline == "50m plavání" || $discipline == "100m plavání" || $discipline == "granát")) {
-                } elseif (($vek <= 14) && ($sex == "F") && ($discipline == "100m" || $discipline == "3000m" || $discipline == "50m plavání" || $discipline == "100m plavání" || $discipline == "granát")) {
-                } elseif (($vek == 15 || $vek == 16) && ($sex == "M") && ($discipline == "60m" || $discipline == "1500m" || $discipline == "25m plavání" || $discipline == "100m plavání" || $discipline == "míč")) {
-                } elseif (($vek == 15 || $vek == 16) && ($sex == "F") && ($discipline == "60m" || $discipline == "3000m" || $discipline == "25m plavání" || $discipline == "100m plavání" || $discipline == "míč")) {
-                } elseif (($vek > 16) && ($sex == "M") && ($discipline == "60m" || $discipline == "1500m" || $discipline == "25m plavání" || $discipline == "100m plavání" || $discipline == "míč")) {
-                } elseif (($vek > 16) && ($sex == "F") && ($discipline == "60m" || $discipline == "3000m" || $discipline == "25m plavání" || $discipline == "100m plavání" || $discipline == "míč")) {
+            echo "<td class='discipline'> <select name='discipline'>";
+            foreach ($disciplines as &$disciplineName) {
+                if (($vek <= 14) && ($sex == "M") && ($disciplineName == "100m" || $disciplineName == "3000m" || $disciplineName == "50m plavání" || $disciplineName == "100m plavání" || $disciplineName == "granát")) {
+                } elseif (($vek <= 14) && ($sex == "F") && ($disciplineName == "100m" || $disciplineName == "3000m" || $disciplineName == "50m plavání" || $disciplineName == "100m plavání" || $disciplineName == "granát")) {
+                } elseif (($vek == 15 || $vek == 16) && ($sex == "M") && ($disciplineName == "60m" || $disciplineName == "1500m" || $disciplineName == "25m plavání" || $disciplineName == "100m plavání" || $disciplineName == "míč")) {
+                } elseif (($vek == 15 || $vek == 16) && ($sex == "F") && ($disciplineName == "60m" || $disciplineName == "3000m" || $disciplineName == "25m plavání" || $disciplineName == "100m plavání" || $disciplineName == "míč")) {
+                } elseif (($vek > 16) && ($sex == "M") && ($disciplineName == "60m" || $disciplineName == "1500m" || $disciplineName == "25m plavání" || $disciplineName == "100m plavání" || $disciplineName == "míč")) {
+                } elseif (($vek > 16) && ($sex == "F") && ($disciplineName == "60m" || $disciplineName == "3000m" || $disciplineName == "25m plavání" || $disciplineName == "100m plavání" || $disciplineName == "míč")) {
                 } else {
-                    echo "<option value='" . $discipline . "'>" . $discipline . "</option>";
+                    echo "<option value='" . $disciplineName."'";
+                    if($disciplinesid[$i]==$discipline){echo"selected";}
+                    echo">" . $disciplineName . "</option>";
                 }
             }
 
-            echo "</select></td> <td class='save'><select name='sebrlecup'>";
-            echo "<option value='no'>Ne</option><option value='yes'>Ano</option></select><input type='submit' class='btn btn-sm btn-default' value='Uložit'></input></td></form></tr>
+            echo "><input type='submit' class='btn btn-sm btn-default' value='Uložit'></input></td></form></tr>
         ";
         }
 
