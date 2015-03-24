@@ -6,7 +6,7 @@ include $_SERVER['DOCUMENT_ROOT'] . "/header.php";
 
     <!-- Main jumbotron for a primary marketing message or call to action -->
     <div class='page-header'>
-        <h1><span class="label label-default">Vytisknutí startovek!!!</span></h1>
+        <h1><span class="label label-default">Úprava závodníků v jednotlivých disciplínách</span></h1>
     </div>
 
     <?PHP
@@ -82,8 +82,8 @@ include $_SERVER['DOCUMENT_ROOT'] . "/header.php";
         while ($row = $result->fetch_array(MYSQLI_ASSOC)) {
             $athlete=athleteinfo($row["athlete_id"],$mysqli);
 
-            //$sex = $row["gender"];
-           // $age = $row["age"];
+            $sex = $row["gender"];
+            $age = $row["age"];
             echo "<form action='start-list-edit-script.php?id=" . $id . "&athleteid=" . $row["athlete_id"] . "' method='POST' target='_blank' onsubmit='setTimeout(function () { window.location.reload(); }, 30)'><tr>
 
            <td class='name'>" . $row["first_name"] . "</td>
@@ -95,24 +95,24 @@ include $_SERVER['DOCUMENT_ROOT'] . "/header.php";
                 echo "<span class='label label-danger'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>";
             } else {
             }
-
+            echo$disciplines[$discipline];
 
             echo "<td class='discipline'> <select name='discipline'>";
-            foreach ($disciplines as &$disciplineName) {
-                if (($vek <= 14) && ($sex == "M") && ($disciplineName == "100m" || $disciplineName == "3000m" || $disciplineName == "50m plavání" || $disciplineName == "100m plavání" || $disciplineName == "granát")) {
-                } elseif (($vek <= 14) && ($sex == "F") && ($disciplineName == "100m" || $disciplineName == "3000m" || $disciplineName == "50m plavání" || $disciplineName == "100m plavání" || $disciplineName == "granát")) {
-                } elseif (($vek == 15 || $vek == 16) && ($sex == "M") && ($disciplineName == "60m" || $disciplineName == "1500m" || $disciplineName == "25m plavání" || $disciplineName == "100m plavání" || $disciplineName == "míč")) {
-                } elseif (($vek == 15 || $vek == 16) && ($sex == "F") && ($disciplineName == "60m" || $disciplineName == "3000m" || $disciplineName == "25m plavání" || $disciplineName == "100m plavání" || $disciplineName == "míč")) {
-                } elseif (($vek > 16) && ($sex == "M") && ($disciplineName == "60m" || $disciplineName == "1500m" || $disciplineName == "25m plavání" || $disciplineName == "100m plavání" || $disciplineName == "míč")) {
-                } elseif (($vek > 16) && ($sex == "F") && ($disciplineName == "60m" || $disciplineName == "3000m" || $disciplineName == "25m plavání" || $disciplineName == "100m plavání" || $disciplineName == "míč")) {
-                } else {
+            foreach ($disciplines as &$disciplineName) { //@Overrides simple input!
+                /*if (($age <= 14) && ($sex == "M") && ($disciplineName == "100m" || $disciplineName == "3000m" || $disciplineName == "50m plavání" || $disciplineName == "100m plavání" || $disciplineName == "granát")) {
+                } elseif (($age <= 14) && ($sex == "F") && ($disciplineName == "100m" || $disciplineName == "3000m" || $disciplineName == "50m plavání" || $disciplineName == "100m plavání" || $disciplineName == "granát")) {
+                } elseif (($age == 15 || $age == 16) && ($sex == "M") && ($disciplineName == "60m" || $disciplineName == "1500m" || $disciplineName == "25m plavání" || $disciplineName == "100m plavání" || $disciplineName == "míč")) {
+                } elseif (($age == 15 || $age == 16) && ($sex == "F") && ($disciplineName == "60m" || $disciplineName == "3000m" || $disciplineName == "25m plavání" || $disciplineName == "100m plavání" || $disciplineName == "míč")) {
+                } elseif (($age > 16) && ($sex == "M") && ($disciplineName == "60m" || $disciplineName == "1500m" || $disciplineName == "25m plavání" || $disciplineName == "100m plavání" || $disciplineName == "míč")) {
+                } elseif (($age > 16) && ($sex == "F") && ($disciplineName == "60m" || $disciplineName == "3000m" || $disciplineName == "25m plavání" || $disciplineName == "100m plavání" || $disciplineName == "míč")) {
+                } else {*/
                     echo "<option value='" . $disciplineName."'";
-                    if($disciplinesid[$i]==$discipline){echo"selected";}
+                    //if($disciplinesid[$i]==$discipline){echo"selected";}
                     echo">" . $disciplineName . "</option>";
-                }
+                //}
             }
 
-            echo "><input type='submit' class='btn btn-sm btn-default' value='Uložit'></input></td></form></tr>
+            echo "><input type='submit' class='btn btn-sm btn-default' value='Změnit'></input></td></form></tr>
         ";
         }
 
