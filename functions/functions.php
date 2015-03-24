@@ -30,3 +30,7 @@ function removescore($eventid,$athleteid,$mysqli){
     $result = $mysqli->query($request);
     return $result;
 }
+
+//funkce pro import trid
+//funkce pro export cele DB
+//funkce pro export vysledku souteze do csv
