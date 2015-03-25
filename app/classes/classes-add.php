@@ -1,4 +1,5 @@
 <?PHP include $_SERVER['DOCUMENT_ROOT'] . "/functions/check.php";
+include $_SERVER['DOCUMENT_ROOT'] . "/functions/functions.php";
 include $_SERVER['DOCUMENT_ROOT'] . "/header.php";
 ?>
 
@@ -74,67 +75,77 @@ include $_SERVER['DOCUMENT_ROOT'] . "/header.php";
         echo"<div class='alert alert-danger' role='alert'>";
         echo"Nebyly nalezeny žádné třídy! <strong><a href='javascript:history.go(-1)'>Před přidáním tříd do závodu je nutné vytvořit třídy.</a></strong>";
         echo"</div>";
-    }else{
+    }else {
         echo "<h2><span class='label label-warning'>2. Vyberte třídy</span></h2><form><div class='list-group'>";
-        while ($row = $result->fetch_array(MYSQLI_NUM)) {
-            $classname=$row[0];
-            $beginyear = $row[1];
-            //$beginyear = preg_replace("/ - Name:.*/", "", $beginyear);
-            $now = date("Y");
-            $year = $now - $beginyear;
+        echo "<table class='table table-hover' style='margin-bottom:0px;'>
 
-            echo "<a href='?id=" . $id ;
-            //if(isset($classes)){echo"&classes=" . $classes;}
-           // if(isset($classes)){echo"&classes=" . $classes;}
-            //echo"&classadd=" . $classname . "&yearbegin=" . $yearbegin . "&yearadd=" . $beginyear . "' class='list-group-item'>Třída: <strong>" . $year . "." . $row[0] . "</strong> Rok začátku:" . $row[1] . " </a>";
-            echo"&classes=";
-            if($tridy!=null){echo$tridy.",";}
-
-            echo$classname."&yearbegin=";
-            if($zacatek!=null){echo $zacatek.",";}
-            echo$beginyear."' class='list-group-item'>Třída: <strong>" . $year . "." . $classname . "</strong> Rok začátku:" . $row[1] . " </a>";
-        }
-        echo "</div></form>";
-        $i = 0;
-        //$tridy = array();
-        //$zacatek = array();
-        //$tridy = explode(",", $classes);
-        //$tridy = implode(",", $classes);
-        //$zacatek = explode(",", $yearbegin);
-        //$zacatek = $yearbegin;
-        $count = count($classes);
-        //$count--;
-        echo$count;        //$count--; Nope?
-        echo "<div class='alert alert-success' role='alert'><strong>Přidáno:</strong>   ";
-        if($classes==null){echo"***";}else{
-        while ($i < $count) {
-            $now = date("Y");
-            //$year = 2015 - $yearbegin[$i];
-            $year=$now-$yearbegin[$i];
-            //print $yearbegin;
-            print$yearbegin[0] . "." . $classes[$i] . ",";
+        <thead>
+        <tr>
+            <th>#</th>
+            <th>Třída</th>
+            <th>Přidat</th>
+        </tr>
+        </thead>
+        <tbody>";
+        $i=0;
+        while ($row = $result->fetch_array(MYSQLI_ASSOC)){
+        $singleClass=$row["class"]; $yearbegin=$row["yearbegin"];
+            $newrequest= "SELECT * FROM `athletes` WHERE `class` LIKE '$singleClass' AND `yearbegin` = '$yearbegin' LIMIT 0,1";
+            $newresult = $mysqli->query($newrequest);
+            while ($newrow = $newresult->fetch_array(MYSQLI_ASSOC)){$neededId=$newrow["id"];}
+        echo "<form action='classes-add-script.php?class=" . $row["class"] . "&yearbegin=" . $row["yearbegin"] . "' method='POST' target='_blank' onsubmit='setTimeout(function () { window.location.reload(); }, 30)'>
+                <tr><td>" . $i . "</td><td class='name'>" . className($id,$neededId,$mysqli) . "</td>";
+            echo "<td class='discipline'><input type='submit' class='btn btn-xs btn-info'    value='Přidat'></input></td></form></tr>
+        ";
             $i++;
-        }}
-        echo "<br> <strong>Každou třídu přidávejte pouze jednou! V případě chyby klepněte <a href='?id=" . $id . "'>sem</a>.</strong>
-      </div>";
-        echo "<div class='col-sm-4' style='float:right;'>
-          <div class='list-group'>
-            <a href='classes-add-script.php?id=" . $id . "&classes=" . $tridy . "&yearbegin=" . $zacatek . "' class='list-group-item active'>
-              <h4 class='list-group-item-heading'>Dokončit registraci tříd</h4>
-              <p class='list-group-item-text'>Po zvolení tříd již není možné dělat další změny do seznamu.</p>
-            </a>
-            <a href='?' class='list-group-item'>
-              <h4 class='list-group-item-heading'>Začít odznova</h4>
-              <p class='list-group-item-text'>Nějaká chyba? Stačí klepnout sem a vybrat znova.</p>
-            </a>
-            <a href='#' class='list-group-item'>
-              <h4 class='list-group-item-heading'>Vyskytl se problém?</h4>
-              <p class='list-group-item-text'>Kontakt: radim@lipovcan.cz Mobil: 728450179</p>
-            </a>
-          </div>
-        </div>";
+        }
+        echo"</tbody></table>";
 
-    }} else {
+        /*
+         * Výpis tříd zaregistrovaných v soutěži
+         */
+
+        $requestx = "SELECT * FROM `classes` WHERE `event_id` = $id";
+        $resultx = $mysqli->query($requestx);
+        $row_cnt = $resultx->num_rows;
+        if($row_cnt==0){
+            echo"<div class='alert alert-danger' role='alert'>";
+            echo"Nebyly nalezeny žádné třídy! <strong><a href='javascript:history.go(-1)'>Před přidáním tříd do závodu je nutné vytvořit třídy.</a></strong>";
+            echo"</div>";
+        }else {
+
+
+        echo "<h2><span class='label label-warning'>Zaregistrované třídy v soutěži</span></h2><form><div class='list-group'>";
+        echo "<table class='table table-hover' style='margin-bottom:0px;'>
+
+        <thead>
+        <tr>
+            <th>#</th>
+            <th>Třída</th>
+            <th>Odstranit</th>
+        </tr>
+        </thead>
+        <tbody>";
+        $i=0;
+        while ($rowx = $resultx->fetch_array(MYSQLI_ASSOC)){
+            $singleClass=$rowx["type"]; $yearbegin=$rowx["yearbegin"];
+            $newrequest= "SELECT * FROM `athletes` WHERE `class` LIKE '$singleClass' AND `yearbegin` = '$yearbegin' LIMIT 0,1";
+            $newresult = $mysqli->query($newrequest);
+            while ($newrow = $newresult->fetch_array(MYSQLI_ASSOC)){$neededId=$newrow["id"];}
+
+            echo "<tr><td>" . $i . "</td><td class='name'>" . className($id,$neededId,$mysqli). "</td>";
+            echo "<td class='discipline'><input type='submit' class='btn btn-xs btn-info'    value='Odstranit'></input></td></form></tr>
+        ";
+            $i++;
+        }
+        echo"</tbody></table>";
+        echo"<a href='start-list-edit-script.php?&delete=1&id=" . $row["id"] . "' target='_blank' onclick='setTimeout(function () { window.location.reload(); }, 30)'><button type='button' class='btn btn-xs btn-danger'>
+  <span class='glyphicon glyphicon-trash' aria-hidden='true'></span> Odstranit
+</button></a>";
+            }
+
+
+    }} else { //Výběr soutěží
         $request = "SELECT * FROM `event` ORDER BY `event_date`";
         $result = $mysqli->query($request);
         $row_cnt = $result->num_rows;
