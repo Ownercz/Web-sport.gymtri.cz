@@ -79,6 +79,7 @@ include $_SERVER['DOCUMENT_ROOT']."/header.php";
          echo "</td>
           <td class='class'>" . eventAgeClass($event_id, $athlete["id"], $mysqli) . "." . $athlete["class"] . "</td><td class='birth'>" . $athlete["birthdate"] . " | Věk: " . $row["age"] . "</td>";
          echo "<td class='class'><span class='label label-info' style='font-size:100%;'>" . $disciplines[$row["discipline_id"]-1] . "</span></td>";
+         echo"<td class='class'><input type='text' name='score' placeholder='".rand(0,59).",".rand(0,59)."'></input></td><td><input type='submit' class='btn btn-sm btn-default' value='Vložit'></input></td>";
          }
         echo"</tbody></table>";
         /* echo "</td><td class='discipline'><input type='submit' class='btn btn-xs btn-info'    value='Změnit'></input></td><td><a href='start-list-edit-script.php?&delete=1&id=" . $row["id"] . "' target='_blank' onclick='setTimeout(function () { window.location.reload(); }, 30)'><button type='button' class='btn btn-xs btn-danger'>
