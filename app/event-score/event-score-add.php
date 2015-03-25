@@ -79,7 +79,7 @@ include $_SERVER['DOCUMENT_ROOT']."/header.php";
          echo "</td>
           <td class='class'>" . eventAgeClass($event_id, $athlete["id"], $mysqli) . "." . $athlete["class"] . "</td><td class='birth'>" . $athlete["birthdate"] . " | Věk: " . $row["age"] . "</td>";
          echo "<td class='class'><span class='label label-info' style='font-size:100%;'>" . $disciplines[$row["discipline_id"]-1] . "</span></td>";
-         echo"<td class='class'><input type='text' name='score' placeholder='".rand(0,59).",".rand(0,59)."'></input></td><td><input type='submit' class='btn btn-sm btn-default' value='Vložit'></input></td>";
+         echo"<td class='class'><input type='text' name='vykon' placeholder='".rand(0,59).",".rand(0,59)."'></td><td><input type='submit' class='btn btn-sm btn-default' value='Vložit'></td>";
          }
         echo"</tbody></table>";
         /* echo "</td><td class='discipline'><input type='submit' class='btn btn-xs btn-info'    value='Změnit'></input></td><td><a href='start-list-edit-script.php?&delete=1&id=" . $row["id"] . "' target='_blank' onclick='setTimeout(function () { window.location.reload(); }, 30)'><button type='button' class='btn btn-xs btn-danger'>
@@ -119,7 +119,10 @@ include $_SERVER['DOCUMENT_ROOT']."/header.php";
 echo"</select></li> <li class='score'><input type='text' name='vykon' size='10'></input></li><li class='save'><input type='submit' class='btn btn-sm btn-default' value='Uložit'></input></li></ul></form>
         ";
     */ }
-     
+     //not null
+          echo"<div class='alert alert-info' role='alert'>
+        <strong>Vložené výsledky</strong> V případě chyby klepněte na smazat a vložte znovu :)
+      </div>";
       }else{exit;}?>
       
     <div class="row">
@@ -153,9 +156,6 @@ echo"</select></li> <li class='score'><input type='text' name='vykon' size='10'>
             <li class="list-group-item">100m plavání - čas 1 minuta 13,11s zapiš: <strong>01:13,11</strong> </li>
           </ul>
         </div><!-- /.col-sm-4 --></div>
-        <div class="alert alert-info" role="alert">
-        <strong>Vložené výsledky</strong> V případě chyby klepněte na smazat a vložte znovu :)
-      </div>
         <?php /*
       $request= "SELECT * FROM `event_score` WHERE `event_id` = $id AND `class_id` = '$classid' ORDER BY `event_score`.`score_points` DESC"  ; 
       $result = $mysqli->query($request);
@@ -186,9 +186,9 @@ $i++;}
        */    ?>
      
       
-      <div class="alert alert-info" role="alert">
+     <!-- <div class="alert alert-info" role="alert">
         <strong>Upozornění!</strong> Při pozdějším zadávání výsledků se počítá věk atleta dle data zaregistrování soutěže a ne podle aktuálního data.
-      </div>
+      </div> -->
 
      
 
