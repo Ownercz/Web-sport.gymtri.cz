@@ -28,18 +28,20 @@ function removeevent($eventid,$mysqli){
 function eventInfo($eventid,$mysqli){
     $request = "SELECT * FROM `sport_gymtri_cz`.`event` WHERE `event`.`id` = $eventid";
     $result = $mysqli->query($request);
-    return $result;
+    $row = $result->fetch_array(MYSQLI_ASSOC);
+    return $row;
 }
 function eventAge($eventid,$athleteid,$mysqli){
     $eventinfo = eventInfo($eventid,$mysqli);
-    $athleteinfo= atheleteInfo($athleteid,$mysqli);
+    $athleteinfo= athleteInfo($athleteid,$mysqli);
     //$beginyear = preg_replace("/ - Name:.*/", "", $athleteinfo["yearbegin"]);
     //$now = date("Y");
     //$year = $now-$beginyear;
     $eventdatecurrent = new DateTime($eventinfo["event_date"]);
     $birthdate = new DateTime($athleteinfo["birthdate"]);
     $vek = $eventdatecurrent->diff($birthdate);
-    return $vek->y;
+    $vek=$vek->y;
+    return $vek;
 
 
 }
@@ -55,6 +57,11 @@ function eventAgeClass($eventid,$athleteid,$mysqli){
     return $year;
 
 
+}
+function className($eventid,$athleteid,$mysqli){
+    $year = eventAgeClass($eventid,$athleteid,$mysqli);
+    $athleteinfo= athleteInfo($athleteid,$mysqli);
+    return $year.".".$athleteinfo["class"];
 }
 function removescore($eventid,$athleteid,$mysqli){
     $request = "DELETE FROM `sport_gymtri_cz`.`event_score` WHERE `event_score`.`event_id` = $eventid AND `event_score`.`athlete_id` = $athleteid ";

@@ -1,15 +1,18 @@
-<?PHP include $_SERVER['DOCUMENT_ROOT'] . "/functions/check.php"; ?>
+<?PHP include $_SERVER['DOCUMENT_ROOT'] . "/functions/check.php";
+include $_SERVER['DOCUMENT_ROOT'] . "/functions/functions.php";
+?>
+<?PHP echo"
 <!DOCTYPE html>
-<html xmlns="http://www.w3.org/1999/xhtml">
-<meta charset="UTF-8"/>
+<html xmlns='http://www.w3.org/1999/xhtml'>
+<meta charset='UTF-8'/>
 <head>
     <title></title>
-    <style type="text/css">
+    <style type='text/css'>
         body {
             margin: 0;
             padding: 0;
             background-color: #FAFAFA;
-            font: 12pt "Tahoma";
+            font: 12pt 'Tahoma';
         }
 
         h1 {
@@ -117,9 +120,8 @@
 
     </style>
 </head>
-<body>
+<body>";
 
-<?PHP
 if (isset($_GET['id'])) {
     $id = $_GET['id'];
 } else {
@@ -155,14 +157,22 @@ if (isset($_GET['id'])) {
     $request = "SELECT * From event_score where event_id = $id AND discipline_id = $discipline;";
     $result = $mysqli->query($request);
     $i = 1;
-    echo "<table class='thetable'><tr><th>#</th><th>Jméno</th><th>Příjmení</th><th>1. pokus</th><th>2. pokus</th><th>3. pokus</th></tr>";
+    echo "<table class='thetable'><tr><th>#</th><th>Jméno</th><th>Příjmení</th><th>Věk</th><th>Třída</th><th>1. pokus</th><th>2. pokus</th><th>3. pokus</th></tr>";
     while ($row = $result->fetch_array(MYSQLI_NUM)) {
+
+        $athlete=athleteInfo($row[3],$mysqli);
+       // echo$row[4];
+        //$year=eventAge($id,$row[4],$mysqli);
+        $class=eventAgeClass($id,$row[3],$mysqli);
+
         echo "
           <tr><td>" . $i . ". </td><td>
            " . $row[10] . "</td><td>
-           " . $row[11] . "</td><td class='vykon'>
+           " . $row[11] . "</td><td>
+           " . eventAge($id,$row[3],$mysqli) . "</td><td>
+           " . className($id,$row[3],$mysqli) . "</td><td class='vykon'>
             </td><td class='vykon'>
-             </td><td class='vykon'>
+             </td><td class='vykon'></td>
            
            ";
 
@@ -170,14 +180,10 @@ if (isset($_GET['id'])) {
         $i++;
     }
 }
-echo "</table>";
+echo "</table></div></div></div>";
 
 
-echo "<div style='font-size:10px; position:absolute;bottom:0;'><div style='float:right;'><strong>Možná udělat informace jak zapisovat výsledky?<br><br><br>@is.gymtri.cz 2015</strong></div> <div style='float:left;'><strong>Informace:</strong><br>
-   V případě <strong>diskvalifikace</strong> přeškrtnout celý řádek.<br>Závodníci jsou připuštění ke startu za třídu pouze, pokud jsou v této startovní listině! <br>V případě náhradníka je nutné nejdříve tuto věc nahlásit u zpracování výsledků.
-     </div></div>
-    </div></div>
-</div>";
+
 
 
 ?>
