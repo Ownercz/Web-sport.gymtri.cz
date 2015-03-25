@@ -32,8 +32,8 @@
             
             <form name="formatus" action="athletes-add-script.php" method="POST">
             <div id="dynamicInput">
-            <input type='text' class='form-control' name='trida1' placeholder='Třída "A"' value=''><input type='text' class='form-control' name='jmeno1' placeholder='Jméno "Pepa"'><input type='text' class='form-control' name='prijmeni1' placeholder='Příjmení "Novák"'><input type='text' class='form-control' name='sex1' placeholder='Muž "M" Žena "F"'><input type='text' class='form-control'name='narozeni1' placeholder='Tvar "dd-mm-yyyy"' ><input type='number' class='form-control' min='1900' max='2100' name='zacatek1' placeholder='"2008"' >
-     
+            <input type='text' class='form-control' name='trida1' placeholder='Třída "A"' value=''required><input type='text' class='form-control' name='jmeno1' placeholder='Jméno "Pepa"'required><input type='text' class='form-control' name='prijmeni1' placeholder='Příjmení "Novák"'required><input type='text' class='form-control' name='sex1' placeholder='Muž "M" Žena "F"'required><input type='text' class='form-control'name='narozeni1' placeholder='Tvar "dd-mm-yyyy"' required><input type='number' class='form-control' min='1900' max='2100' name='zacatek1' placeholder='"2008"' required>
+
      </div>
                 <br>
      <input type="button" value="Přidat dalšího" onClick="addInput('dynamicInput');">
@@ -76,7 +76,7 @@
      else {
            
           var newdiv = document.createElement('div');
-          newdiv.innerHTML = "<input type='text' class='form-control' name='trida" + (counter + 1) + "' placeholder='Třída &quot;A&quot;' value=''><input type='text' class='form-control' name='jmeno" + (counter + 1) + "' placeholder='Jméno &quot;Pepa&quot;'><input type='text' class='form-control' name='prijmeni" + (counter + 1) + "' placeholder='Příjmení &quot;Novák&quot;'><input type='text' class='form-control' name='sex" + (counter + 1) + "' placeholder='Muž &quot;M&quot; Žena &quot;F&quot;'><input type='text' class='form-control' name='narozeni" + (counter + 1) + "' placeholder='Tvar &quot;dd-mm-yyyy&quot;' ><input type='number' class='form-control' min='1900' placeholder='&quot;2008&quot;'max='2100'name='zacatek" + (counter + 1) + "' >";
+          newdiv.innerHTML = "<input type='text' class='form-control' name='trida" + (counter + 1) + "' placeholder='Třída &quot;A&quot;' value=''required><input type='text' class='form-control' name='jmeno" + (counter + 1) + "' placeholder='Jméno &quot;Pepa&quot;'required><input type='text' class='form-control' name='prijmeni" + (counter + 1) + "' placeholder='Příjmení &quot;Novák&quot;'required><input type='text' class='form-control' name='sex" + (counter + 1) + "' placeholder='Muž &quot;M&quot; Žena &quot;F&quot;'required><input type='text' class='form-control' name='narozeni" + (counter + 1) + "' placeholder='Tvar &quot;dd-mm-yyyy&quot;' required><input type='number' class='form-control' min='1900' placeholder='&quot;2008&quot;'max='2100'name='zacatek" + (counter + 1) + "' required>";
           document.getElementById(divName).appendChild(newdiv);
            document.getElementsByName("trida"+(counter + 1)).item(0).value=document.getElementsByName("trida"+(counter)).item(0).value;
            document.getElementsByName("zacatek"+(counter + 1)).item(0).value=document.getElementsByName("zacatek"+(counter)).item(0).value;

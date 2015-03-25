@@ -7,7 +7,7 @@ if(isset($_GET['delete'])){
     echo "<script>window.close();</script>";
 }elseif(isset($_GET['id'])){
     $id=$_GET['id'];
-    $year=$_GET['yearbegin'];
+    $yearbegin=$_GET['yearbegin'];
     $class=$_GET['class'];
     $request = "INSERT INTO `sport_gymtri_cz`.`classes` (`id`, `yearbegin`, `type`, `event_id`) VALUES (NULL, '$yearbegin', '$class', '$id')";
     $result = $mysqli->query($request);
