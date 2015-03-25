@@ -95,9 +95,10 @@ include $_SERVER['DOCUMENT_ROOT'] . "/header.php";
                 while ($newrow = $newresult->fetch_array(MYSQLI_ASSOC)) {
                     $neededId = $newrow["id"];
                 }
-                echo "<form action='classes-add-script.php?class=" . $row["class"] . "&yearbegin=" . $row["yearbegin"] . "' method='POST' target='_blank' onsubmit='setTimeout(function () { window.location.reload(); }, 30)'>
+                echo "
                 <tr><td>" . $i . "</td><td class='name'>" . className($id, $neededId, $mysqli) . "</td>";
-                echo "<td class='discipline'><input type='submit' class='btn btn-xs btn-info'    value='Přidat'></input></td></form></tr>
+                echo "<td class='discipline'><a href='classes-add-script.php?class=" . $row["class"] . "&yearbegin=" . $row["yearbegin"] . "&id=".$id."' target='_blank' onclick='setTimeout(function () { window.location.reload(); }, 30)'><button type='button' class='btn btn-xs btn-success'>
+  <span class='glyphicon glyphicon-pencil' aria-hidden='true'></span> Přidat</button></a></td></form></tr>
         ";
                 $i++;
             }

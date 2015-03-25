@@ -5,14 +5,20 @@ if(isset($_GET['delete'])){
     $request = "DELETE FROM `sport_gymtri_cz`.`classes` WHERE `classes`.`id` = $id";
     $result = $mysqli->query($request);
     echo "<script>window.close();</script>";
+}elseif(isset($_GET['id'])){
+    $id=$_GET['id'];
+    $year=$_GET['yearbegin'];
+    $class=$_GET['class'];
+    $request = "INSERT INTO `sport_gymtri_cz`.`classes` (`id`, `yearbegin`, `type`, `event_id`) VALUES (NULL, '$yearbegin', '$class', '$id')";
+    $result = $mysqli->query($request);
+    echo "<script>window.close();</script>";
+}else{
+    header('Location: ../index.php');
 }
 
-
-
-
-
-
-
+/*
+ * @deprecated - část k vymazání ze starého systému přidávání classes
+ */
 
 /*$classes = array();
 $yearbegin = array();
