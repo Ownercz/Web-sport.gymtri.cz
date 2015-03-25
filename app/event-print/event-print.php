@@ -43,7 +43,7 @@
       $result = $mysqli->query($request);
       echo"<h2><span class='label label-warning'>1. Vyberte soutěž</span></h2><form><div class='list-group'>";
       while($row = $result->fetch_array(MYSQLI_NUM)){echo"<a href='?id=".$row[0]."&date=".$row[4]."' class='list-group-item'>Název: ".$row[1]." Datum: ".$row[4]."</a>";}
-      echo"</div></form>";
+      echo"</div>";
       }
       
       ?>

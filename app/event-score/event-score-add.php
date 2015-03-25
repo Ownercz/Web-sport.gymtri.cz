@@ -1,5 +1,6 @@
-<?PHP include $_SERVER['DOCUMENT_ROOT']."/functions/check.php"; 
-        include $_SERVER['DOCUMENT_ROOT']."/header.php";
+<?PHP include $_SERVER['DOCUMENT_ROOT']."/functions/check.php";
+include $_SERVER['DOCUMENT_ROOT']."/functions/functions.php";
+include $_SERVER['DOCUMENT_ROOT']."/header.php";
 ?>
 
     <div class='container theme-showcase' role='main'>
@@ -8,34 +9,17 @@
       <div class='page-header'>
         <h1><span class="label label-default">Vložení výsledků</span></h1>
       </div>
-      <div class="alert alert-warning" role="alert">
-        <strong>Upozornění!</strong> Výsledky ukládejte po jednotlivcích.
-      </div>
-           <table class='table table-hover' style='margin-bottom:0px;'>
-      <thead>
-        <tr>
-          <th>#</th>
-          <th>Jméno</th>
-          <th>Příjmení</th>
-          <th>Pohlaví</th>
-          <th>Třída</th>
-          <th>Datum narození</th>
-          <th>Disciplína</th>
-          <th>Výkon</th>
-          <th></th>
-        </tr>
-      </thead>
-      <tbody></tbody>
-    </table>
+
       <?PHP
 
-      if(isset($_GET['id'])){$id= $_GET['id'];}else{}
-      if(isset($_GET['trida'])){$trida= $_GET['trida'];}else{}
+      if(isset($_GET['id'])){$event_id= $_GET['id'];}
+      if(isset($_GET['discipline'])){$discipline_id= $_GET['discipline'];}
+      //if(isset($_GET['trida'])){$trida= $_GET['trida'];}else{}
      //NOT USED if(isset($_GET['class'])){$class= $_GET['class'];}else{}
-      if(isset($_GET['classid'])){$classid= $_GET['classid'];}else{}
-      if(isset($_GET['beginyear'])){$beginyear= $_GET['beginyear'];}else{}
+      //if(isset($_GET['classid'])){$classid= $_GET['classid'];}else{}
+     // if(isset($_GET['beginyear'])){$beginyear= $_GET['beginyear'];}else{}
        include $_SERVER['DOCUMENT_ROOT']."/functions/dbconnect.php";
-     $request2="SELECT * FROM `event` WHERE `id` = $id ORDER BY `event_date` DESC";
+     $request2="SELECT * FROM `event` WHERE `id` = $event_id ORDER BY `event_date` DESC";
       $result2 = $mysqli->query($request2);
       while($row2 = $result2->fetch_array(MYSQLI_NUM)){
       $eventdate=$row2[4]; 
@@ -43,7 +27,9 @@
    
      
       if(isset($_GET['id'])){
-      
+
+          $i = 0;
+          $i++;//
       $request1= "SELECT * FROM `discipline`"  ; 
       $result1 = $mysqli->query($request1);
       $disciplines = array(); $disciplinesid=array();
@@ -54,14 +40,60 @@
       
       }  
       
-      $request= "SELECT * FROM  `event_score`  WHERE  `score_value` IS NULL  AND  `score_points` IS NULL  AND  `koeficient` IS NULL AND `class` = '$classid'"; //AND `yearbegin` = '$beginyear'"  ; NO USED QUERY
+      $request= "SELECT * FROM  `event_score`  WHERE  `score_value` IS NULL  AND  `score_points` IS NULL  AND  `koeficient` IS NULL AND `event_id` = '$event_id' AND `discipline_id` = '$discipline_id'"; //AND `yearbegin` = '$beginyear'"  ; NO USED QUERY
       $result = $mysqli->query($request);
-      echo $classid;
-     while($row = $result->fetch_array(MYSQLI_NUM)){
-     $i++;
+      //echo $classid;
+      if ($result->num_rows === 0) {
+          echo "<a href='?'><button type='button' class='btn btn-warning'>Nebyl nalezen žádný závodník > zpět!</button></a>";
+      } else {
+          echo "<table class='table table-hover' style='margin-bottom:0px;'>
+        <thead>
+        <tr>
+            <th>#</th>
+            <th>Jméno</th>
+            <th>Příjmení</th>
+            <th>Pohlaví</th>
+            <th>Třída</th>
+            <th>Datum narození</th>
+            <th>Disciplína</th>
+            <th>Výkon</th>
+            <th>Vložit</th>
+        </tr>
+        </thead>
+        <tbody>";
+          $i = 0;
+          $i++;//
+     while($row = $result->fetch_array(MYSQLI_ASSOC)){
+         $athlete = athleteinfo($row["athlete_id"], $mysqli);
+
+         $sex = $row["gender"];
+         $age = $row["age"];
+         echo "<form action='start-list-edit-script.php?id=" . $row["id"] . "' method='POST' target='_blank' onsubmit='setTimeout(function () { window.location.reload(); }, 30)'>
+                <tr><td>" . $i . "</td><td class='name'>" . $row["first_name"] . "</td><td class='lastname'>" . $row["last_name"] . "</td>           <td class='sex'>";
+         if ($sex == "M") {
+             echo "<span class='label label-primary'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>";
+         } elseif ($sex == "F") {
+             echo "<span class='label label-danger'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>";
+         } else {
+         }
+         echo "</td>
+          <td class='class'>" . eventAgeClass($event_id, $athlete["id"], $mysqli) . "." . $athlete["class"] . "</td><td class='birth'>" . $athlete["birthdate"] . " | Věk: " . $row["age"] . "</td>";
+         echo "<td class='class'><span class='label label-info' style='font-size:100%;'>" . $disciplines[$row["discipline_id"]-1] . "</span></td>";
+         }
+        echo"</tbody></table>";
+        /* echo "</td><td class='discipline'><input type='submit' class='btn btn-xs btn-info'    value='Změnit'></input></td><td><a href='start-list-edit-script.php?&delete=1&id=" . $row["id"] . "' target='_blank' onclick='setTimeout(function () { window.location.reload(); }, 30)'><button type='button' class='btn btn-xs btn-danger'>
+  <span class='glyphicon glyphicon-trash' aria-hidden='true'></span> Odstranit
+</button></a></td></form></tr>
+        ";
+         $i++;
+
+
+
+     /*$i++;
      $birth = $row[4];
-     $beginyear = $row[6];
-      $beginyear = preg_replace("/ - Name:.*/", "", $beginyear);
+     $beginyear = $row[6];*/
+     // $beginyear = preg_replace("/ - Name:.*/", "", $beginyear);
+     /*
       $now = date("Y");
       $year = $now-$beginyear;
       $eventdatecurrent = new DateTime($eventdate);
@@ -85,7 +117,7 @@
 
 echo"</select></li> <li class='score'><input type='text' name='vykon' size='10'></input></li><li class='save'><input type='submit' class='btn btn-sm btn-default' value='Uložit'></input></li></ul></form>
         ";
-     }
+    */ }
      
       }else{exit;}?>
       
@@ -123,7 +155,7 @@ echo"</select></li> <li class='score'><input type='text' name='vykon' size='10'>
         <div class="alert alert-info" role="alert">
         <strong>Vložené výsledky</strong> V případě chyby klepněte na smazat a vložte znovu :)
       </div>
-        <?php 
+        <?php /*
       $request= "SELECT * FROM `event_score` WHERE `event_id` = $id AND `class_id` = '$classid' ORDER BY `event_score`.`score_points` DESC"  ; 
       $result = $mysqli->query($request);
      $i = 1;
@@ -150,7 +182,7 @@ $i++;}
      
         
         
-        ?>
+       */    ?>
      
       
       <div class="alert alert-info" role="alert">
