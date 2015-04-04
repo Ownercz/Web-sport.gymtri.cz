@@ -149,27 +149,35 @@ if (isset($_GET['id'])) {
 
     }
 
+    $requestTime="SELECT * FROM `event` WHERE `id` = $id";
+    $resultTime= $mysqli->query($requestTime);
+    while ($rowTime = $resultTime->fetch_array(MYSQLI_ASSOC)) {
 
+        $time=$rowTime[$discipline];
+
+    }
+    $dateEvent=str_replace("-",".",$row2[14]);
     echo "<div class='book'>
     <div class='page'>
         <div class='subpage'><h1>Gymtri startovací listina - <strong>" . $row2[13] . "</strong></h1>
-        Soutěž konána dne: " . $row2[14] . " <br><br>Zapisující: _________________ <br> <h2>Disciplína: " . $disciplines[$discipline] . "</h2>";
+        Soutěž konána: " . $dateEvent . " v ".$time." <br><br>Zapisující: _________________ <br> <h2>Disciplína: " . $disciplines[$discipline] . "</h2>";
     $request = "SELECT * From event_score where event_id = $id AND discipline_id = $discipline;";
     $result = $mysqli->query($request);
     $i = 1;
-    echo "<table class='thetable'><tr><th>#</th><th>Jméno</th><th>Příjmení</th><th>Věk</th><th>Třída</th><th>1. pokus</th><th>2. pokus</th><th>3. pokus</th></tr>";
+    echo "<table class='thetable'><tr><th>#</th><th>Jméno</th><th>Příjmení</th><th>Datum narození</th><th>Třída</th><th>1. pokus</th><th>2. pokus</th><th>3. pokus</th></tr>";
     while ($row = $result->fetch_array(MYSQLI_NUM)) {
 
         $athlete=athleteInfo($row[3],$mysqli);
        // echo$row[4];
         //$year=eventAge($id,$row[4],$mysqli);
         $class=eventAgeClass($id,$row[3],$mysqli);
-
+        $birthdate = $athlete['birthdate'];
+        $birthdate=str_replace("-",".",$birthdate);
         echo "
           <tr><td>" . $i . ". </td><td>
            " . $row[10] . "</td><td>
            " . $row[11] . "</td><td>
-           " . eventAge($id,$row[3],$mysqli) . "</td><td>
+           " .$birthdate /*eventAge($id,$row[3],$mysqli)*/ . "</td><td>
            " . className($id,$row[3],$mysqli) . "</td><td class='vykon'>
             </td><td class='vykon'>
              </td><td class='vykon'></td>
