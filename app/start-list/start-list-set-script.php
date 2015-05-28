@@ -1,5 +1,5 @@
 <?PHP
-include $_SERVER['DOCUMENT_ROOT']."/functions/check.php"; 
+//include $_SERVER['DOCUMENT_ROOT']."/functions/check.php";
 include $_SERVER['DOCUMENT_ROOT']."/functions/dbconnect.php";
 include "disciplines.php";
 if(isset($_GET['delete'])){
@@ -9,7 +9,15 @@ $result = $mysqli->query($request);
 echo "<script>window.close();</script>";
 exit;
 }
-if(isset($_POST['sebrlecup'])){
+
+if(isset($_POST['discipline'])){$discipline = $_POST['discipline']; }elseif(isset($_GET['discipline'])){$discipline=$_GET["discipline"];}
+if(isset($_GET['vek'])){$vek = $_GET['vek'];$vek = str_replace(",",".",$vek); }
+if(isset($_GET['trida'])){$trida = $_GET['trida']; }
+if(isset($_GET['classid'])){$class = $_GET['classid']; }
+if(isset($_GET['sex'])){$sex = $_GET['sex'];$sex = str_replace(",",".",$sex); }
+if(isset($_GET['id'])){$id = $_GET['id'];$id = str_replace(",",".",$id); }
+if(isset($_GET['athleteid'])){$athleteid = $_GET['athleteid'];$athleteid = str_replace(",",".",$athleteid); }
+if($_POST['sebrlecup']=="yes"){
     $request1= "SELECT * FROM `discipline`"  ;
     $result1 = $mysqli->query($request1);
     $disciplines = array(); $disciplinesid=array();
@@ -19,23 +27,20 @@ if(isset($_POST['sebrlecup'])){
         array_push($disciplinesid,  $row1[0]);
 
     }
-    foreach ($disciplines as &$discipline) {
-        //curl volání pro všechny disciplíny
+    foreach ($disciplines as &$disciplineOne) {
+        //curl volání pro všechny disciplíny?id=".$id."&athleteid=".$row[0]."&vek=".$vek."&sex=".$row[3]."&classid=".$classid."&trida=".$trida."
         //běhy dle věku
         //online soupisky
         //startovka polohový závod
-
-
+        $ch = curl_init();
+        curl_setopt($ch, CURLOPT_URL, "http://localhost/app/start-list/start-list-set-script.php?id=".$id."&athleteid=".$athleteid."&vek=".$vek."&sex=".$sex."&classid=".$class."&trida=".$trida."&discipline=".$disciplineOne);
+        curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
+        $output=curl_exec($ch);
+        curl_close($ch);
     }
+    echo "<script>window.close();</script>";
+    exit;
 }
-if(isset($_POST['discipline'])){$discipline = $_POST['discipline']; }elseif(isset($_GET['discipline'])){$discipline=$_GET["discipline"];}
-if(isset($_GET['vek'])){$vek = $_GET['vek'];$vek = str_replace(",",".",$vek); }
-if(isset($_GET['trida'])){$trida = $_GET['trida']; }
-if(isset($_GET['classid'])){$class = $_GET['classid']; }
-if(isset($_GET['sex'])){$sex = $_GET['sex'];$sex = str_replace(",",".",$sex); }
-if(isset($_GET['id'])){$id = $_GET['id'];$id = str_replace(",",".",$id); }
-if(isset($_GET['athleteid'])){$athleteid = $_GET['athleteid'];$athleteid = str_replace(",",".",$athleteid); }
-
 /*athlete info*/
  $request1="SELECT * FROM `athletes` WHERE `id` = $athleteid ";
  $result1 = $mysqli->query($request1);
