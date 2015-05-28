@@ -33,14 +33,23 @@ include $_SERVER['DOCUMENT_ROOT'] . "/header.php";
                 $request = "SELECT * FROM `athletes` WHERE `class` = '$class' AND `yearbegin` = '$yearbegin' ORDER BY `id` ASC";
                 $result = $mysqli->query($request);
 
+                if ($result->num_rows === 0) {
+                    echo "<a href='..'><button type='button' class='btn btn-warning'>Tato třída neobsahuje žádné závodníky!</button></a>";
+                }
+
                 while ($row = $result->fetch_array(MYSQLI_NUM)) {
+                    $class = $row[5];
+                    $yearbegin = $row[6];
                     echo "<form method='POST' style='margin:0'action='athletes-edit-class-script.php?id=" . $row[0] . "' target='_blank' onsubmit='setTimeout(function () { window.location.reload(); }, 30)'><tr><td>" . $row[0] . "</td><td><input type='text' name='trida' size='1' value='" . $row[5] . "'></input></td><td><input type='text' name='jmeno' value='" . $row[1] . "'></input></td><td><input type='text' name='prijmeni' value='" . $row[2] . "'></input></td><td><input type='text' name='sex' size='1' value='" . $row[3] . "'></input></td><td><input type='text' name='narozeni' value='" . $row[4] . "'></input></td><td><input type='text' name='zacatek' value='" . $row[6] . "'></input></td><td><button type='submit' value='Aktualizovat' onClick='' class='btn btn-primary'>Aktualizovat</button></form></td><td><form method='POST' style='margin:0'action='athletes-edit-class-script.php?id=" . $row[0] . "&delete=1' target='_blank' onsubmit='setTimeout(function () { window.location.reload(); }, 30)'><input type='submit'  value='DELETE'class='btn btn-danger'></form></td></tr>";
                 }
 
                 ?>
                 </tbody>
             </table>
-
+   <form id="delete-all" method='POST' style='margin:0'action='athletes-edit-class-script.php?id=" . $row[0] . "&delete=all' target='_blank' onsubmit='return confSubmit();'>
+       <input type="hidden" name="trida" value="<?PHP echo $class; ?>">
+       <input type="hidden" name="zacatek" value="<?PHP echo $yearbegin; ?>">
+       <input type='submit'  value=' Smazat celou třídu'class='btn btn-danger' "></form>
         </div>
 
     </div>
@@ -114,7 +123,15 @@ include $_SERVER['DOCUMENT_ROOT'] . "/header.php";
         document.formatus.action = "athletes-add-script.php?&count=" + (counter);
     }
 </script>
-
+<script type="text/javascript">
+    function confSubmit() {
+        var r=confirm('Are you sure you want to delete??');
+        if(r==true){
+            setTimeout(function () { window.location.reload(); }, 30);
+        }
+        return r;
+    }
+</script>
 <!-- Bootstrap core JavaScript
 ================================================== -->
 <!-- Placed at the end of the document so the pages load faster -->
