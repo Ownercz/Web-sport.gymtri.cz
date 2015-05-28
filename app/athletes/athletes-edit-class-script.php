@@ -1,13 +1,7 @@
-﻿<!DOCTYPE html>
-<html xmlns="http://www.w3.org/1999/xhtml">
-<head>
-    <title></title>
-
-</head>
-<body>
-
-<?PHP  include $_SERVER['DOCUMENT_ROOT'] . "/functions/check.php";
+﻿<?PHP
+include $_SERVER['DOCUMENT_ROOT'] . "/functions/check.php";
 include $_SERVER['DOCUMENT_ROOT'] . "/functions/dbconnect.php";
+include $_SERVER['DOCUMENT_ROOT'] . "/functions/scriptpage.php";
 
 
 $id = $mysqli->real_escape_string($_GET['id']);
@@ -23,14 +17,13 @@ if (isset($_GET['delete'])) {
     echo "<script>window.close();</script>";
     exit;
 }
-if($_POST['jmeno']==''||$_POST['trida']==''||$_POST['prijmeni']==''||$_POST['sex']==''||$_POST['narozeni']==''||$_POST['zacatek']==''||$_GET['id']==''){}else{
-$request = "UPDATE `sport_gymtri_cz`.`athletes` SET `first_name` = '$jmeno', `last_name` = '$prijmeni', `gender` = '$sex', `birthdate` = '$narozeni', `class` = '$trida', `yearbegin` = '$zacatek' WHERE `athletes`.`id` = $id;";
-$result = $mysqli->query($request);}
+if ($_POST['jmeno'] == '' || $_POST['trida'] == '' || $_POST['prijmeni'] == '' || $_POST['sex'] == '' || $_POST['narozeni'] == '' || $_POST['zacatek'] == '' || $_GET['id'] == '') {
+} else {
+    $request = "UPDATE `sport_gymtri_cz`.`athletes` SET `first_name` = '$jmeno', `last_name` = '$prijmeni', `gender` = '$sex', `birthdate` = '$narozeni', `class` = '$trida', `yearbegin` = '$zacatek' WHERE `athletes`.`id` = $id;";
+    $result = $mysqli->query($request);
+}
 
 
 echo "<script>window.close();</script>";
 
 ?>
-
-</body>
-</html>

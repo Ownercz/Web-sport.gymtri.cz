@@ -1,4 +1,6 @@
-<?PHP include $_SERVER['DOCUMENT_ROOT'] . "/functions/check.php";
+<?PHP
+include $_SERVER['DOCUMENT_ROOT'] . "/functions/check.php";
+include $_SERVER['DOCUMENT_ROOT'] . "/functions/dbconnect.php";
 include $_SERVER['DOCUMENT_ROOT'] . "/functions/functions.php";
 include $_SERVER['DOCUMENT_ROOT'] . "/header.php";
 ?>
@@ -12,13 +14,13 @@ include $_SERVER['DOCUMENT_ROOT'] . "/header.php";
 
     <?PHP
     if (isset($_GET['id'])) {
-        $id = $_GET['id'];
+        $id = $mysqli->real_escape_string($_GET['id']);
     } else {
         $id = null;
     }
 
     if (isset($_GET['classes'])) {
-        $classes = $_GET['classes'];
+        $classes = $mysqli->real_escape_string($_GET['classes']);
         $tridy = $classes;
     } else {
         $classes = null;
@@ -27,40 +29,18 @@ include $_SERVER['DOCUMENT_ROOT'] . "/header.php";
 
 
     if (isset($_GET['yearbegin'])) {
-        $yearbegin = $_GET['yearbegin'];
+        $yearbegin = $mysqli->real_escape_string($_GET['yearbegin']);
         $zacatek = $yearbegin;
         $yearbegin = explode(",", $yearbegin);
     } else {
         $zacatek = null;
     }
-    //$yearbegin = null;
 
     if (isset($classes)) {
         $classes = explode(",", $classes);
     } else {
         $classes = array();
     }
-
-    /*if (isset($_GET['classadd'])) {
-        array_push($classes, $_GET['classadd']);
-        $classes = implode(",", $classes);
-    } else {
-        $classes = null;
-    }*/
-    /*
-        if (isset($yearbegin)) {
-            $yearbegin = explode(",", $yearbegin);
-            exit;
-        } else {
-            $yearbegin = null;
-        }
-
-       /* if (isset($_GET['yearadd']) && isset($yearbegin)) {
-            array_push($yearbegin, $_GET['yearadd']);
-            $yearbegin = implode(",", $yearbegin);
-        } else {
-            $yearbegin = null;
-        }*/
 
 
     include $_SERVER['DOCUMENT_ROOT'] . "/functions/dbconnect.php";
@@ -97,7 +77,7 @@ include $_SERVER['DOCUMENT_ROOT'] . "/header.php";
                 }
                 echo "
                 <tr><td>" . $i . "</td><td class='name'>" . className($id, $neededId, $mysqli) . "</td>";
-                echo "<td class='discipline'><a href='classes-add-script.php?class=" . $row["class"] . "&yearbegin=" . $row["yearbegin"] . "&id=".$id."' target='_blank' onclick='setTimeout(function () { window.location.reload(); }, 30)'><button type='button' class='btn btn-xs btn-success'>
+                echo "<td class='discipline'><a href='classes-add-script.php?class=" . $row["class"] . "&yearbegin=" . $row["yearbegin"] . "&id=" . $id . "' target='_blank' onclick='setTimeout(function () { window.location.reload(); }, 30)'><button type='button' class='btn btn-xs btn-success'>
   <span class='glyphicon glyphicon-pencil' aria-hidden='true'></span> Přidat</button></a></td></form></tr>
         ";
                 $i++;

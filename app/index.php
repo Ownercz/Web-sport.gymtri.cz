@@ -6,7 +6,7 @@ include $_SERVER['DOCUMENT_ROOT']."/header.php";
 
       <!-- Main jumbotron for a primary marketing message or call to action -->
       <div class='jumbotron'>
-        <h1>Gymtri - Sport app {BETA 1.05}</h1>
+        <h1>Gymtri - Sport app <?PHP echo$version; ?></h1>
 
       </div>
 
@@ -18,11 +18,7 @@ include $_SERVER['DOCUMENT_ROOT']."/header.php";
 <div class='page-header'>
         <h1>Správa</h1>
       </div>
-      <?PHP if(isset($_GET["register"])){ if($_GET["register"] == "1"){echo"<div class='alert alert-success' role='alert'>
-        <strong>Hotovo!</strong> Nová soutěž byla založena.
-      </div>";}elseif($_GET["register"] == "2"){echo"<div class='alert alert-success' role='alert'>
-        <strong>Hotovo!</strong> Třída byla přidána.
-      </div>";}} ?>
+
       <div class='row'>
 
             <div class='col-sm-4'>
@@ -45,7 +41,7 @@ include $_SERVER['DOCUMENT_ROOT']."/header.php";
                         <p class='list-group-item-text'>Vytvoření nového ročníku OL6B</p>
                     </a>
                     <a href='event/event-edit.php' class='list-group-item'>
-                        <h4 class='list-group-item-heading'>Smazat / upravit soutěž</h4>
+                        <h4 class='list-group-item-heading'>Smazat / upravit soutěž / tisk programu</h4>
                         <p class='list-group-item-text'>Smaže / upraví ročník</p>
                     </a>
 
@@ -54,12 +50,8 @@ include $_SERVER['DOCUMENT_ROOT']."/header.php";
             <div class='col-sm-4'>
                 <div class='list-group'>
                     <a href='classes/classes-add.php' class='list-group-item active'>
-                        <h4 class='list-group-item-heading'>Přidat třídy do soutěže</h4>
+                        <h4 class='list-group-item-heading'>Přidat/upravit třídy do soutěže</h4>
                         <p class='list-group-item-text'>Před zápisem výsledků je nutné vložit příslušnou třídu jako startující</p>
-                    </a>
-                    <a href='classes/classes-edit.php' class='list-group-item'>
-                        <h4 class='list-group-item-heading'>Upravit třídy v soutěži</h4>
-                        <p class='list-group-item-text'>Nějaká třída chybí? Nevadí, pojdme ji upravit!</p>
                     </a>
                 </div>
             </div><!-- /.col-sm-4 -->
