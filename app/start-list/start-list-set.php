@@ -79,7 +79,7 @@
           
          </td><td class='discipline'> <select name='discipline'>";
         foreach ($disciplines as &$discipline) {
-             if(($vek<=14)&&($sex=="M")&&($discipline=="100m"||$discipline=="3000m"||$discipline=="50m plavání"||$discipline=="100m plavání"||$discipline=="granát")){}
+             if(($vek<=14)&&($sex=="M")&&($discipline=="100m"||$discipline=="3000m"||$discipline=="50m plavání"||$discipline=="100m plavání"||$discipline=="míč")){}
              elseif(($vek<=14)&&($sex=="F")&&($discipline=="100m"||$discipline=="3000m"||$discipline=="50m plavání"||$discipline=="100m plavání"||$discipline=="granát")){}
              elseif(($vek==15||$vek==16)&&($sex=="M")&&($discipline=="60m"||$discipline=="1500m"||$discipline=="25m plavání"||$discipline=="100m plavání"||$discipline=="míč")){}
              elseif(($vek==15||$vek==16)&&($sex=="F")&&($discipline=="60m"||$discipline=="3000m"||$discipline=="25m plavání"||$discipline=="100m plavání"||$discipline=="míč")){}

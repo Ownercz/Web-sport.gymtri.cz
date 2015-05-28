@@ -17,6 +17,16 @@ $event_creator = $mysqli->real_escape_string($_POST['event_creator']);
 $event_editor = $mysqli->real_escape_string($_POST['event_editor']);
 $event_date = $mysqli->real_escape_string($_POST['event_date']);
 $event_comment = $mysqli->real_escape_string($_POST['event_comment']);
+
+if (isset($_GET['delete'])) {
+    $request = "DELETE FROM `sport_gymtri_cz`.`event` WHERE `event`.`id` = $id";
+    $result = $mysqli->query($request);
+    $request = "DELETE FROM `sport_gymtri_cz`.`event_score` WHERE `event_score`.`event_id` = $id";
+    $result = $mysqli->query($request);
+    echo "<script>window.close();</script>";
+    exit;
+}
+
 $a = $_POST['1'];
 $b = $_POST['2'];
 $c = $_POST['3'];
@@ -31,14 +41,7 @@ $k = $_POST['11'];
 $l = $_POST['12'];
 
 
-if (isset($_GET['delete'])) {
-    $request = "DELETE FROM `sport_gymtri_cz`.`event` WHERE `event`.`id` = $id";
-    $result = $mysqli->query($request);
-    $request = "DELETE FROM `sport_gymtri_cz`.`event_score` WHERE `event_score`.`event_id` = $id";
-    $result = $mysqli->query($request);
-    echo "<script>window.close();</script>";
-    exit;
-}
+
 $request = "UPDATE `sport_gymtri_cz`.`event` SET `event_name` = '$event_name', `event_creator` = '$event_creator', `event_editor` = '$event_editor', `event_date` = '$event_date', `event_comment` = '$event_comment', `1` = '$a', `2` = '$b', `3` = '$c', `4` = '$d', `5` = '$e', `6` = '$f', `7` = '$g', `8` = '$h', `9` = '$i', `10` = '$j', `11` = '$k', `12` = '$l' WHERE `event`.`id` = $id; ";
 $result = $mysqli->query($request);
 

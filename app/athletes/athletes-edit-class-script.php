@@ -20,8 +20,8 @@ if (isset($_GET['delete'])) {
     else if($_GET['delete']=="all"){
         $request = "DELETE FROM `sport_gymtri_cz`.`athletes` WHERE `athletes`.`class` LIKE '$trida' AND `athletes`.`yearbegin` LIKE '$zacatek' ";
         $result = $mysqli->query($request);
-        echo"wheee".$trida.$zacatek;
-      /*  echo "<script>window.close();</script>";*/
+       // echo"wheee".$trida.$zacatek;
+       echo "<script>window.close();</script>";
         exit;
     }
 }
