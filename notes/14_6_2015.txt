@@ -1,0 +1,20 @@
+Sjednotit do jednoho skriptu formuláře na přidávání nových závodníků ze stránek "Přidání závodníků" a "Úprava třídy" a přidat mu možnost odstranit poslední řádek.
+//Jsou to dvě rozdílné věci - přidat třídu a upravit třídu. Nechávám zatím kód odděleně, později do funkcí se to hodí jako jedno.
+Myslím, že nejdou smazat jednotliví studenti ve třídě.
+//FIXED
+Při tisku časového harmonogramu máš dole pod tabulkou nějaké blbosti a tabulka má pevnou šířku, což je při tisku nesmyslné. Dej 100%.
+
+Tabulka "classes" se nepřemazává, když odstraníš závod, nebo smažeš třídu.
+
+Při tisku startovek opět tabulka s pevnou šířkou a možná bych odstranil ten šedý pruh u hlavičky tabulky, nebo mu alespoň přidal ohraničení.
+
+Chybí tisk stratovek podle tříd.
+
+Když někoho přidávám do závodu a zvolím ANO, mělo by ho to zapsat na všechny disciplíny. Nepíše to na plavání a někdy to připíše disciplíny, na které nemá věk, nebo má na výběr mezi výškou a dálkou (nevím, jak to přesně je).
+
+Při tisku startovek je seznam o jedno posunut, když tisknu plavání, tiskne se něco jiného.
+U všeho jsou tři pokusy, což je trochu divné, někde jich je potřeba více, někde jen dva..
+
+Chybí tisk výsledků podle disciplín :P
+
+Myslím, že to počítalo špatně body z plavání..
