@@ -3,18 +3,19 @@ Sjednotit do jednoho skriptu formuláře na přidávání nových závodníků z
 Myslím, že nejdou smazat jednotliví studenti ve třídě.
 //FIXED
 Při tisku časového harmonogramu máš dole pod tabulkou nějaké blbosti a tabulka má pevnou šířku, což je při tisku nesmyslné. Dej 100%.
-
+//Viz další tisk.
 Tabulka "classes" se nepřemazává, když odstraníš závod, nebo smažeš třídu.
-
+//Dodělám později, je potřeba ošetřit při smazání posledního závodníka nebo zrušení eventu.
 Při tisku startovek opět tabulka s pevnou šířkou a možná bych odstranil ten šedý pruh u hlavičky tabulky, nebo mu alespoň přidal ohraničení.
-
+//Upraveno, stejně tak upraven styl při tisku výsledků. Nutno zkontrolovat pro větší množství závodníků, zdali to vytiskne správně (přesahující 1 A4).
 Chybí tisk stratovek podle tříd.
-
+//Startovky mají být podle disciplíny, ne třídy. Není problém dodělat.
 Když někoho přidávám do závodu a zvolím ANO, mělo by ho to zapsat na všechny disciplíny. Nepíše to na plavání a někdy to připíše disciplíny, na které nemá věk, nebo má na výběr mezi výškou a dálkou (nevím, jak to přesně je).
-
+//Ano = připíše vše na co daný závodník má věk. Je to ošetřené a otestované.
 Při tisku startovek je seznam o jedno posunut, když tisknu plavání, tiskne se něco jiného.
 U všeho jsou tři pokusy, což je trochu divné, někde jich je potřeba více, někde jen dva..
-
+//Probrat se Sikorou, kolik toho tam chcete, může se to udělat i klidně úplně jinak, jen potřebuji mít VZOR podle kterého se to udělá.
 Chybí tisk výsledků podle disciplín :P
-
+//Nebyl vznesen požadavek na tisk výsledků disciplín, pokud bude potřeba, dodělá se.
 Myslím, že to počítalo špatně body z plavání..
+//Body to počítá správně, zkontrolováno.
