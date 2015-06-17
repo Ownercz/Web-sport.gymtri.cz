@@ -1,5 +1,5 @@
-﻿<?PHP include $_SERVER['DOCUMENT_ROOT'] . "/functions/check.php";
-include $_SERVER['DOCUMENT_ROOT'] . "/header.php";
+﻿<?PHP include"../../functions/check.php";
+include"../../header.php";
 ?>
 
 <div class='container theme-showcase' role='main'>
@@ -26,7 +26,7 @@ include $_SERVER['DOCUMENT_ROOT'] . "/header.php";
                 <tbody>
                 <?PHP
 
-                include $_SERVER['DOCUMENT_ROOT'] . "/functions/dbconnect.php";
+                include"../../functions/dbconnect.php";
                 $class = $mysqli->real_escape_string($_GET['class']);
                 $yearbegin = $mysqli->real_escape_string($_GET['yearbegin']);
                 $request = "SELECT * FROM `athletes` WHERE `class` = '$class' AND `yearbegin` = '$yearbegin' ORDER BY `id` ASC";

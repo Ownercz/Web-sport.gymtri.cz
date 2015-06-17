@@ -1,5 +1,5 @@
-<?PHP include $_SERVER['DOCUMENT_ROOT']."/functions/check.php"; 
-        include $_SERVER['DOCUMENT_ROOT']."/header.php";
+<?PHP include "../../functions/check.php"; 
+        include "../../header.php";
 ?>
 
     <div class='container theme-showcase' role='main'>
@@ -11,7 +11,7 @@
       
       <?PHP
       if(isset($_GET['id'])){$id= $_GET['id'];}else{}if(isset($_GET['dateevent'])){$dateevent= $_GET['dateevent'];}else{$dateevent="";}
-      include $_SERVER['DOCUMENT_ROOT']."/functions/dbconnect.php";
+      include "../../functions/dbconnect.php";
       if(isset($_GET['id'])){
       echo"<div class='alert alert-info' role='alert'>
         <strong>Vybráno!</strong> Závod byl úspěšně vybrán a nyní je potřeba v každé třídě zvolit sportovce, na které disciplíně budou. (pokud byl vybrán špatný závod, klepněte <a href='?'>zde</a>)

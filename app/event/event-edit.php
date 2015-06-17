@@ -1,5 +1,10 @@
-<?PHP include $_SERVER['DOCUMENT_ROOT']."/functions/check.php"; 
-        include $_SERVER['DOCUMENT_ROOT']."/header.php";
+<?PHP include "../../functions/check.php"; 
+  /*
+   * DODELAT POZNAMKY K CASU
+   */
+
+
+        include "../../header.php";
 ?>
     <div class='container theme-showcase' role='main'>
 
@@ -24,7 +29,7 @@
             </thead>
            <tbody>
             <?PHP 
-include $_SERVER['DOCUMENT_ROOT']."/functions/dbconnect.php";
+include "../../functions/dbconnect.php";
 $request= "SELECT * FROM `event` ORDER BY `event`.`event_date` DESC"  ; 
  $result = $mysqli->query($request);
             if ($result->num_rows === 0) {

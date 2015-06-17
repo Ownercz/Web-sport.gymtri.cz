@@ -1,5 +1,5 @@
 <?PHP
-include $_SERVER['DOCUMENT_ROOT'] . "/functions/dbconnect.php";
+include"../../functions/dbconnect.php";
 if (isset($_GET['delete'])) {
     $id = $_GET['id'];
     $request = "DELETE FROM `sport_gymtri_cz`.`classes` WHERE `classes`.`id` = $id";

@@ -1,5 +1,8 @@
-<?PHP include $_SERVER['DOCUMENT_ROOT']."/functions/check.php"; 
-        include $_SERVER['DOCUMENT_ROOT']."/header.php";
+<?PHP include "../../functions/check.php"; 
+        include "../../header.php";
+/*
+ * sestiboj pridat vysledky dle discipliny
+ */
 ?>
 
     <div class='container theme-showcase' role='main'>
@@ -19,7 +22,7 @@
       
       if(isset($yearbegin)){$yearbegin = explode(",",$yearbegin);}else{$yearbegin = array();}
       if(isset($_GET['yearadd'])){array_push($yearbegin,  $_GET['yearadd']);$yearbegin=implode(",",$yearbegin);}else{$yearbegin=null;}
-      include $_SERVER['DOCUMENT_ROOT']."/functions/dbconnect.php";
+      include "../../functions/dbconnect.php";
       if(isset($_GET['id'])){
       echo"<div class='alert alert-info' role='alert'>
         <strong>Vybráno!</strong> Závod byl úspěšně vybrán a nyní je potřeba zvolit třídu, kterou chcete vytisknout. (pokud byl vybrán špatný závod, klepněte <a href='?'>zde</a>)

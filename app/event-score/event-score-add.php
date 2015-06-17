@@ -1,6 +1,6 @@
-<?PHP include $_SERVER['DOCUMENT_ROOT'] . "/functions/check.php";
-include $_SERVER['DOCUMENT_ROOT'] . "/functions/functions.php";
-include $_SERVER['DOCUMENT_ROOT'] . "/header.php";
+<?PHP include"../../functions/check.php";
+include"../../functions/functions.php";
+include"../../header.php";
 ?>
 
 <div class='container theme-showcase' role='main'>
@@ -22,7 +22,7 @@ if (isset($_GET['discipline'])) {
 //NOT USED if(isset($_GET['class'])){$class= $_GET['class'];}else{}
 //if(isset($_GET['classid'])){$classid= $_GET['classid'];}else{}
 // if(isset($_GET['beginyear'])){$beginyear= $_GET['beginyear'];}else{}
-include $_SERVER['DOCUMENT_ROOT'] . "/functions/dbconnect.php";
+include"../../functions/dbconnect.php";
 $request2 = "SELECT * FROM `event` WHERE `id` = $event_id ORDER BY `event_date` DESC";
 $result2 = $mysqli->query($request2);
 while ($row2 = $result2->fetch_array(MYSQLI_NUM)) {

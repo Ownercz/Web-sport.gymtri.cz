@@ -1,6 +1,6 @@
-<?PHP include $_SERVER['DOCUMENT_ROOT'] . "/functions/check.php";
-include $_SERVER['DOCUMENT_ROOT'] . "/functions/functions.php";
-include $_SERVER['DOCUMENT_ROOT'] . "/header.php";
+<?PHP include"../../functions/check.php";
+include"../../functions/functions.php";
+include"../../header.php";
 ?>
 
 <div class='container theme-showcase' role='main'>
@@ -23,7 +23,7 @@ include $_SERVER['DOCUMENT_ROOT'] . "/header.php";
         $discipline = "no";
     }
 
-    include $_SERVER['DOCUMENT_ROOT'] . "/functions/dbconnect.php";
+    include"../../functions/dbconnect.php";
     if (isset($_GET['id']) && ($discipline == "no")) {
         echo "<div class='alert alert-info' role='alert'>
         <strong>Vybráno!</strong> Závod byl úspěšně vybrán a nyní je potřeba vybrat disciplínu k edtitaci startovky! (pokud byl vybrán špatný závod, klepněte <a href='?'>zde</a>)

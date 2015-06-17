@@ -9,21 +9,29 @@
     <link rel='icon' href='../favicon.ico'>
 
     <title>Sport.gymtri.cz app</title>
-
+      <?PHP
+      $domain = $_SERVER['HTTP_HOST'];
+      $docRoot = $_SERVER['DOCUMENT_ROOT'];
+      $dirRoot = dirname(__FILE__);
+      $protocol = isset($_SERVER["HTTPS"]) ? 'https://' : 'http://';
+      //$urlDir = str_replace('/include', '/',str_replace($docRoot, '', $dirRoot));
+      $urlDir = str_replace($docRoot, '', $dirRoot);
+      $site_path = $protocol.$domain.$urlDir;
+      define ('BASE_URL', $site_path);?>
     <!-- Bootstrap core CSS -->
-    <link href='/css/bootstrap.min.css' rel='stylesheet'>
+    <link href='<?PHP echo BASE_URL;?>/css/bootstrap.min.css' rel='stylesheet'>
     <!-- Bootstrap theme -->
-    <link href='/css/bootstrap-theme.min.css' rel='stylesheet'>
+    <link href='<?PHP echo BASE_URL;?>/css/bootstrap-theme.min.css' rel='stylesheet'>
 
     <!-- Custom styles for this template -->
-    <link href='/css/theme.css' rel='stylesheet'>
+    <link href='<?PHP echo BASE_URL;?>/css/theme.css' rel='stylesheet'>
 
     <!-- Just for debugging purposes. Don't actually copy these 2 lines! -->
     <!--[if lt IE 9]><script src='../assets/js/ie8-responsive-file-warning.js'></script><![endif]-->
-    <script src='/assets/js/ie-emulation-modes-warning.js'></script>
+    <script src='<?PHP echo BASE_URL;?>/assets/js/ie-emulation-modes-warning.js'></script>
 
     <!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
-    <script src='/assets/js/ie10-viewport-bug-workaround.js'></script>
+    <script src='<?PHP echo BASE_URL;?>/assets/js/ie10-viewport-bug-workaround.js'></script>
 
     <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
     <!--[if lt IE 9]>
@@ -44,11 +52,11 @@
             <span class='icon-bar'></span>
             <span class='icon-bar'></span>
           </button>
-          <a class='navbar-brand' href='/app/'>Gymtri Sport</a>
+          <a class='navbar-brand' href='<?PHP echo BASE_URL;?>/app'>Gymtri Sport</a>
         </div>
         <div class='navbar-collapse collapse'>
           <ul class='nav navbar-nav'>
-            <li class='active'><a href='/app/'>Domů</a></li>
+            <li class='active'><a href='<?PHP echo BASE_URL;?>/app'>Domů</a></li>
 
               </ul>
             </li>

@@ -1,7 +1,7 @@
 ﻿<?PHP
-include $_SERVER['DOCUMENT_ROOT'] . "/functions/check.php";
-include $_SERVER['DOCUMENT_ROOT'] . "/functions/dbconnect.php";
-include $_SERVER['DOCUMENT_ROOT'] . "/header.php";
+include"../../functions/check.php";
+include"../../functions/dbconnect.php";
+include"../../header.php";
 ?>
 
 <div class='container theme-showcase' role='main'>

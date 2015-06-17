@@ -1,5 +1,5 @@
-<?PHP include $_SERVER['DOCUMENT_ROOT'] . "/functions/check.php";
-include $_SERVER['DOCUMENT_ROOT'] . "/functions/functions.php";
+<?PHP include"../../functions/check.php";
+include"../../functions/functions.php";
 ?>
 <?PHP echo"
 <!DOCTYPE html>
@@ -130,7 +130,7 @@ if (isset($_GET['discipline'])) {
     $discipline = $_GET['discipline'];
 } else {
 }
-include $_SERVER['DOCUMENT_ROOT'] . "/functions/dbconnect.php";
+include"../../functions/dbconnect.php";
 $request2 = "SELECT * From event_score where event_id = $id AND discipline_id = $discipline;";
 $result2 = $mysqli->query($request2);
 $row2 = $result2->fetch_array(MYSQLI_NUM);
@@ -188,6 +188,16 @@ if (isset($_GET['id'])) {
         $i++;
     }
 }
+$i = 0;
+while($i<5){
+echo "
+          <tr><td></td><td></td><td></td><td></td><td></td><td class='vykon'>
+            </td><td class='vykon'>
+             </td><td class='vykon'></td>
+
+           ";
+$i++;}
+
 echo "</table></div></div></div>";
 
 

@@ -1,5 +1,5 @@
-<?PHP include $_SERVER['DOCUMENT_ROOT'] . "/functions/check.php";
-include $_SERVER['DOCUMENT_ROOT'] . "/header.php";
+<?PHP include"../../functions/check.php";
+include"../../header.php";
 ?>
 <div class='container theme-showcase' role='main'>
 
@@ -17,7 +17,7 @@ include $_SERVER['DOCUMENT_ROOT'] . "/header.php";
     } else {
     }
 
-    include $_SERVER['DOCUMENT_ROOT'] . "/functions/dbconnect.php";
+    include"../../functions/dbconnect.php";
     if (isset($_GET['id']) && (!isset($_GET['delete']))) {
         echo "<div class='alert alert-info' role='alert'>
         <strong>Rekapitulace registrace závodu</strong> Pokud je zde chyba, smažte danou soutěž klepnutím na tlačítko smazat. 

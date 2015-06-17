@@ -24,7 +24,7 @@ function getClosest($search, $arr) { //copied
 }
 
 function sedesatka($koeficient,$vykon,$sex){
-include $_SERVER['DOCUMENT_ROOT']."/functions/dbconnect.php";
+include "../../functions/dbconnect.php";
 $scorevalue= array();
 
 $request = "SELECT * FROM `points` WHERE `discipline_id` = 1 AND `score_value_gender` = '$sex'";
@@ -44,7 +44,7 @@ return $row[4]*$koeficient;
 
 }
 function stovka($koeficient,$vykon,$sex){
-include $_SERVER['DOCUMENT_ROOT']."/functions/dbconnect.php";
+include "../../functions/dbconnect.php";
 $scorevalue= array();
 
 $request = "SELECT * FROM `points` WHERE `discipline_id` = 2 AND `score_value_gender` = '$sex'";
@@ -63,7 +63,7 @@ return $row[4]*$koeficient;
 }
 }
 function patnactistovka($koeficient,$vykon,$sex){
-include $_SERVER['DOCUMENT_ROOT']."/functions/dbconnect.php";
+include "../../functions/dbconnect.php";
 $scorevalue= array();
 
 $request = "SELECT * FROM `points` WHERE `discipline_id` = 3 AND `score_value_gender` = '$sex'";
@@ -82,7 +82,7 @@ return $row[4]*$koeficient;
 }
 }
 function tritisicovka($koeficient,$vykon,$sex){
-include $_SERVER['DOCUMENT_ROOT']."/functions/dbconnect.php";
+include "../../functions/dbconnect.php";
 $scorevalue= array();
 
 $request = "SELECT * FROM `points` WHERE `discipline_id` = 4 AND `score_value_gender` = '$sex'";
@@ -102,7 +102,7 @@ return $row[4]*$koeficient;
 }
 
 function dalka($koeficient,$vykon,$sex){
-include $_SERVER['DOCUMENT_ROOT']."/functions/dbconnect.php";
+include "../../functions/dbconnect.php";
 $scorevalue= array();
 
 $request = "SELECT * FROM `points` WHERE `discipline_id` = 5 AND `score_value_gender` = '$sex'";
@@ -122,7 +122,7 @@ return $row[4]*$koeficient;
 }
 
 function vyska($koeficient,$vykon,$sex){
-include $_SERVER['DOCUMENT_ROOT']."/functions/dbconnect.php";
+include "../../functions/dbconnect.php";
 $scorevalue= array();
 
 $request = "SELECT * FROM `points` WHERE `discipline_id` = 6 AND `score_value_gender` = '$sex'";
@@ -142,7 +142,7 @@ return $row[4]*$koeficient;
 }
 
 function mic($koeficient,$vykon,$sex){
-include $_SERVER['DOCUMENT_ROOT']."/functions/dbconnect.php";
+include "../../functions/dbconnect.php";
 $scorevalue= array();
 
 $request = "SELECT * FROM `points` WHERE `discipline_id` = 7 AND `score_value_gender` = '$sex'";
@@ -162,7 +162,7 @@ return $row[4]*$koeficient;
 }
 
 function granat($koeficient,$vykon,$sex){
-include $_SERVER['DOCUMENT_ROOT']."/functions/dbconnect.php";
+include "../../functions/dbconnect.php";
 $scorevalue= array();
 
 $request = "SELECT * FROM `points` WHERE `discipline_id` = 8 AND `score_value_gender` = '$sex'";
@@ -182,7 +182,7 @@ return $row[4]*$koeficient;
 }
 
 function splh($koeficient,$vykon,$sex){
-include $_SERVER['DOCUMENT_ROOT']."/functions/dbconnect.php";
+include "../../functions/dbconnect.php";
 $scorevalue= array();
 
 $request = "SELECT * FROM `points` WHERE `discipline_id` = 9 AND `score_value_gender` = '$sex'";
@@ -202,7 +202,7 @@ return $row[4]*$koeficient;
 }
 
 function dvacetpetkavz($koeficient,$vykon,$sex){
-include $_SERVER['DOCUMENT_ROOT']."/functions/dbconnect.php";
+include "../../functions/dbconnect.php";
 $scorevalue= array();
 
 $request = "SELECT * FROM `points` WHERE `discipline_id` = 10 AND `score_value_gender` = '$sex'";
@@ -222,7 +222,7 @@ return $row[4]*$koeficient;
 }
 
 function padesatkavz($koeficient,$vykon,$sex){
-include $_SERVER['DOCUMENT_ROOT']."/functions/dbconnect.php";
+include "../../functions/dbconnect.php";
 $scorevalue= array();
 
 $request = "SELECT * FROM `points` WHERE `discipline_id` = 11 AND `score_value_gender` = '$sex'";
@@ -242,7 +242,7 @@ return $row[4]*$koeficient;
 }
 
 function stovkavz($koeficient,$vykon,$sex){
-include $_SERVER['DOCUMENT_ROOT']."/functions/dbconnect.php";
+include "../../functions/dbconnect.php";
 $scorevalue= array();
 
 $request = "SELECT * FROM `points` WHERE `discipline_id` = 12 AND `score_value_gender` = '$sex'";

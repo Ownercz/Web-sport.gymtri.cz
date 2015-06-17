@@ -1,5 +1,5 @@
-<?PHP include $_SERVER['DOCUMENT_ROOT']."/functions/check.php"; 
-        include $_SERVER['DOCUMENT_ROOT']."/header.php";
+<?PHP include "../../functions/check.php"; 
+        include "../../header.php";
 ?>
 
     <div class='container theme-showcase' role='main'>
@@ -52,7 +52,7 @@
         $count=0;
         $disciplines=array();
         $disciplinesid=array();
-        include $_SERVER['DOCUMENT_ROOT'] . "/functions/dbconnect.php";
+        include"../../functions/dbconnect.php";
         $request1 = "SELECT * FROM `discipline` ORDER by id ASC";
         $result1 = $mysqli->query($request1);
         while ($row1 = $result1->fetch_array(MYSQLI_NUM)) {

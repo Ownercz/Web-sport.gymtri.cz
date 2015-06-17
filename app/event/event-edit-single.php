@@ -1,5 +1,5 @@
-<?PHP include $_SERVER['DOCUMENT_ROOT']."/functions/check.php"; 
-        include $_SERVER['DOCUMENT_ROOT']."/header.php";
+<?PHP include "../../functions/check.php"; 
+        include "../../header.php";
 ?>
 
     <div class='container theme-showcase' role='main'>
@@ -9,7 +9,7 @@
         <h1>Úprava soutěže</h1>
       </div>
 <?PHP
-include $_SERVER['DOCUMENT_ROOT']."/functions/dbconnect.php";
+include "../../functions/dbconnect.php";
 $id = $mysqli->real_escape_string($_GET['id']);
 $request= "SELECT * FROM `event` WHERE `id` = '$id' LIMIT 0,1" ; 
  $result = $mysqli->query($request);
@@ -62,7 +62,7 @@ $request= "SELECT * FROM `event` WHERE `id` = '$id' LIMIT 0,1" ;
         $count=0;
         $disciplines=array();
         $disciplinesid=array();
-       // include $_SERVER['DOCUMENT_ROOT'] . "/functions/dbconnect.php";
+       // include"../../functions/dbconnect.php";
         $request1 = "SELECT * FROM `discipline` ORDER by id ASC";
         $result1 = $mysqli->query($request1);
         while ($row1 = $result1->fetch_array(MYSQLI_NUM)) {

@@ -1,7 +1,7 @@
 ﻿<?PHP
-include $_SERVER['DOCUMENT_ROOT'] . "/functions/check.php";
-include $_SERVER['DOCUMENT_ROOT'] . "/functions/dbconnect.php";
-include $_SERVER['DOCUMENT_ROOT'] . "/functions/scriptpage.php";
+include"../../functions/check.php";
+include"../../functions/dbconnect.php";
+include"../../functions/scriptpage.php";
 
 
 $id = $mysqli->real_escape_string($_GET['id']);

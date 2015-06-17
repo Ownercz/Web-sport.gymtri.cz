@@ -1,6 +1,6 @@
 <?PHP
-//include $_SERVER['DOCUMENT_ROOT']."/functions/check.php";
-include $_SERVER['DOCUMENT_ROOT']."/functions/dbconnect.php";
+//include "../../functions/check.php";
+include "../../functions/dbconnect.php";
 include "disciplines.php";
 if(isset($_GET['delete'])){
 $athleteidtodelete=$_GET['athleteidtodelete'];

@@ -1,5 +1,5 @@
 <?PHP
-$version="04.15";
+$version="1.0.0";
 
 if(isset($_COOKIE["gymtri_username"]) && isset($_COOKIE["gymtri_password"])){
 }

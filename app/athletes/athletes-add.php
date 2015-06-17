@@ -1,13 +1,13 @@
 <?PHP
-include $_SERVER['DOCUMENT_ROOT'] . "/functions/check.php";
-include $_SERVER['DOCUMENT_ROOT'] . "/header.php";
+include"../../functions/check.php";
+include"../../header.php";
 ?>
 
 <div class='container theme-showcase' role='main'>
 
     <!-- Main jumbotron for a primary marketing message or call to action -->
     <div class='page-header'>
-        <h1>Vložení závodníků jednitlových tříd</h1>
+        <h1>Vložení závodníků jednotlivých tříd</h1>
     </div>
     <div class='row'>
         <div class='col-md-12'>

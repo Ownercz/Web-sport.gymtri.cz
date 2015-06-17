@@ -1,7 +1,7 @@
 ﻿<?PHP
 
-/*include $_SERVER['DOCUMENT_ROOT'] . "/functions/dbconnect.php";
-include $_SERVER['DOCUMENT_ROOT'] . "/functions/functions.php";*/
+/*include"../../functions/dbconnect.php";
+include"../../functions/functions.php";*/
 function koeficient($vek,$sex){
 if($sex == "M"){
 if( in_array( $vek , range( 0 , 14 ) ) ){$koeficient = 1.06; return $koeficient;}

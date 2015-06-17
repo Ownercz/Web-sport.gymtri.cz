@@ -1,7 +1,7 @@
 
 
 
-<?PHP include $_SERVER['DOCUMENT_ROOT']."/functions/check.php"; ?>
+<?PHP include "../../functions/check.php"; ?>
 <!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml">
 <meta charset="UTF-8" />
@@ -111,7 +111,7 @@ tr td:hover { background: #666; color: #FFF; } /* Hover cell effect! */
       if(isset($_GET['class'])){$class= $_GET['class'];}else{}
       if(isset($_GET['classid'])){$classid= $_GET['classid'];}else{}
       if(isset($_GET['beginyear'])){$beginyear= $_GET['beginyear'];}else{}
-       include $_SERVER['DOCUMENT_ROOT']."/functions/dbconnect.php";
+       include "../../functions/dbconnect.php";
      $request2="SELECT * FROM `event` WHERE `id` = $id ORDER BY `event_date` DESC";
       $result2 = $mysqli->query($request2);
       $row2 = $result2->fetch_array(MYSQLI_NUM);

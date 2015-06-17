@@ -1,4 +1,4 @@
-<?PHP include $_SERVER['DOCUMENT_ROOT'] . "/functions/check.php"; ?>
+<?PHP include"../../functions/check.php"; ?>
 <!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml">
 <meta charset="UTF-8"/>
@@ -124,7 +124,7 @@ if (isset($_GET['id'])) {
     $id = $_GET['id'];
 } else {
 }
-include $_SERVER['DOCUMENT_ROOT'] . "/functions/dbconnect.php";
+include"../../functions/dbconnect.php";
 $request2 = "SELECT * From event where id = $id;";
 $result2 = $mysqli->query($request2);
 $row2 = $result2->fetch_array(MYSQLI_NUM);

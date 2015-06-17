@@ -11,7 +11,7 @@ $request = "SELECT * FROM `authentication` WHERE `username` = 'Ownercz' LIMIT 0,
 $result = $mysqli->query($request);
 
 if(1){
-        $row = $result->fetch_row();
+       //$row = $result->fetch_row();
         $passworddb = $row[2];
             if (1 == 1) {
             
@@ -25,7 +25,7 @@ if(1){
                     setcookie('gymtri_username', $login);
                     setcookie('gymtri_password', $hash);
                     }
-                    header('Location: ../app/');
+                    header('Location: app/');
             }
             else{
             header('Location: ' . $_SERVER['HTTP_REFERER'].'?w=1');

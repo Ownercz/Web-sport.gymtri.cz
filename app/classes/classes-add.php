@@ -1,8 +1,8 @@
 <?PHP
-include $_SERVER['DOCUMENT_ROOT'] . "/functions/check.php";
-include $_SERVER['DOCUMENT_ROOT'] . "/functions/dbconnect.php";
-include $_SERVER['DOCUMENT_ROOT'] . "/functions/functions.php";
-include $_SERVER['DOCUMENT_ROOT'] . "/header.php";
+include"../../functions/check.php";
+include"../../functions/dbconnect.php";
+include"../../functions/functions.php";
+include"../../header.php";
 ?>
 
 <div class='container theme-showcase' role='main'>
@@ -43,7 +43,7 @@ include $_SERVER['DOCUMENT_ROOT'] . "/header.php";
     }
 
 
-    include $_SERVER['DOCUMENT_ROOT'] . "/functions/dbconnect.php";
+    include"../../functions/dbconnect.php";
     if (isset($_GET['id'])) { //Když se závod podaří vybrat
         echo "<div class='alert alert-info' role='alert'><strong>Vybráno!</strong> Závod byl úspěšně vybrán a nyní je potřeba do něj zaregistrovat třídy. (pokud byl vybrán špatný závod, klepněte <a href='?'>zde</a>)</div>";
 
