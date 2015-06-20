@@ -17,23 +17,9 @@
 
 if (isset($_GET['id'])) {
     $id = $_GET['id'];
-} else {
 }
-if (isset($_GET['trida'])) {
-    $trida = $_GET['trida'];
-} else {
-}
-if (isset($_GET['class'])) {
-    $class = $_GET['class'];
-} else {
-}
-if (isset($_GET['classid'])) {
-    $classid = $_GET['classid'];
-} else {
-}
-if (isset($_GET['beginyear'])) {
-    $beginyear = $_GET['beginyear'];
-} else {
+if (isset($_GET['disciplineid'])) {
+    $disciplineId = $_GET['disciplineid'];
 }
 include "../../functions/dbconnect.php";
 include "../../functions/functions.php";
@@ -62,7 +48,7 @@ if (isset($_GET['id'])) {
     <div class='page'>
         <div class='subpage'><h1>Gymtri výsledková listina - <strong>" . $row2[1] . "</strong></h1>
         Soutěž konána dne: " . $row2[4] . " <br>Vytvořil: " . $row2[2] . " <br>Zapisovali: " . $row2[3] . " <br> <h2>Třída: " . $trida . "</h2>";
-    $request = "SELECT * FROM `event_score` WHERE `event_id` = $id AND `class_id` = '$classid' ORDER BY `event_score`.`score_points` ASC";
+    $request = "SELECT * FROM `event_score` WHERE `event_id` = $id AND `discipline_id` = '$disciplineId' ORDER BY `event_score`.`score_points` ASC";
     $result = $mysqli->query($request);
     $i = 1;
     echo "<table class='thetable'><tr><th>#</th><th>Jméno</th><th>Příjmení</th><th>Disciplína</th><th>Výkon</th><th>Body</th></tr>";

@@ -49,7 +49,7 @@ if (isset($_GET['id'])) {
     $result = $mysqli->query($request);
     //echo $classid;
     if ($result->num_rows === 0) {
-        echo "<a href='?'><button type='button' class='btn btn-warning'>Nebyl nalezen žádný závodník > zpět!</button></a>";
+        echo "<a href='#'><button type='button' class='btn btn-info'>Nejsou zde žádní další závodnící pro vložení výsledků.</button></a><br><br>";
     } else {
         echo "<table class='table table-hover' style='margin-bottom:0px;'>
         <thead>
@@ -157,7 +157,7 @@ if (isset($_GET['id'])) {
         $i++;//
         while ($row = $result->fetch_array(MYSQLI_ASSOC)) {
             $athlete = athleteinfo($row["athlete_id"], $mysqli);
-
+            $disciplineName= $disciplines[$row["discipline_id"] - 1] ;
             $sex = $row["gender"];
             $age = $row["age"];
             echo "<form action='event-score-add-script.php?id=" . $row["id"] . "' method='POST' target='_blank' onsubmit='setTimeout(function () { window.location.reload(); }, 30)'>
@@ -170,8 +170,8 @@ if (isset($_GET['id'])) {
             }
             echo "</td>
           <td class='class'>" . eventAgeClass($event_id, $athlete["id"], $mysqli) . "." . $athlete["class"] . "</td><td class='birth'>" . $athlete["birthdate"] . " | Věk: " . $row["age"] . "</td>";
-            echo "<td class='class'><span class='label label-info' style='font-size:100%;'>" . $disciplines[$row["discipline_id"] - 1] . "</span></td><input type='hidden' name='discipline' value='" . $disciplines[$row["discipline_id"] - 1] . "'><input type='hidden' name='delete' value='1'>";
-            echo "<td class='class'>" . $row['score_value'] . "</td><td class='class'>" . $row['score_points'] . "</td><td class='class'>" . $row['koeficient'] . "</td><td><input type='submit' class='btn btn-sm btn-default' value='Smazat'></td></form>";
+            echo "<td class='class'><span class='label label-info' style='font-size:100%;'>" . $disciplineName . "</span></td><input type='hidden' name='discipline' value='" . $disciplineName . "'><input type='hidden' name='delete' value='1'>";
+            echo "<td class='class'>" . printNice($disciplineName,$row['score_value']) . "</td><td class='class'>" . $row['score_points'] . "</td><td class='class'>" . $row['koeficient'] . "</td><td><input type='submit' class='btn btn-sm btn-default' value='Smazat'></td></form>";
         }
         echo "</tbody></table>";
 

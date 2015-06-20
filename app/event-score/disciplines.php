@@ -15,30 +15,12 @@ if( in_array( $vek , range( 17 , 300 ) ) ){$koeficient = 1.02; return $koeficien
 }
 else{echo"Spatne zadane pohlavi."; exit;}
 }
-/*echo dvacetpetkavzA(1.07,18,"F",$mysqli);
 
-function dvacetpetkavzA($koeficient,$vykon,$sex,$mysqli){
-
-    $scorevalue= array();
-
-    $request = "SELECT * FROM `points` WHERE `discipline_id` = 10 AND `score_value_gender` = '$sex'";
-    $result = $mysqli->query($request);
-    while($row = $result->fetch_array(MYSQLI_NUM)){
-        $raw = str_replace(",",".",$row[2]);
-        array_push($scorevalue, $raw );
-    }
-
-    $value = getClosest($vykon, $scorevalue);
-    ////$value = str_replace(".",",",$value);
-    $request = "SELECT * FROM `points` WHERE `discipline_id` = 10  AND `score_value_gender` = '$sex' AND `score_value` = '$value'";
-   echo $request;
-    $result = $mysqli->query($request);
-    while($row = $result->fetch_array(MYSQLI_NUM)){
-       echo $row[4]*$koeficient;
-    }
-}*/
-
-
+function checkvalue($value,$koeficient){
+    if($value==$koeficient){return 0;}
+    if($value>150){return 0;}
+    else{return $value;}
+}
 
 function getClosest($search, $arr) { //copied
    $closest = null;
@@ -66,7 +48,7 @@ $value = getClosest($vykon, $scorevalue);
 $request = "SELECT * FROM `points` WHERE `discipline_id` = 1  AND `score_value_gender` = '$sex' AND `score_value` = '$value'";
 $result = $mysqli->query($request);
 while($row = $result->fetch_array(MYSQLI_NUM)){
-return $row[4]*$koeficient;
+return checkValue($row[4]*$koeficient,$koeficient);
 }
 
 }
@@ -86,7 +68,7 @@ $value = getClosest($vykon, $scorevalue);
 $request = "SELECT * FROM `points` WHERE `discipline_id` = 2  AND `score_value_gender` = '$sex' AND `score_value` = '$value'";
 $result = $mysqli->query($request);
 while($row = $result->fetch_array(MYSQLI_NUM)){
-return $row[4]*$koeficient;
+return checkValue($row[4]*$koeficient,$koeficient);
 }
 }
 function patnactistovka($koeficient,$vykon,$sex,$mysqli){
@@ -105,7 +87,7 @@ $value = getClosest($vykon, $scorevalue);
 $request = "SELECT * FROM `points` WHERE `discipline_id` = 3  AND `score_value_gender` = '$sex' AND `score_value` = '$value'";
 $result = $mysqli->query($request);
 while($row = $result->fetch_array(MYSQLI_NUM)){
-return $row[4]*$koeficient;
+return checkValue($row[4]*$koeficient,$koeficient);
 }
 }
 function tritisicovka($koeficient,$vykon,$sex,$mysqli){
@@ -124,7 +106,7 @@ $value = getClosest($vykon, $scorevalue);
 $request = "SELECT * FROM `points` WHERE `discipline_id` = 4  AND `score_value_gender` = '$sex' AND `score_value` = '$value'";
 $result = $mysqli->query($request);
 while($row = $result->fetch_array(MYSQLI_NUM)){
-return $row[4]*$koeficient;
+return checkValue($row[4]*$koeficient,$koeficient);
 }
 }
 
@@ -144,7 +126,7 @@ $value = getClosest($vykon, $scorevalue);
 $request = "SELECT * FROM `points` WHERE `discipline_id` = 5  AND `score_value_gender` = '$sex' AND `score_value` = '$value'";
 $result = $mysqli->query($request);
 while($row = $result->fetch_array(MYSQLI_NUM)){
-return $row[4]*$koeficient;
+return checkValue($row[4]*$koeficient,$koeficient);
 }
 }
 
@@ -164,7 +146,7 @@ $value = getClosest($vykon, $scorevalue);
 $request = "SELECT * FROM `points` WHERE `discipline_id` = 6  AND `score_value_gender` = '$sex' AND `score_value` = '$value'";
 $result = $mysqli->query($request);
 while($row = $result->fetch_array(MYSQLI_NUM)){
-return $row[4]*$koeficient;
+return checkValue($row[4]*$koeficient,$koeficient);
 }
 }
 
@@ -184,7 +166,7 @@ $value = getClosest($vykon, $scorevalue);
 $request = "SELECT * FROM `points` WHERE `discipline_id` = 7  AND `score_value_gender` = '$sex' AND `score_value` = '$value'";
 $result = $mysqli->query($request);
 while($row = $result->fetch_array(MYSQLI_NUM)){
-return $row[4]*$koeficient;
+return checkValue($row[4]*$koeficient,$koeficient);
 }
 }
 
@@ -204,7 +186,7 @@ $value = getClosest($vykon, $scorevalue);
 $request = "SELECT * FROM `points` WHERE `discipline_id` = 8  AND `score_value_gender` = '$sex' AND `score_value` = '$value'";
 $result = $mysqli->query($request);
 while($row = $result->fetch_array(MYSQLI_NUM)){
-return $row[4]*$koeficient;
+return checkValue($row[4]*$koeficient,$koeficient);
 }
 }
 
@@ -224,7 +206,7 @@ $value = getClosest($vykon, $scorevalue);
 $request = "SELECT * FROM `points` WHERE `discipline_id` = 9  AND `score_value_gender` = '$sex' AND `score_value` = '$value'";
 $result = $mysqli->query($request);
 while($row = $result->fetch_array(MYSQLI_NUM)){
-return $row[4]*$koeficient;
+return checkValue($row[4]*$koeficient,$koeficient);
 }
 }
 
@@ -244,7 +226,7 @@ $value = getClosest($vykon, $scorevalue);
 $request = "SELECT * FROM `points` WHERE `discipline_id` = 10  AND `score_value_gender` = '$sex' AND `score_value` = '$value'";
 $result = $mysqli->query($request);
 while($row = $result->fetch_array(MYSQLI_NUM)){
-return $row[4]*$koeficient;
+return checkValue($row[4]*$koeficient,$koeficient);
 }
 }
 
@@ -264,7 +246,7 @@ $value = getClosest($vykon, $scorevalue);
 $request = "SELECT * FROM `points` WHERE `discipline_id` = 11  AND `score_value_gender` = '$sex' AND `score_value` = '$value'";
 $result = $mysqli->query($request);
 while($row = $result->fetch_array(MYSQLI_NUM)){
-return $row[4]*$koeficient;
+return checkValue($row[4]*$koeficient,$koeficient);
 }
 }
 
@@ -285,7 +267,7 @@ $request = "SELECT * FROM `points` WHERE `discipline_id` = 12  AND `score_value_
 $result = $mysqli->query($request);
 
 while($row = $result->fetch_array(MYSQLI_NUM)){
-return $row[4]*$koeficient;
+return checkValue($row[4]*$koeficient,$koeficient);
 }
 
 

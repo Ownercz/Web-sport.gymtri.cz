@@ -69,6 +69,39 @@ function removescore($eventid,$athleteid,$mysqli){
     return $result;
 }
 
+function printNice($disciplineName,$time){
+    if(in_array($disciplineName,array("3000m","1500m","100m","60m","100m plavání","50m plavání","25m plavání"))){$minutes=0;$seconds=0;$total=$time;
+    while($total>60){
+        $minutes++;
+        $total=$total-60;
+    }
+        $seconds=$time-(60*$minutes);
+        $seconds= str_replace(".",",",$seconds);
+        if($minutes>0){return $minutes.":".$seconds;}
+        else{return $seconds;}
+    }else{return $time;}
+}
+
+function printDot($text){
+    return str_replace(".",",",$text);
+}
+
+function valueFormat(){
+    print "<h2>Formát výkonů</h2>
+     <table><tr><th>Název disciplíny</th><th>jednotky</th><th>formát</th></tr>
+     <tr><td>60m,100m,1500m,3000m sprint</td><td>sekundy</td><td>[s]</td></tr>
+     <tr><td>granát, míč</td><td>metry</td><td>[m]</td></tr>
+     <tr><td>dálka, výška</td><td>centimetry</td><td>[cm]</td></tr>
+     <tr><td>šplh</td><td>sekundy</td><td>[s]</td></tr>
+     <tr><td>25m,50m,100m plavání</td><td>sekundy</td><td>[s]</td></tr>
+
+     </table>";
+}
+function copyright(){
+    include "../../functions/check.php";
+    print "<div style='font-size:10px; position:relative;bottom:0;'><div style='float:right;'>
+Gymtri Sport verze " . $version . "<br>© Radim Lipovčan ".date("Y")."</div></div></div></div></page>";
+}
 
 //funkce pro import trid
 //funkce pro export cele DB

@@ -81,8 +81,12 @@ include "../header.php";
                         <p class='list-group-item-text'>Vložení výsledků závodů a jejich úpravy</p>
                     </a>
                     <a href='event-print/event-print.php' class='list-group-item'>
-                        <h4 class='list-group-item-heading'>Tisk výsledků</h4>
-                        <p class='list-group-item-text'>Vytiskne výsledky soutěže</p>
+                        <h4 class='list-group-item-heading'>Tisk tříd</h4>
+                        <p class='list-group-item-text'>Vytiskne výsledky soutěže dle tříd</p>
+                    </a>
+                    <a href='event-print/event-print-disciplines.php' class='list-group-item'>
+                        <h4 class='list-group-item-heading'>Tisk disciplín</h4>
+                        <p class='list-group-item-text'>Vytiskne výsledky soutěže dle disciplín</p>
                     </a>
                 </div>
             </div><!-- /.col-sm-4 -->

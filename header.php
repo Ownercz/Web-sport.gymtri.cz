@@ -17,6 +17,7 @@
       //$urlDir = str_replace('/include', '/',str_replace($docRoot, '', $dirRoot));
       $urlDir = str_replace($docRoot, '', $dirRoot);
       $site_path = $protocol.$domain.$urlDir;
+      $site_path=str_replace("c/xampp/htdocs/",$site_path,null);
       define ('BASE_URL', $site_path);?>
     <!-- Bootstrap core CSS -->
     <link href='<?PHP echo BASE_URL;?>/css/bootstrap.min.css' rel='stylesheet'>
