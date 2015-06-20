@@ -41,7 +41,7 @@ include"../../header.php";
 
         echo "<h2><span class='label label-warning'>2. Vyberte disciplíny pro tisk</span></h2><form><div class='list-group'>";
         foreach ($disciplines as &$discipline) {$i++;
-            echo "<a href='event-print-discipline.php?id=" . $id . "&discipline=" . $i . "' class='list-group-item'>" . $discipline . "</a>";
+            echo "<a href='event-print-discipline.php?id=" . $id . "&disciplineId=" . $i . "' class='list-group-item'>" . $discipline . "</a>";
         }
 
 
