@@ -4,16 +4,19 @@
 include"../../functions/functions.php";*/
 function koeficient($vek,$sex){
 if($sex == "M"){
-if( in_array( $vek , range( 0 , 14 ) ) ){$koeficient = 1.06; return $koeficient;}
-if( in_array( $vek , range( 15 , 16 ) ) ){$koeficient = 1; return $koeficient;}
-if( in_array( $vek , range( 17 , 300 ) ) ){$koeficient = 0.97; return $koeficient;}
+    if( in_array( $vek , range( 10 , 14 ) ) ){$koeficient = 1.06; return $koeficient;}
+    else if( in_array( $vek , range( 15 , 16 ) ) ){$koeficient = 1; return $koeficient;}
+    else if( in_array( $vek , range( 17 , 300 ) ) ){$koeficient = 0.97; return $koeficient;}
+    else {echo "<h3>Nebyl zadan vek, upravte zavodnika a akci opakujte.</h3>"; echo "<script> function closeWindow(){ setTimeout(function(){window.close();},5000);} window.onload= closeWindow();</script><br>Toto okno se automaticky zavre za 5 sekund."; exit;}
 }
 if($sex == "F"){
-if( in_array( $vek , range( 0 , 14 ) ) ){$koeficient = 1.07; return $koeficient;}
-if( in_array( $vek , range( 15 , 16 ) ) ){$koeficient = 1.05; return $koeficient;}
-if( in_array( $vek , range( 17 , 300 ) ) ){$koeficient = 1.02; return $koeficient;}
+    if( in_array( $vek , range( 10 , 14 ) ) ){$koeficient = 1.07; return $koeficient;}
+    else if( in_array( $vek , range( 15 , 16 ) ) ){$koeficient = 1.05; return $koeficient;}
+    else if( in_array( $vek , range( 17 , 300 ) ) ){$koeficient = 1.02; return $koeficient;}
+    else {echo "<h3>Nebyl zadan vek, upravte zavodnika a akci opakujte.</h3>"; echo "<script> function closeWindow(){ setTimeout(function(){window.close();},5000);} window.onload= closeWindow();</script><br>Toto okno se automaticky zavre za 5 sekund."; exit;}
 }
-else{echo"Spatne zadane pohlavi."; exit;}
+else {echo "<h3>Nebylo zadano pohlavi, upravte zavodnika a akci opakujte.</h3>"; echo "<script> function closeWindow(){ setTimeout(function(){window.close();},5000);} window.onload= closeWindow();</script><br>Toto okno se automaticky zavre za 5 sekund."; exit;}
+
 }
 
 function checkvalue($value,$koeficient){
