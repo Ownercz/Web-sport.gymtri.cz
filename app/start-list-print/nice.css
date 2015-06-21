@@ -1,0 +1,92 @@
+body {
+    margin: 0;
+    padding: 0;
+    background-color: #FAFAFA;
+    font: 12pt "Tahoma";
+}
+h1 {
+    font-size:15pt;
+    text-align:center;
+
+}
+h2 {
+    font-size:11pt;
+    text-align:center;
+    border-bottom:1px solid black;
+}
+table {
+    color: #333;
+    font-family: Helvetica, Arial, sans-serif;
+    width: 640px;
+    border-collapse:
+    collapse; border-spacing: 0;
+}
+td, th {
+    border: 1px solid transparent; /* No more visible border */
+    height: 30px;
+    transition: all 0.3s;  /* Simple transition for hover effect */
+}
+th {
+    background: #DFDFDF;  /* Darken header a bit */
+    font-weight: bold;
+}
+td {
+    background: #FFFFF;
+    text-align: center;
+    border: 1px solid black;
+}
+
+* {
+    box-sizing: border-box;
+    -moz-box-sizing: border-box;
+}@media screen {
+.page {
+    width: 21cm;
+    min-height: 29.7cm;
+    padding: 2cm;
+    margin: 1cm auto;
+    border: 1px #D3D3D3 solid;
+    border-radius: 5px;
+    background: white;
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
+}
+.subpage {
+    padding: 0,5cm;
+
+    height: 267mm;
+
+}
+
+@page {
+    size: A4;
+    margin: 0;
+}}
+@media print {
+    .page {
+        -webkit-print-color-adjust: exact;
+        padding-left: 1cm;
+        padding-right: 1cm;
+        page-break-after: always;
+    }
+    table {
+        color: #333;
+        font-family: Helvetica, Arial, sans-serif;
+        width: 100%;
+        border-collapse:
+        collapse; border-spacing: 0;
+    }
+    td, th {
+        border: 1px solid transparent; /* No more visible border */
+        height: 30px;
+        transition: all 0.3s;  /* Simple transition for hover effect */
+    }
+    th {
+        background: #DFDFDF;  /* Darken header a bit */
+        font-weight: bold;
+    }
+    td {
+        background: #FAFAFA;
+        text-align: center;
+        border: 1px solid black;
+    }
+}

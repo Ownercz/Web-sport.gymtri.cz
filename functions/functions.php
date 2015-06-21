@@ -87,20 +87,24 @@ function printDot($text){
 }
 
 function valueFormat(){
-    print "<h2>Formát výkonů</h2>
-     <table><tr><th>Název disciplíny</th><th>jednotky</th><th>formát</th></tr>
+    print "<table style='position:relative;bottom:0;'><h2>Formát výkonů</h2>
+     <tr><th>Název disciplíny</th><th>jednotky</th><th>formát</th></tr>
      <tr><td>60m,100m,1500m,3000m sprint</td><td>sekundy</td><td>[s]</td></tr>
      <tr><td>granát, míč</td><td>metry</td><td>[m]</td></tr>
      <tr><td>dálka, výška</td><td>centimetry</td><td>[cm]</td></tr>
      <tr><td>šplh</td><td>sekundy</td><td>[s]</td></tr>
      <tr><td>25m,50m,100m plavání</td><td>sekundy</td><td>[s]</td></tr>
 
-     </table>";
+     </table></div>";
+}
+function printInfo(){
+    print "<div style='font-size:10px; position:relative;bottom:0;'><div style='float:left;'>
+Vytištěno: ".date("H:i:s d-m-Y")."</div></div>";
 }
 function copyright(){
     include "../../functions/check.php";
     print "<div style='font-size:10px; position:relative;bottom:0;'><div style='float:right;'>
-Gymtri Sport verze " . $version . "<br>© Radim Lipovčan ".date("Y")."</div></div></div></div></page>";
+Gymtri Sport verze " . $version . "<br>© Radim Lipovčan ".date("Y")."</div></div>";
 }
 
 //funkce pro import trid

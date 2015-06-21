@@ -80,8 +80,9 @@ if (isset($_GET['id'])) {
 echo "<tr><td></td><td></td><td></td><td></td><td>Celkově</td><td>" . printDot($body) . "</td></tr></table>";
 
 valueFormat();
+printInfo();
 copyright();
-
+echo"</div></div></div></page>";
 
 ?>
 
