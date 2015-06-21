@@ -18,7 +18,7 @@
     <link href='../../css/theme.css' rel='stylesheet'>
 
     <!-- Just for debugging purposes. Don't actually copy these 2 lines! -->
-    <!--[if lt IE 9]><script src='./assets/js/ie8-responsive-file-warning.js'></script><![endif]-->
+    <!--[if lt IE 9]><script src='../../assets/js/ie8-responsive-file-warning.js'></script><![endif]-->
     <script src='../../assets/js/ie-emulation-modes-warning.js'></script>
 
     <!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
@@ -43,11 +43,11 @@
             <span class='icon-bar'></span>
             <span class='icon-bar'></span>
           </button>
-          <a class='navbar-brand' href='<?PHP echo BASE_URL;?>/app'>Gymtri Sport</a>
+          <a class='navbar-brand' href='../app'>Gymtri Sport</a>
         </div>
         <div class='navbar-collapse collapse'>
           <ul class='nav navbar-nav'>
-            <li class='active'><a href='<?PHP echo BASE_URL;?>/app'>Domů</a></li>
+            <li class='active'><a href='../app'>Domů</a></li>
 
               </ul>
             </li>
