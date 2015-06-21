@@ -36,8 +36,9 @@
      
       echo"<h2><span class='label label-warning'>2. Vyberte třídy pro nastavení disciplíny</span></h2><form><div class='list-group'>";
      foreach ($disciplines as &$discipline) {
-         $i++;
+
    echo"<a href='start-list-print.php?id=".$id."&discipline=".$i."' class='list-group-item'>".$discipline."</a>";
+         $i++;
 }
       
      

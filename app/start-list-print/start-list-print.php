@@ -153,7 +153,7 @@ if (isset($_GET['id'])) {
     $resultTime= $mysqli->query($requestTime);
     while ($rowTime = $resultTime->fetch_array(MYSQLI_ASSOC)) {
 
-        $time=$rowTime[$discipline];
+        $time=$rowTime[4]; //offset at table event
 
     }
     $dateEvent=str_replace("-",".",$row2[14]);

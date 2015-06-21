@@ -1,0 +1,2 @@
+Bug: /app/start-list-print/start-list.php wrong offset for list of disciplines
+Status: Fixed

@@ -47,10 +47,10 @@
                 echo "<label>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<b>Špatný login</b> </label>";
                 }?>
             </div>
-            <button class="btn btn-lg btn-primary btn-block" type="submit">Přihlásit se</button>
-        </form>
+            <button class="btn btn-lg btn-primary btn-block" type="submit">Přihlásit se</button><div><strong>Přihlášení</strong> více uživatelů není v této verzi podporováno. Pro spuštění aplikace se přihlašte pomocí přihlašovacích údajů test/test.</div>
 
-    </div> <!-- /container -->
+        </form>
+     </div> <!-- /container -->
     <!-- Bootstrap core JavaScript
     ================================================== -->
     <!-- Placed at the end of the document so the pages load faster -->
