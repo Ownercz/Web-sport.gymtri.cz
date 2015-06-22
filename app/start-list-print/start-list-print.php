@@ -57,7 +57,7 @@ if (isset($_GET['id'])) {
     echo "<table class='thetable'><tr><th>#</th><th>Jméno</th><th>Příjmení</th><th>Datum narození</th><th>Třída</th><th>1. pokus</th><th>2. pokus</th><th>3. pokus</th></tr>";
     while ($row = $result->fetch_array(MYSQLI_NUM)) {
         $count++;
-        if($count>26){$count=0;pageDivider($row2[13],$dateEvent,$time,$disciplines[$discipline-1],"start-list");}
+        if($count>26){$count=0;pageDivider($row2[13],$dateEvent,$time,$disciplines[$discipline-1],null,"start-list");}
         $athlete=athleteInfo($row[3],$mysqli);
        // echo$row[4];
         //$year=eventAge($id,$row[4],$mysqli);
