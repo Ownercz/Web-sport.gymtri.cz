@@ -1,4 +1,7 @@
 <?php ?>
+<h3>1.1.3</h3>
+<strong>Recommended verze</strong><br>
+Doporučená verze pro zpracování výsledků šestiboje.<br>
 <h3>1.1.2</h3>
 Vytváření dalšího modulu, konkrétně se jedná o statistiky závodů.<br>
 Mělo by to umět vyhodnotit 3 nejlepší závodníky z každé disciplíny a<br>

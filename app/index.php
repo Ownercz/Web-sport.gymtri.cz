@@ -150,7 +150,10 @@
                 <div class='list-group'>
                     <a href='statistics/select-event-discipline.php' class='list-group-item alert-danger'>
                         <h4 class='list-group-item-heading'>Statistika závodu</h4>
-                        <p class='list-group-item-text'>Tato část systému je ve vývoji</p>
+                        <p class='list-group-item-text'>Vyhodnocení šestiboje</p>
+                        <p class='list-group-item-text'>Sestava tříd podle počtu bodů</p>
+                        <p class='list-group-item-text'>Sestava 3 nejlpších z každé disciplíny</p>
+                        <p class='list-group-item-text'><strong>Tato část systému je ve vývoji</strong></p>
                     </a>
                 </div>
             </div><!-- /.col-sm-4 -->
