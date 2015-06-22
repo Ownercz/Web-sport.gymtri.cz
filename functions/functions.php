@@ -89,13 +89,13 @@ function printDot($text){
 function valueFormat(){
     print "<table style='position:relative;bottom:0;'><h2>Formát výkonů</h2>
      <tr><th>Název disciplíny</th><th>jednotky</th><th>formát</th></tr>
-     <tr><td>60m,100m,1500m,3000m sprint</td><td>sekundy</td><td>[s]</td></tr>
+     <tr><td>60m,100m,1500m,3000m sprint</td><td>minuty:sekundy</td><td>[m]:[s]</td></tr>
      <tr><td>granát, míč</td><td>metry</td><td>[m]</td></tr>
      <tr><td>dálka, výška</td><td>centimetry</td><td>[cm]</td></tr>
      <tr><td>šplh</td><td>sekundy</td><td>[s]</td></tr>
-     <tr><td>25m,50m,100m plavání</td><td>sekundy</td><td>[s]</td></tr>
+     <tr><td>25m,50m,100m plavání</td><td>minuty:sekundy</td><td>[m]:[s]</td></tr>
 
-     </table></div>";
+     </table>";
 }
 function printInfo(){
     print "<div style='font-size:10px; position:relative;bottom:0;'><div style='float:left;'>
@@ -107,6 +107,32 @@ function copyright(){
 Gymtri Sport verze " . $version . "<br>© Radim Lipovčan ".date("Y")."</div></div>";
 }
 
+function pageDivider($row2,$dateEvent,$time,$disciplines,$type){
+
+       echo"</table></div>";
+    if($type=="discipline-single"){valueFormat();}
+printInfo();
+copyright();
+echo"</div></div></div></page>";
+    echo "<page size='A4'><div class='book'>
+    <div class='page'>
+        <div class='subpage'>";
+
+
+    if($type=="start-list"){
+    echo"<h1>Gymtri startovací listina - <strong>" . $row2 . "</strong></h1>
+        Soutěž konána: " . $dateEvent . " v ".$time." <br><br>Zapisující: _________________ <br> <h2>Disciplína: " . $disciplines . "</h2>";
+    echo "<table class='thetable'><tr><th>#</th><th>Jméno</th><th>Příjmení</th><th>Datum narození</th><th>Třída</th><th>1. pokus</th><th>2. pokus</th><th>3. pokus</th></tr>";}
+
+
+    if($type=="discipline-single"){
+        echo"<h1>Gymtri výsledková listina - <strong>" . $row2 . "</strong></h1>
+        Soutěž konána dne: " . $row2[4] . " <br>Vytvořil: " . $row2[2] . " <br>Zapisovali: " . $row2[3] . " <br> <h2>Třída: " . null . "</h2>";
+        echo "<table class='thetable'><tr><th>#</th><th>Jméno</th><th>Příjmení</th><th>Výkon</th><th>Body</th></tr>";
+    }
+
+
+}
 //funkce pro import trid
 //funkce pro export cele DB
 //funkce pro export vysledku souteze do csv
