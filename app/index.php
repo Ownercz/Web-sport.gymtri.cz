@@ -146,6 +146,14 @@
                     </a>
                 </div>
             </div><!-- /.col-sm-4 -->
+            <div class='col-sm-4'>
+                <div class='list-group'>
+                    <a href='statistics/select-event-discipline.php' class='list-group-item alert-danger'>
+                        <h4 class='list-group-item-heading'>Statistika závodu</h4>
+                        <p class='list-group-item-text'>Tato část systému je ve vývoji</p>
+                    </a>
+                </div>
+            </div><!-- /.col-sm-4 -->
         </div>
 
 
