@@ -17,7 +17,7 @@ while (!feof($file))
     $i=0;
     while($i<3){
         $line[$i] = str_replace(",",".",$line[$i]);
-        if(($i==2)){$name=explode(' ',$line[$i]); $firstname=$name[0]; $lastname=$name[1];}
+        if(($i==2)){$name=explode(' ',$line[$i]); $lastname=$name[0]; $firstname=$name[1];}
 
 
         $i++;
