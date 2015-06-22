@@ -1,4 +1,13 @@
-<?PHP include "../../functions/check.php";
+    <!DOCTYPE html>
+    <html xmlns="http://www.w3.org/1999/xhtml">
+    <meta charset="UTF-8"/>
+    <head>
+        <title></title>
+        <link href='print.css' rel='stylesheet'>
+        <link href='nice.css' rel='stylesheet'>
+    </head>
+    <body>
+    <?PHP include "../../functions/check.php";
 include "../../functions/functions.php";
 include "../../functions/dbconnect.php";
 ?>
@@ -50,12 +59,16 @@ while ($x < ($i + 1)) {
     }
     $x++;
 }
-echo "<br>";
-echo "<br>";
-echo "<br>";
-echo "<br>";
+    echo "<page size='A4'><div class='book'>
+    <div class='page'>
+        <div class='subpage'><h1>Gymtri výsledková listina - <strong> vyhodnocení </strong></h1>";
+    echo "<table class='thetable'><tr><th>Umístění</th><th>Třída</th><th>Celkový počet bodů</th></tr>";
 $x=0;
-while ($x < ($i + 1)) {
-    echo $classesArray[$x] . "&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;" . $points[$x] . "<br>";
+while ($x < ($i)) {
+    echo "<tr><td>".$x.".</td><td>".$classesArray[$x] . "</td><td>" . $points[$x] . "</td></tr>";
     $x++;
 }
+    echo"</table>";
+    printInfo();
+    copyright();
+    echo"</div></div></div></page>";
