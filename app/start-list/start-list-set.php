@@ -21,6 +21,7 @@
           <th>Třída</th>
           <th>Datum narození</th>
           <th>Disciplína</th>
+          <th>Šebrlecup</th>
           <th></th>
         </tr>
       </thead>
@@ -88,7 +89,7 @@
              else{echo"<option value='".$discipline."'>".$discipline."</option>";}
             }
 
-echo"</select></td> <td class='save'><select name='sebrlecup'>";echo"<option value='no'>Ne</option><option value='yes'>Ano</option></select><input type='submit' class='btn btn-sm btn-default' value='Uložit'></input></td></form></tr>
+echo"</select></td><td><select name='sebrlecup'>";echo"<option value='no'>Ne</option><option value='yes'>Ano</option></select></td> <td class='save'><input type='submit' class='btn btn-sm btn-default' value='Uložit'></input></td></form></tr>
         ";
      }
      
