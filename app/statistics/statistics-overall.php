@@ -59,13 +59,14 @@ while ($x < ($i + 1)) {
     }
     $x++;
 }
+    $info=eventInfo($id,$mysqli);
     echo "<page size='A4'><div class='book'>
     <div class='page'>
-        <div class='subpage'><h1>Gymtri výsledková listina - <strong> vyhodnocení </strong></h1>";
+        <div class='subpage'><h1><strong> Vyhodnocení soutěže ".$info["event_name"]." </strong></h1>Soutěž konána dne: " . $info["event_name"] . " <br>Vytvořil: " . $info["event_creator"] . " <br>Zapisovali: " . $info["event_editor"] . " <br> <h2>Vítězná třída: " . $classesArray[0] . "</h2>";
     echo "<table class='thetable'><tr><th>Umístění</th><th>Třída</th><th>Celkový počet bodů</th></tr>";
 $x=0;
 while ($x < ($i)) {
-    echo "<tr><td>".$x.".</td><td>".$classesArray[$x] . "</td><td>" . $points[$x] . "</td></tr>";
+    echo "<tr><td>".($x+1).".</td><td>".$classesArray[$x] . "</td><td>" . $points[$x] . "</td></tr>";
     $x++;
 }
     echo"</table>";
