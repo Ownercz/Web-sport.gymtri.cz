@@ -29,11 +29,14 @@ while ($row1 = $result1->fetch_array(MYSQLI_NUM)) {
     echo "<page size='A4'><div class='book'>
     <div class='page'>
         <div class='subpage'><h1>Gymtri výsledková listina - <strong> statistika </strong></h1>";
+    $foreachSingle=0;
 foreach($disciplinesid as $single){
 $request = "SELECT * FROM `event_score` WHERE `event_id` LIKE $id AND `discipline_id` LIKE $single ORDER by score_points ASC LIMIT 0,3;";
     //echo$request."<br>";
     $result = $mysqli->query($request);
     $i = 1;
+    $foreachSingle++;
+    if(mysqli_num_rows($result)== 0){}else{
     echo "<table class='thetable'><tr><th>#</th><th>Jméno</th><th>Příjmení</th><th>Třída</th><th>Výkon</th><th>Body</th></tr>";
     while ($row = $result->fetch_array(MYSQL_ASSOC)) {
         echo "
@@ -45,8 +48,9 @@ $request = "SELECT * FROM `event_score` WHERE `event_id` LIKE $id AND `disciplin
            " . $row["score_points"] . "</td>
            </tr>";
 
-        echo "<td><strong>" . printNice($disciplines[$num],$row[5]) . "</strong></td><td><strong>" . printDot($row[6]) . "</td></tr>";
+        //echo "<td><strong>" . printNice($disciplines[$num],$row[5]) . "</strong></td><td><strong>" . printDot($row[6]) . "</td></tr>";
         $i++;
     }
-    echo "</table>";
+    if($foreachSingle>4){pageDivider(null, null, null, $single, NULL, "statistics-discipline"); $foreachSingle=0;}
+    echo "</table>";}
 }
