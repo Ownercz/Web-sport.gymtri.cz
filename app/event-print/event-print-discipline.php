@@ -54,7 +54,7 @@ if (isset($_GET['id'])) {
     <div class='page'>
         <div class='subpage'><h1>Gymtri výsledková listina - <strong>" . $row2[1] . "</strong></h1>
         Soutěž konána dne: " . $row2[4] . " <br>Vytvořil: " . $row2[2] . " <br>";if($row2[3]!=""){echo "Zapisovali: " . $row2[3]."<br>";}echo"  <h2>Disciplína: " . $disciplines[$num] . "</h2>";
-    $request = "SELECT * FROM `event_score` WHERE `event_id` = $id AND `discipline_id` = '$disciplineId' ORDER BY `event_score`.`score_points` ASC";
+    $request = "SELECT * FROM `event_score` WHERE `event_id` = $id AND `discipline_id` = '$disciplineId' ORDER BY `event_score`.`score_points` DESC";
     $result = $mysqli->query($request);
     $i = 1;
     echo "<table class='thetable'><tr><th>#</th><th>Jméno</th><th>Příjmení</th><th>Výkon</th><th>Body</th></tr>";

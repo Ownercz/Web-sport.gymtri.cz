@@ -171,6 +171,9 @@ function pageDivider($headline, $dateEvent, $time, $disciplines, $author, $type)
 
 
 }
+function classConstruct($prefix,$year){
+    return $prefix.".".$year;
+}
 //funkce pro import trid
 //funkce pro export cele DB
 //funkce pro export vysledku souteze do csv
