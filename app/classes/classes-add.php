@@ -43,7 +43,7 @@ include"../../header.php";
     }
 
 
-    include"../../functions/dbconnect.php";
+   //include"../../functions/dbconnect.php"; Bad boy! No compatibile mode anymore, running that show now.
     if (isset($_GET['id'])) { //Když se závod podaří vybrat
         echo "<div class='alert alert-info' role='alert'><strong>Vybráno!</strong> Závod byl úspěšně vybrán a nyní je potřeba do něj zaregistrovat třídy. (pokud byl vybrán špatný závod, klepněte <a href='?'>zde</a>)</div>";
 
