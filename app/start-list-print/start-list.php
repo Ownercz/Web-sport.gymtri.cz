@@ -32,8 +32,8 @@
       array_push($disciplines,  $row1[1]);
       array_push($disciplinesid,  $row1[0]);
 
-      }  
-     
+      }
+          $i++;
       echo"<h2><span class='label label-warning'>2. Vyberte třídy pro nastavení disciplíny</span></h2><form><div class='list-group'>";
      foreach ($disciplines as &$discipline) {
 

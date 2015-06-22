@@ -50,10 +50,10 @@ if (isset($_GET['id'])) {
     echo "<page size='A4'><div class='book'>
     <div class='page'>
         <div class='subpage'><h1>Gymtri startovací listina - <strong>" . $row2[13] . "</strong></h1>
-        Soutěž konána: " . $dateEvent . " v ".$time." <br><br>Zapisující: _________________ <br> <h2>Disciplína: " . $disciplines[$discipline] . "</h2>";
+        Soutěž konána: " . $dateEvent . " v ".$time." <br><br>Zapisující: _________________ <br> <h2>Disciplína: " . $disciplines[$discipline-1] . "</h2>";
     $request = "SELECT * From event_score where event_id = $id AND discipline_id = $discipline;";
     $result = $mysqli->query($request);
-    $i = 1;
+    $i = 0;
     echo "<table class='thetable'><tr><th>#</th><th>Jméno</th><th>Příjmení</th><th>Datum narození</th><th>Třída</th><th>1. pokus</th><th>2. pokus</th><th>3. pokus</th></tr>";
     while ($row = $result->fetch_array(MYSQLI_NUM)) {
 
