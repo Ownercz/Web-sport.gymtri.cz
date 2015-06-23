@@ -155,6 +155,10 @@
                         <p class='list-group-item-text'>Sestava 3 nejlpších z každé disciplíny</p>
                         <p class='list-group-item-text'><strong>Tato část systému je ve vývoji</strong></p>
                     </a>
+                    <a href='find-siblings/find.php' class='list-group-item alert-danger'>
+                        <h4 class='list-group-item-heading'>Najít sourozenecké dvojice</h4>
+                        <p class='list-group-item-text'><strong>Tato část systému je ve vývoji</strong></p>
+                    </a>
                 </div>
             </div><!-- /.col-sm-4 -->
         </div>
