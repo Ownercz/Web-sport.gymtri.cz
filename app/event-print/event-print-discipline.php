@@ -53,20 +53,20 @@ if (isset($_GET['id'])) {
     echo "<page size='A4'><div class='book'>
     <div class='page'>
         <div class='subpage'><h1>Gymtri výsledková listina - <strong>" . $row2[1] . "</strong></h1>
-        Soutěž konána dne: " . $row2[4] . " <br>Vytvořil: " . $row2[2] . " <br>";if($row2[3]!=""){echo "Zapisovali: " . $row2[3]."<br>";}echo"  <h2>Disciplína: " . $disciplines[$num] . "</h2>";
+        Soutěž konána dne: " . $row2[4] . " <br>Vytvořil: " . $row2[2] . " <br>";if($row2[3]!=""){echo "Zapisovali: " . $row2[3]."<br>";}echo"  <h2>Disciplína: " . $disciplines[$disciplineId-1] . "</h2>";
     $request = "SELECT * FROM `event_score` WHERE `event_id` = $id AND `discipline_id` = '$disciplineId' ORDER BY `event_score`.`score_points` DESC";
     $result = $mysqli->query($request);
     $i = 1;
     echo "<table class='thetable'><tr><th>#</th><th>Jméno</th><th>Příjmení</th><th>Výkon</th><th>Body</th></tr>";
     while ($row = $result->fetch_array(MYSQLI_NUM)) {
-        if($count>=26){$count=0;pageDivider($row2[1],$row2[4],$row2[2],$disciplines[$num],$row2[3],"discipline-single");}else{$count++;}
+        if($count>=26){$count=0;pageDivider($row2[1],$row2[4],$row2[2],$disciplines[$disciplineId-1],$row2[3],"discipline-single");}else{$count++;}
         //$body = $body + $row[6];
         echo "
           <tr><td>" . $i . ". </td><td>
            " . $row[10] . "</td><td>
            " . $row[11] . "</td>";
 
-        echo "<td><strong>" . printNice($disciplines[$num],$row[5]) . "</strong></td><td><strong>" . printDot($row[6]) . "</td></tr>";
+        echo "<td><strong>" . printNice($disciplines[$disciplineId-1],$row[5]) . "</strong></td><td><strong>" . printDot($row[6]) . "</td></tr>";
         $i++;
     }
 }

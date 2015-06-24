@@ -16,6 +16,9 @@ include "../../functions/dbconnect.php";
 if (isset($_GET['id'])) {
     $id = $_GET['id'];
 }
+    if (isset($_GET['discipline'])) {
+    $discipline = $_GET['discipline'];
+}
 $request1 = "SELECT * FROM `discipline` ORDER by id ASC";
 $result1 = $mysqli->query($request1);
 $disciplines = array();
@@ -28,30 +31,36 @@ while ($row1 = $result1->fetch_array(MYSQLI_NUM)) {
 }
     echo "<page size='A4'><div class='book'>
     <div class='page'>
-        <div class='subpage'><h1>Gymtri výsledková listina - <strong> statistika </strong></h1>";
+        <div class='subpage'><h1>Gymtri výsledková listina - <strong> průběžné výsledky závodníků </strong></h1>";
     $foreachSingle=0;
-foreach($disciplinesid as $single){
-$request = "SELECT * FROM `event_score` WHERE `event_id` LIKE $id AND `discipline_id` LIKE $single ORDER by score_points DESC LIMIT 0,3;";
+
+$request = "SELECT * FROM `event_score` WHERE `event_id` LIKE $id AND `discipline_id` LIKE $discipline ORDER by last_name ASC;";
     //echo$request."<br>";
     $result = $mysqli->query($request);
     $i = 1;
-    $foreachSingle++;
+    $count=0;
     if(mysqli_num_rows($result)== 0){}else{
-    echo "<table class='thetable'><tr><th>#</th><th>Jméno</th><th>Příjmení</th><th>Třída</th><th>Výkon</th><th>Body</th></tr>";
-        echo"<h2>".$disciplines[$single]."</h2>";
+    echo "<table class='thetable'><tr><th>Jméno</th><th>Příjmení</th><th>Třída</th><th>Výkon</th></tr>";
+        echo"<h2>".$disciplines[$discipline-1]."</h2>";
     while ($row = $result->fetch_array(MYSQL_ASSOC)) {
-        echo "
-          <tr><td>" . $i . ". </td><td>
+
+        $count++;
+        if($count>24){$count=0;pageDivider(null,null,null,$disciplines[$discipline-1],null,"stats-single");}
+echo "
+          <tr> <td>
            " . $row["first_name"] . "</td><td>
            " . $row["last_name"] . "</td><td>
            " . $row["class_name"] . "</td><td>
-           " . $row["score_value"] . "</td><td>
-           " . $row["score_points"] . "</td>
+           " . printNice($disciplines[$discipline-1],$row["score_value"]) . "</td>
            </tr>";
 
         //echo "<td><strong>" . printNice($disciplines[$num],$row[5]) . "</strong></td><td><strong>" . printDot($row[6]) . "</td></tr>";
         $i++;
     }
-    if($foreachSingle>4){pageDivider(null, null, null, $single, NULL, "statistics-discipline"); $foreachSingle=0;}
-    echo "</table>";}
-}
+    echo "</table>";
+       // valueFormat();
+        printInfo();
+    copyright();
+
+
+    }

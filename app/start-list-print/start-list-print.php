@@ -51,13 +51,13 @@ if (isset($_GET['id'])) {
     <div class='page'>
         <div class='subpage'><h1>Gymtri startovací listina - <strong>" . $row2[13] . "</strong></h1>
         Soutěž konána: " . $dateEvent . " v ".$time." <br><br>Zapisující: _________________ <br> <h2>Disciplína: " . $disciplines[$discipline-1] . "</h2>";
-    $request = "SELECT * From event_score where event_id = $id AND discipline_id = $discipline ORDER BY  `event_score`.`class_name` ASC ;";
+    $request = "SELECT * From event_score where event_id = $id AND discipline_id = $discipline ORDER BY  `event_score`.`gender` ASC ;";
     $result = $mysqli->query($request);
     $i = 1; $count=0;
     echo "<table class='thetable'><tr><th>#</th><th>Jméno</th><th>Příjmení</th><th>Datum narození</th><th>Třída</th><th>1. pokus</th><th>2. pokus</th><th>3. pokus</th></tr>";
     while ($row = $result->fetch_array(MYSQLI_NUM)) {
         $count++;
-        if($count>22){$count=0;pageDivider($row2[13],$dateEvent,$time,$disciplines[$discipline-1],null,"start-list");}
+        if($count>20){$count=0;pageDivider($row2[13],$dateEvent,$time,$disciplines[$discipline-1],null,"start-list");}
         $athlete=athleteInfo($row[3],$mysqli);
        // echo$row[4];
         //$year=eventAge($id,$row[4],$mysqli);

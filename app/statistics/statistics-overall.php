@@ -36,7 +36,7 @@ while ($row = $result->fetch_array(MYSQL_ASSOC)) {
     //echo$requestInside."<br>";
     $resultInside = $mysqli->query($requestInside);
     while ($rowInside = $resultInside->fetch_array(MYSQL_ASSOC)) {
-        $points[$i] = $points[$i] + $rowInside["score_points"];
+        if(isset($rowInside["score_points"])){$points[$i] = $points[$i] + $rowInside["score_points"];}else{$points[$i]=0;}
 
     }
     //echo  $classesArray[$i]."|".$points[$i]."<br>";
@@ -47,7 +47,7 @@ while ($x < ($i + 1)) {
    // echo $classesArray[$x] . "&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;" . $points[$x] . "<br>";
     $z = 0;
     while ($z < $x) {
-        if ($points[$z] < $points[$z + 1]) {
+        if (($z+1)!=13&&$points[$z] < $points[$z + 1]  ) {
             $tempclass = $classesArray[$z];
             $classesArray[$z] = $classesArray[$z + 1];
             $classesArray[$z + 1] = $tempclass;

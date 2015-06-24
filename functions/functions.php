@@ -95,21 +95,33 @@ function printNice($disciplineName, $time)
             $total = $total - 60;
         }
         $seconds = $time - (60 * $minutes);
-        $seconds = str_replace(".", ",", $seconds);
+
         if ($minutes > 0) {
-            return $minutes . ":" . $seconds;
+            if ($seconds < 1) {
+                return $minutes . ":0" . number_format((float)$seconds, 2, ',', '');
+            } else {
+                return $minutes . ":" . number_format((float)$seconds, 2, ',', '');
+            }
         } else {
-            return $seconds;
+            if ($seconds < 10) {
+                return "0" . number_format((float)$seconds, 2, ',', '');
+            } else {
+                return  number_format((float)$seconds, 2, ',', '');
+            }
         }
     } else {
-        if($time==""){$time=0;}
-        return $time;
+        if ($time == "") {
+            $time = 0;
+        }
+        return number_format((float)$time, 2, ',', '');
     }
 }
 
 function printDot($text)
 {
-    if($text==""){$text=0;}
+    if ($text == "") {
+        $text = 0;
+    }
     return str_replace(".", ",", $text);
 }
 
@@ -168,11 +180,22 @@ function pageDivider($headline, $dateEvent, $time, $disciplines, $author, $type)
         echo " <h2>Disciplína: " . $disciplines . "</h2>";
         echo "<table class='thetable'><tr><th>#</th><th>Jméno</th><th>Příjmení</th><th>Výkon</th><th>Body</th></tr>";
     }
+    if ($type == "stats-single") {
+        echo "<h1>Gymtri výsledková listina - <strong>Průběžné výsledky závodníků</strong></h1>
+       ";
+        if ($author != "") {
+            echo "Zapisovali: " . $row2[3] . "<br>";
+        }
+        echo " <h2>Disciplína: " . $disciplines . "</h2>";
+        echo "<table class='thetable'><tr><th>#</th><th>Jméno</th><th>Příjmení</th><th>Výkon</th></tr>";
+    }
 
 
 }
-function classConstruct($prefix,$year){
-    return $prefix.".".$year;
+
+function classConstruct($prefix, $year)
+{
+    return $prefix . "." . $year;
 }
 //funkce pro import trid
 //funkce pro export cele DB
