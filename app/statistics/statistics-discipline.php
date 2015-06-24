@@ -38,14 +38,14 @@ $request = "SELECT * FROM `event_score` WHERE `event_id` LIKE $id AND `disciplin
     $foreachSingle++;
     if(mysqli_num_rows($result)== 0){}else{
     echo "<table class='thetable'><tr><th>#</th><th>Jméno</th><th>Příjmení</th><th>Třída</th><th>Výkon</th><th>Body</th></tr>";
-        echo"<h2>".$disciplines[$single]."</h2>";
+        echo"<h2>".$disciplines[$single-1]."</h2>";
     while ($row = $result->fetch_array(MYSQL_ASSOC)) {
         echo "
           <tr><td>" . $i . ". </td><td>
            " . $row["first_name"] . "</td><td>
            " . $row["last_name"] . "</td><td>
            " . $row["class_name"] . "</td><td>
-           " . $row["score_value"] . "</td><td>
+           " . printNice($disciplines[$single-1],$row["score_value"]) . "</td><td>
            " . $row["score_points"] . "</td>
            </tr>";
 
@@ -53,5 +53,9 @@ $request = "SELECT * FROM `event_score` WHERE `event_id` LIKE $id AND `disciplin
         $i++;
     }
     if($foreachSingle>4){pageDivider(null, null, null, $single, NULL, "statistics-discipline"); $foreachSingle=0;}
-    echo "</table>";}
-}
+    echo "</table>";
+
+    }
+}valueFormat();
+    copyright();
+    printInfo();

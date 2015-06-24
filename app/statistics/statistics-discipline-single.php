@@ -45,7 +45,7 @@ $request = "SELECT * FROM `event_score` WHERE `event_id` LIKE $id AND `disciplin
     while ($row = $result->fetch_array(MYSQL_ASSOC)) {
 
         $count++;
-        if($count>24){$count=0;pageDivider(null,null,null,$disciplines[$discipline-1],null,"stats-single");}
+        if($count>24){$count=0;pageDivider(null,null,null,$disciplines[$discipline-1],null,"find");}
 echo "
           <tr> <td>
            " . $row["first_name"] . "</td><td>

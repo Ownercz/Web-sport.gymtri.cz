@@ -46,7 +46,7 @@ $x = 0;
 while ($x < ($i + 1)) {
    // echo $classesArray[$x] . "&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;" . $points[$x] . "<br>";
     $z = 0;
-    while ($z < $x) {
+    while ($z < ($i + 1)) {
         if (($z+1)!=13&&$points[$z] < $points[$z + 1]  ) {
             $tempclass = $classesArray[$z];
             $classesArray[$z] = $classesArray[$z + 1];

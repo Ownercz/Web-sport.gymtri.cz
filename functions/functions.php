@@ -189,6 +189,15 @@ function pageDivider($headline, $dateEvent, $time, $disciplines, $author, $type)
         echo " <h2>Disciplína: " . $disciplines . "</h2>";
         echo "<table class='thetable'><tr><th>#</th><th>Jméno</th><th>Příjmení</th><th>Výkon</th></tr>";
     }
+    if ($type == "find") {
+        echo "<h1>Gymtri Sport</h1>
+       ";
+        if ($author != "") {
+            echo "Zapisovali: " . $row2[3] . "<br>";
+        }
+        echo " <h2>Sourozenecké dvojice ze startujících závodníků</h2>";
+        echo "<table class='thetable'><tr><th>Jméno</th><th>Příjmení</th><th>Jméno</th><th>Příjmení</th></tr>";
+    }
 
 
 }
