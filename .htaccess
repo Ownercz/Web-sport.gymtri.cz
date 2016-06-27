@@ -1,0 +1,5 @@
+ # ALLOW USER BY IP
+<Limit GET POST>
+ Require all denied
+ Require ip 81.200
+</Limit>
