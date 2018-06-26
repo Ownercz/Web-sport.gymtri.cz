@@ -1,4 +1,28 @@
-
+<?PHP
+if(1){
+       //$row = $result->fetch_row();
+        $passworddb = $row[2];
+            if (1 == 1) {
+            
+                    if (isset($_GET['remember-me'])) {
+            
+                    setcookie('gymtri_username', $login, time()+60*60*24*365);
+                    setcookie('gymtri_password', $hash, time()+60*60*24*365);
+        
+                    } else {
+            
+                    setcookie('gymtri_username', $login);
+                    setcookie('gymtri_password', $hash);
+                    }
+                    header('Location: app/');
+            }
+            else{
+            header('Location: ' . $_SERVER['HTTP_REFERER'].'?w=1');
+            exit;
+            }
+        }
+else{exit;}
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>

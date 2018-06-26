@@ -1,4 +1,4 @@
-<?PHP include "../../functions/check.php"; 
+<?PHP include "../../functions/check.php";
   /*
    * DODELAT POZNAMKY K CASU
    */
@@ -17,7 +17,7 @@
           <table class='table'>
             <thead>
               <tr>
-                
+
                 <th>Název soutěže</th>
                 <th>Vytvořil</th>
                 <th>Výsledky zpracovali</th>
@@ -28,9 +28,9 @@
               </tr>
             </thead>
            <tbody>
-            <?PHP 
+            <?PHP
 include "../../functions/dbconnect.php";
-$request= "SELECT * FROM `event` ORDER BY `event`.`event_date` DESC"  ; 
+$request= "SELECT * FROM `event` ORDER BY `id` DESC"  ; 
  $result = $mysqli->query($request);
             if ($result->num_rows === 0) {
                 echo "<a href='..'><button type='button' class='btn btn-warning'>Nebyla vytvořena žádná soutěž!</button></a>";
@@ -53,7 +53,7 @@ while($row = $result->fetch_array(MYSQLI_NUM)){echo "<tr><td>".$row[1]."</td><td
 
 
 
-   
+
     </div> <!-- /container -->
 
 
@@ -63,7 +63,7 @@ while($row = $result->fetch_array(MYSQLI_NUM)){echo "<tr><td>".$row[1]."</td><td
     <script src='https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js'></script>
     <script src='../js/bootstrap.min.js'></script>
     <script src='../js/docs.min.js'></script>
-   
-   
+
+
   </body>
 </html>

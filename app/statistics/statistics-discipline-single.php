@@ -42,7 +42,7 @@ $request = "SELECT * FROM `event_score` WHERE `event_id` LIKE $id AND `disciplin
     if(mysqli_num_rows($result)== 0){}else{
     echo "<table class='thetable'><tr><th>Jméno</th><th>Příjmení</th><th>Třída</th><th>Výkon</th></tr>";
         echo"<h2>".$disciplines[$discipline-1]."</h2>";
-    while ($row = $result->fetch_array(MYSQL_ASSOC)) {
+    while ($row = $result->fetch_array(MYSQLI_ASSOC)) {
 
         $count++;
         if($count>24){$count=0;pageDivider(null,null,null,$disciplines[$discipline-1],null,"find");}

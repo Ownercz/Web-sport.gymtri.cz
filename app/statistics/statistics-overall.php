@@ -25,7 +25,7 @@ if (isset($_GET['id'])) {
 $request = "SELECT * FROM `classes` WHERE `event_id` = 1 ORDER BY `yearbegin` DESC";
 $result = $mysqli->query($request);
 $i = 0;
-while ($row = $result->fetch_array(MYSQL_ASSOC)) {
+while ($row = $result->fetch_array(MYSQLI_ASSOC)) {
     $beginyear = $row["yearbegin"];
     $now = date("Y");
     $year = $now - $beginyear;
@@ -35,7 +35,7 @@ while ($row = $result->fetch_array(MYSQL_ASSOC)) {
     $requestInside = "SELECT *    FROM  `event_score` WHERE  `event_id` =1    AND  `class_name` LIKE  '$className';";
     //echo$requestInside."<br>";
     $resultInside = $mysqli->query($requestInside);
-    while ($rowInside = $resultInside->fetch_array(MYSQL_ASSOC)) {
+    while ($rowInside = $resultInside->fetch_array(MYSQLI_ASSOC)) {
         if(isset($rowInside["score_points"])){$points[$i] = $points[$i] + $rowInside["score_points"];}else{$points[$i]=0;}
 
     }

@@ -39,7 +39,7 @@ $request = "SELECT * FROM `event_score` WHERE `event_id` LIKE $id AND `disciplin
     if(mysqli_num_rows($result)== 0){}else{
     echo "<table class='thetable'><tr><th>#</th><th>Jméno</th><th>Příjmení</th><th>Třída</th><th>Výkon</th><th>Body</th></tr>";
         echo"<h2>".$disciplines[$single-1]."</h2>";
-    while ($row = $result->fetch_array(MYSQL_ASSOC)) {
+    while ($row = $result->fetch_array(MYSQLI_ASSOC)) {
         echo "
           <tr><td>" . $i . ". </td><td>
            " . $row["first_name"] . "</td><td>

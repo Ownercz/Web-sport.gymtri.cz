@@ -97,7 +97,7 @@ function printNice($disciplineName, $time)
         $seconds = $time - (60 * $minutes);
 
         if ($minutes > 0) {
-            if ($seconds < 1) {
+            if ($seconds < 10) {
                 return $minutes . ":0" . number_format((float)$seconds, 2, ',', '');
             } else {
                 return $minutes . ":" . number_format((float)$seconds, 2, ',', '');
